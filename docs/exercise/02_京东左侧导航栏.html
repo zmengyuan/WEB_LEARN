@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>京东左侧导航栏</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body{
+            background-color: #bfa;
+        }
+        .left-nav{
+            width: 190px;
+            height: 450px;
+            padding: 10px 0;
+            background-color: white;
+
+            margin: 50px auto;
+        }
+        /* 设置每个菜单 */
+        .left-nav .item{
+            height: 25px;
+            /* 让文字在父元素垂直居中，只需要将父元素的line-height设置为行高一样的值 */
+            line-height: 25px;
+
+            /* 设置超链接文字不要紧贴左边 ，下面这种设置是错的！！！
+            因为这样把这个div就移动了18px,鼠标放上去的时候左边18px就成白色了。
+                所以不能设置margin ,只能设置padding
+            */
+            /* margin-left: 18px; */
+            padding-left: 18px;
+            font-size: 12px;
+        }
+        .left-nav .item:hover{
+            background-color: #d9d9d9;
+        }
+        /* 设置超链接的样式 */
+        .item a{
+            font-size: 14px;
+            /* 字体颜色 */
+            color: #333333;
+            /* 去除下划线 */
+            text-decoration: none;
+        }
+        .item a:hover{
+            color: #c81623;
+        }
+    </style>
+</head>
+<body>
+    <!-- nav(div) div(div) ul(li) -->
+    <nav class="left-nav">
+        <!-- /其实还是应该用个标签！！！，不然之后设置它。现在就只能用item来设置/的大小 -->
+        <div class="item">
+            <a href="#">家用电器</a>
+        </div>
+        <div class="item">
+            <a href="#">手机</a>/<a href="#">运营商</a>/<a href="#">数码</a>
+        </div>
+        <div class="item">
+            <a href="#">电脑</a>/<a href="#">办公</a>
+            
+        </div>
+    </nav>
+</body>
+</html>

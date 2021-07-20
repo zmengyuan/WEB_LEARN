@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 选择含有某属性的元素
+            语法 [属性名]
+         */
+        p[title]{
+            color: orange;
+        }
+        /* 选择指定属性名和属性值的 */
+        [title=abc]{
+            font-size: 20px;
+        }
+        /* ^选择属性值以某值开头   $ 结尾   *含有 
+         */
+        [title ^=abc]{
+            font-size: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <p title="abc">少小离家老大回</p>
+    <p title="abcd">乡音无改鬓毛衰</p>
+    <p title="abcde">儿童相见不相识</p>
+    <p>笑问客从何处来</p>
+    <p>秋水共长天一色</p>
+    <p>落霞与孤鹜齐飞</p>
+</body>
+</html>

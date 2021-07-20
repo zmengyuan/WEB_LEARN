@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .s1{
+            background-color: yellow;
+            /* 
+                行内元素的盒子模型
+                - 行内元素不支持width 和 height
+                - 行内元素的padding 但是垂直方向的padding不会影响页面布局
+                - 行内元素可以设置border,但是垂直方向的border不会影响页面布局
+                - 行内元素可以设置margin,但是垂直方向的margin不会影响页面布局
+            
+            
+             */
+            /*  padding: 100px; */
+            /* border: 100px red solid; */
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+        a{
+            /* 
+                display: 用来设置元素显示的类型
+                    可选值:
+                        - inline 行内元素
+                        - block 块元素
+                        - inline-block 行内块元素:既可以设置宽度和高度,但是又不会独占一行.
+                            当用inline-block的时候,设置了宽高的两个a标签如果在body里面换行写了,页面表现就是有个缝,如果在body里面没有换行挨着写的,就不会有缝隙!!!
+                        - table 设置为表格
+                        - none 隐藏元素,不在页面中显示,感觉不到它的存在(位置不占了)
+                 visibility: 
+                    - visible;显示
+                    - hidden 隐藏 (但是位置仍然占着!!)
+             */ 
+             visibility: visible;
+            display: block;
+            background-color: orange;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:;">超链接</a>
+    <a href="javascript:;">超链接</a>
+    <span class="s1">我是span</span>
+    <span class="s1">我是span</span>
+    <div class="box1"></div>
+</body>
+</html>

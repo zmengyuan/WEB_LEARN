@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 去除默认的 -->
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <link rel="stylesheet" href="./css/normalize.css">
+    <!-- 重置样式表
+        reset.css 是去除了浏览器的默认样式
+        normalize.css 是对默认样式进行了统一
+        一般选择一个
+    -->
+    <style>
+        /* 
+            默认样式
+                - 通常情况,浏览器都会为元素设置一些默认样式
+                - 默认样式的存在会影响到页面的布局,通常情况下编写网页时去掉浏览器的默认样式(PC端的样式)
+        
+         */
+
+         
+         /*
+         body{
+             margin: 0px;
+         }
+         p{
+             margin: 0px;
+         }
+         ul{
+             margin: 0px;
+             padding: 0px;
+             /*   将margin和padding 设置为0之后,左边的项目符号没有了,只有加上margin-left这个会出现   * /
+             margin-left: 20px;
+             /* 去除项目符号 * /
+             list-style: none;
+         } 
+         */
+
+         /* 由于上面为每个元素单独设置太麻烦了,所以一般都是全部设置 */
+
+         /* *{
+             margin: 0px;
+             padding: 0px;
+         } */
+         
+         
+        .box1{
+            width: 100px;
+            height: 100px;
+            border: black solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <p>我是一个段落</p>
+    <p>我是一个段落</p>
+    <p>我是一个段落</p>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+    </ul>
+</body>
+</html>

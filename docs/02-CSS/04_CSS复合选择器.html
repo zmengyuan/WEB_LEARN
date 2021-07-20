@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            交集选择器：同时满足
+              选择器1选择器2选择器3   注意：交集选择器中有元素选择器必须以元素选择器开头
+        */
+        div.red{
+            font-size: 30px;
+        }
+        /* 同时拥有这三个class属性 */
+        .a.b.c{
+            color: blue;
+        }
+        /* 并集选择器，选择多个选择器 用,逗号隔开。 h1或者span标签 */
+        h1,span{
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="red a b c">我是div</div>
+    <p class="red">我是p标签</p>
+    <h1>标题</h1>
+    <span>span</span>
+</body>
+</html>
