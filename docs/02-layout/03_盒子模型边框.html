@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: #bfa;
+            width: 200px;
+            height: 200px;
+            /* 
+                要设置边框至少设置三个样式
+                    - 边框宽度 border-width 可以不写，它一般有个默认值 3px 。
+                        四个值：四个顺时针
+                        三个值：上、左右、下
+                        两个值：上下、左右
+                        一个值：上下左右
+                    单独设置： - border-top-width:
+                    
+
+            */
+            border-width: 10px;
+            /* 
+                指定边框颜色，同样可以分别指定四个方向的颜色。可以省略不写，自动是color颜色
+            */
+            border-color: orange;
+            /* 
+                指定边框样式 ,同样可以分别指定四个.默认值是null
+                - solid 实线
+                - dotted 点状虚线
+                - dashed 虚线
+                - double 双线
+                
+            */
+            border-style: solid;
+           /* 
+                border 简写值 ,可以直接写三个属性,并且没有顺序要求,也可以分别设置四个方向.
+           */
+           border: rebeccapurple dashed 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

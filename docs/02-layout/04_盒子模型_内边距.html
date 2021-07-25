@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: #bfa;
+            width: 200px;
+            height: 200px;
+            border: orange solid 10px;
+            /* 
+            内边距 
+                内边距的设置会影响到盒子的大小
+                content的背景颜色会延申到内边距,所以如何区分内容区和内边距呢.写上content或者创建一个子元素!!! 
+
+                结论: 一个盒子的可见框的大小:由内容区,内边距和边框共同决定,所以在计算盒子大小时候需要把这三个区域大小计算一起.
+            */
+            padding-top: 100px;
+            padding-left: 100px;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            border: red solid 10px;
+            /* 
+                外边距不影响盒子可见框大小,会影响盒子实际占用空间大小.如果设置负值,元素会向相反方向移动
+                margin-top 设置一个正值,盒子会向下移动
+                margin-right 默认情况下,这个值设置没用
+                margin-bottom 设置一个正值,下面的元素向下移动
+                margin-left 设置一个正值,盒子会向右移动
+                
+                元素在页面中是按照自左向右顺序排列的,所以默认情况下如果我们设置了左和上,将会移动元素自身.而设置下右,会移动其他元素
+                
+            */
+            /* margin-top: 100px;
+            margin-left: 100px; */
+            margin-bottom: 50px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

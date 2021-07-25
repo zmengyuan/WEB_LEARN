@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        /* 
+        样式的继承：
+            我们为一个元素设计的样式，也会应用到它的后代元素
+        继承是发生在祖先和后代元素的
+            好处：
+                是为了方便我们的开发，利用继承可以将一些通用的样式设置到统一的祖先元素，这样让所有元素都具有该样式了。
+            注意：并不是所有的样式都会被继承，比如背景和布局相关的等...默认的背景颜色是透明
+            打开手册 CSS 
+         */
+        p{
+            color: red;
+        }
+        div{
+            color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <!-- p元素里面不能放块元素 -->
+    <p>我是一个P元素
+        <span>我是P元素的span</span>
+    </p>
+
+    <span>我是p元素同级的span元素</span>
+
+    <div>我是DIV
+        <span>我是div里面的span
+            <em>我是div中的span中的em</em>
+        </span>
+    </div>
+</body>
+</html>

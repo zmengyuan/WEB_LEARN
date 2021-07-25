@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        p{
+            font-size: 20px;
+        }
+        /* 
+        伪元素：表示页面中并不存在的元素，特殊位置的 。比如第一个字，第一行
+        它其实就是给伪元素选中的内容加了一个标签然后设置了它的style
+        ::first-letter
+        ::first-line
+        ::selection
+        ::before 元素起始位置
+        ::after 元素结束位置
+        before和after必须结合一个属性content来设置，不然无法显示看出来，通过before和after添加的内容，是无法选中的。
+
+         */
+        p::first-letter{
+            color: blue;
+        }
+        p::first-line{
+            background-color: yellowgreen;
+        }
+        /* 表示选择的内容 */
+        p::selection{
+            background-color: green;
+        }
+        div::before{
+            content: "abc";
+            color: red;
+        }
+        div::after{
+            content: "v";
+            color: chocolate;    
+        }
+    </style>
+</head>
+<body>
+    <div>hello hello how are you</div>
+    <p>
+        写了一个段落 abcdefghijklmn
+    </p>
+</body>
+</html>
