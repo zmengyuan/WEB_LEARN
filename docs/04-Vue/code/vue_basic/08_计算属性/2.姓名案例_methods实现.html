@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>姓名案例_methods实现</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 准备好一个容器-->
+		<div id="root">
+			姓：<input type="text" v-model="firstName"> <br/><br/>
+			名：<input type="text" v-model="lastName"> <br/><br/>
+			<!-- 之前调用事件方法的时候加不加小括号都可以，但是这里的插值加了小括号是使用的函数的返回值，不加小括号是直接返回的函数对象 -->
+			全名：<span>{{fullName()}}</span>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+		new Vue({
+			el:'#root',
+			data:{
+				firstName:'张',
+				lastName:'三'
+			},
+			methods: {
+				// 在这个函数里面怎么能拿到姓和名呢？？？普通函数里面的this是外面的Vue实例vm
+				/*
+				在Vue中data中任何一个数据发生变化，Vue的模块都会重新解析一遍，解析到{{fullName()}}的时候，它发现是调用的函数，所以又会重新调用函数一次
+								*/
+				fullName(){
+					console.log('@---fullName')
+					return this.firstName + '-' + this.lastName
+				}
+			},
+		})
+	</script>
+</html>

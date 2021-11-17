@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>姓名案例_插值语法实现</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 这样用插值语法确实可以实现 全名跟着姓名动，但是，如果需求是全名那里需要对firstName进行各种处理，截取啊，大写之类的，就显得表达式很复杂了，这个时候就不建议用插值了 -->
+		<!-- 准备好一个容器-->
+		<div id="root">
+			姓：<input type="text" v-model="firstName"> <br/><br/>
+			名：<input type="text" v-model="lastName"> <br/><br/>
+			全名：<span>{{firstName}}-{{lastName}}</span>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+		new Vue({
+			el:'#root',
+			data:{
+				firstName:'张',
+				lastName:'三'
+			}
+		})
+	</script>
+</html>
