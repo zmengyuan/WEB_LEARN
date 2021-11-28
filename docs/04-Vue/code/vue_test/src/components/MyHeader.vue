@@ -9,6 +9,8 @@
     import {nanoid} from 'nanoid'
     export default {
         name:'MyHeader',
+        //接收app传递过来的函数
+        props:['addTodo'],
         data() {
             return {
                 //收集用户输入的title
@@ -21,15 +23,19 @@
             //     console.log(e.target.value)
             // }
             add () {
+                //校验数据
+			    if(!this.title.trim()) return alert('输入不能为空');
                 console.log(this.title)
                 /*将用户的输入包装成一个todo对象 引用要用nanoid，所以安装 npm i nanoid
                  要把todoObj交给List组件，目前的知识量 要从组件的外部给组件里面携带数据
                  只能<MyList a="">，但是现在list和head组件没有关系，没法传输。所以就
                  想到最初始的方法：todos 给 app，由app再来给list
                  */
-                const todoObj = {id:nanoid(),title:this.title,done:false}
+                const todoObj = {id:nanoid(),title:this.title,done:false};
+                this.addTodo(todoObj);
             }
         },
+        
     }
 </script>
 

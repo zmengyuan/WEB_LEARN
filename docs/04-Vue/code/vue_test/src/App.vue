@@ -2,8 +2,8 @@
 	<div id="root">
 		<div class="todo-container">
 			<div class="todo-wrap">
-				<MyHeader/>
-				<MyList/>
+				<MyHeader :addTodo="addTodo"/>
+				<MyList :todos="todos"/>
 				<MyFooter/>
 			</div>
 		</div>
@@ -17,7 +17,26 @@
 
 	export default {
 		name:'App',
-		components:{MyHeader,MyList,MyFooter}
+		components:{MyHeader,MyList,MyFooter},
+		data() {
+            return{
+                todos: [
+                    {id:'0001',title:'吃饭',done:false},
+                    {id:'0002',title:'睡觉',done:false},
+                    {id:'0003',title:'喝酒',done:false}
+                ]
+            }
+        },
+		methods: {
+			// 如何实现儿子向父亲传数据。在父亲这里定义一个函数，传给儿子，然后儿子调用这个函数
+			//方法不能定义为add ,因为组件已经用了
+			addTodo(todoObj) {
+				console.log('我是app组件，我收到了数据：',todoObj);
+				this.todos.unshift(todoObj);
+				//清空输入
+				this.title = ''
+			}
+		},
 	}
 </script>
 

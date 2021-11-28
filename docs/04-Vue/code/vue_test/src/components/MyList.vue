@@ -16,15 +16,9 @@
     export default {
         name:'MyList',
         components:{MyItem},
-        data() {
-            return{
-                todos: [
-                    {id:'0001',title:'吃饭',done:false},
-                    {id:'0002',title:'睡觉',done:false},
-                    {id:'0003',title:'喝酒',done:false}
-                ]
-            }
-        }
+        //声明接收App传递过来的数据，其中todos是自己用的，checkTodo和deleteTodo是给子组件MyItem用的
+		props:['todos']
+        
     }
 </script>
 
