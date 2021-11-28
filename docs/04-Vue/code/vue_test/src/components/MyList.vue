@@ -1,6 +1,13 @@
 <template>
     <ul class="todo-main">
-        <MyItem/>
+        <!-- 这里不仅涉及到需要读取todos创建多少条数据，还涉及到要传数据给MyItem 
+            用props传 todo记得前面要加: 这样todoObj才是表达式,不然传过去就是个普通todoObj字符串
+         -->
+        <MyItem 
+            v-for="todoObj in todos" 
+            :key="todoObj.id" 
+            :todo="todoObj" 
+        />
     </ul>
 </template>
 
@@ -8,7 +15,16 @@
     import MyItem from './MyItem'
     export default {
         name:'MyList',
-        components:{MyItem}
+        components:{MyItem},
+        data() {
+            return{
+                todos: [
+                    {id:'0001',title:'吃饭',done:false},
+                    {id:'0002',title:'睡觉',done:false},
+                    {id:'0003',title:'喝酒',done:false}
+                ]
+            }
+        }
     }
 </script>
 
