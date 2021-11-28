@@ -3,7 +3,7 @@
 		<div class="todo-container">
 			<div class="todo-wrap">
 				<MyHeader :addTodo="addTodo"/>
-				<MyList :todos="todos"/>
+				<MyList :todos="todos" :checkTodo="checkTodo"/>
 				<MyFooter/>
 			</div>
 		</div>
@@ -35,7 +35,13 @@
 				this.todos.unshift(todoObj);
 				//清空输入
 				this.title = ''
-			}
+			},
+			//勾选or取消勾选一个todo
+			checkTodo(id){
+				this.todos.forEach((todo)=>{
+					if(todo.id === id) todo.done = !todo.done
+				})
+			},
 		},
 	}
 </script>

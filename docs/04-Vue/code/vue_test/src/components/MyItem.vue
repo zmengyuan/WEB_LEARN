@@ -2,7 +2,12 @@
     <li>
         <label>
             <!-- 如何在vue中动态的让标签拥有某个属性 checked -->
-            <input type="checkbox" :checked="todo.done"/>
+            <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
+            <!-- 如下代码也能实现功能，但是不太推荐，因为有点违反原则，因为修改了props 
+                如果用下面的代码，handleCheck()相关的函数就可以不用写了。
+                vue只能监视浅层次的props,对象的属性值修改它不能监视到
+            -->
+			<!-- <input type="checkbox" v-model="todo.done"/> -->
             <span>{{todo.title}}</span>
         </label>
         <button class="btn btn-danger" style="display:none">删除</button>
@@ -13,7 +18,14 @@
     export default {
         name:'MyItem',
         //声明接收
-		props:['todo'],
+		props:['todo','checkTodo'],
+        methods: {
+            handleCheck(id){
+                console.log(id);
+                //通知App组件将对应的todo对象的done值取反
+				this.checkTodo(id)
+            }
+        },
         
     }
 </script>
