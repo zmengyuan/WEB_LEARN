@@ -1,12 +1,35 @@
 <template>
     <div class="todo-header">
-        <input type="text" placeholder="请输入你的任务名称，按回车键确认"/>
+        <input type="text" placeholder="请输入你的任务名称，按回车键确认" v-model="title" @keyup.enter="add"/>
     </div>
 </template>
 
 <script>
+    // 引入nanoid
+    import {nanoid} from 'nanoid'
     export default {
-        name:'MyHeader'
+        name:'MyHeader',
+        data() {
+            return {
+                //收集用户输入的title
+                title:''
+            }
+        },
+        methods: {
+            //如何获取用户输入的值呢 方法一：通过事件对象，方法二：v-model 双向数据绑定
+            // add (e) {
+            //     console.log(e.target.value)
+            // }
+            add () {
+                console.log(this.title)
+                /*将用户的输入包装成一个todo对象 引用要用nanoid，所以安装 npm i nanoid
+                 要把todoObj交给List组件，目前的知识量 要从组件的外部给组件里面携带数据
+                 只能<MyList a="">，但是现在list和head组件没有关系，没法传输。所以就
+                 想到最初始的方法：todos 给 app，由app再来给list
+                 */
+                const todoObj = {id:nanoid(),title:this.title,done:false}
+            }
+        },
     }
 </script>
 
