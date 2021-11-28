@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>列表排序</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 准备好一个容器-->
+		<div id="root">
+			<h2>人员列表</h2>
+			<!-- <input type="text" placeholder="请输入名字" v-model="keyWord"> -->
+			<button @click = "setSort(1)">年龄升序</button>
+			<button @click = "setSort(-1)">年龄降序</button>
+			<ul>
+				<li v-for="f of filterList">
+					{{f.name}}---{{f.age}}
+				</li>
+			</ul>
+			
+			
+		</div>
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false
+			new Vue({
+				el:'#root',
+				data:{
+					sort:"0",
+					persons:[
+						{id:'001',name:'马冬梅',age:20,sex:'女'},
+						{id:'002',name:'周冬雨',age:31,sex:'女'},
+						{id:'003',name:'周杰伦',age:18,sex:'男'},
+						{id:'004',name:'温兆伦',age:19,sex:'男'}
+					]
+				},
+				methods: {
+					setSort(val){
+						console.log("方法被调用了，sort= "+this.sort);
+						this.sort = val;
+					}
+				},
+				computed:{
+					filterList(){
+						console.log("filterList被调用了，sort= "+this.sort);
+						if (this.sort === 1) {
+							return this.persons.sort((a,b) => {
+								return a.age - b.age;
+							});
+						}else if (this.sort === -1) {
+							return this.persons.sort((a,b) => {
+								return b.age - a.age;
+							});
+							
+						}else{
+							return this.persons;
+						}
+					}
+				}
+			
+			});
+
+			
+			
+
+		</script>
+</html>

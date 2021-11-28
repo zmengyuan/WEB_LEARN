@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript" >
+// 为了掩饰  data必须要加工成_data 才能实现数据一改，页面就改的结果（其实是data中的属性值一改，其属性的set方法就会被调用，set方法里面又有重新解析模板的代码，这样才让页面数据跟着变）
+// 有的人不服气，说不加工成_data也可以实现
+			let data = {
+				name:'尚硅谷',
+				address:'北京',
+			}
+
+			// 尝试一： （成功）可以用定时器实现，但是这样要为每个属性添加定时器，！！！！所以不可能这样
+			// let tmp = data.name;
+			// setInterval(function(){
+			// 	if (data.name !== tmp) {
+			// 		console.log("name变化了")
+			// 		tmp = data.name;
+			// 	}
+			// });
+
+//  尝试二   但是这样不可以！！！ 有读取name属性，就调get,但是get里面也是读取name,于是不停的递归，死循环
+/*
+			Object.defineProperty(data,'name',{
+				get(){
+					return data.name;
+				},
+				set(val){
+					data.name = val;
+				}
+
+			})
+*/
+			// //创建一个监视的实例对象，用于监视data中属性的变化
+			const obs = new Observer(data)		
+			console.log(obs)	
+
+			// //准备一个vm实例对象，把obs给vm的_data
+			let vm = {}
+			vm._data = data = obs
+
+			//    模范vue的Observer  
+			function Observer(obj){
+				//汇总对象中所有的属性形成一个数组
+				const keys = Object.keys(obj)
+				//遍历
+				keys.forEach((k)=>{
+					//这里的this是Observer的实例对象
+					Object.defineProperty(this,k,{
+						get(){
+							return obj[k]
+						},
+						set(val){
+							console.log(`${k}被改了，我要去解析模板，生成虚拟DOM.....我要开始忙了`)
+							obj[k] = val
+						}
+					})
+				})
+			}
+			
+			
+
+
+		</script>
+	</body>
+</html>
