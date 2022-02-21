@@ -27,6 +27,7 @@
             可以在某个样式后面加 !important，此时获取最高优先级。开发中一定要慎重用！
 
          */
+         /* 这个是设置div的字体颜色 */
         #box1{
             color: orange;
         }
@@ -38,12 +39,13 @@
         }
         .d1{
             background-color: teal !important;
+            color: blue;
         }
-        /* 这种权重是相加 */
+        /* 交集选择器 这种权重是相加 */
         div#box1{
             color: yellow;
         }
-        /* 这种权重是分别计算 */
+        /* 分组选择器： 这种权重是分别计算 */
         div,p,span{
             color: yellowgreen;
         }
@@ -53,6 +55,7 @@
         *{
             font-size: 50px;
         }
+        
 
     </style>
 </head>
