@@ -13,7 +13,7 @@
         }
         /* 
             垂直外边距的折叠
-                - 相邻的垂直方向外边距会出现重叠的现象
+                - 相邻的垂直方向外边距会出现重叠的现象(要满足两个条件  相邻、外边距，所以解决的思路就是让他不相邻，不使用外边距)
                 - 兄弟元素
                     - 兄弟元素之间的相邻垂直元素外边距会取两者之间的较大值（两者都是正值）
                     - 特殊情况：
@@ -26,14 +26,16 @@
                     - 父子外边距的折叠会影响到页面的布局,必须要进行处理
                     - 解决: 1\不用外边距 ;2\采取方式将父子隔开,比如加边框.但是这两种方式都会对盒子本身的大小改变,然后又要去对应修改width\height属性.太麻烦了!!!
 
-                    
+                    对于第二种：为什么给父元素加了边框属性就可以让子元素的外边距不去传递给父元素了，为什么？？？
+                    因为加了边框之后，子元素的外边距和父元素的外边距就隔开了。
+                    https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing
 
 
          */
         .box1{
             background-color: #bfa;
             /* 设置一个下边距 */
-            margin-bottom: 100px;
+            margin-bottom: 200px;
         
         }
         .box2{
@@ -51,7 +53,7 @@
             width: 100px;
             height: 100px;
             background-color: orange;
-            margin-top: 100px;
+            margin-top: 50px;
         }
     </style>
 </head>
