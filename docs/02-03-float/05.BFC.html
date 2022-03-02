@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 
+        案例1：
+        当box1开启float,box2回上移被box1盖住。
+        这时候如果给box2开启BFC,它就不会被盖住，
+
+
+        案例2：
+        当有box3时候，设置了margin-top，本来会连带着box1向下，
+        这时候开启BFC，就可以让子元素和父元素外边距不会重叠！
+        */
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            /* float: left; */
+            overflow: hidden;
+        }
+
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            overflow: hidden;
+        }
+
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box1">
+
+        <div class="box3"></div>
+    </div>
+
+    <!-- <div class="box2">
+
+    </div> -->
+    
+</body>
+</html>
