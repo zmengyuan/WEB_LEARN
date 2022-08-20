@@ -20,11 +20,12 @@
 		components:{MyHeader,MyList,MyFooter},
 		data() {
             return{
-                todos: [
-                    {id:'0001',title:'吃饭',done:false},
-                    {id:'0002',title:'睡觉',done:false},
-                    {id:'0003',title:'喝酒',done:false}
-                ]
+                // todos: [
+                //     {id:'0001',title:'吃饭',done:false},
+                //     {id:'0002',title:'睡觉',done:false},
+                //     {id:'0003',title:'喝酒',done:false}
+                // ]
+				todos: JSON.parse(localStorage.getItem('todos'))||[]
             }
         },
 		methods: {
@@ -59,6 +60,14 @@
 				})
 			}
 		},
+		watch: {
+			todos:{
+				deep:true,
+				handler(value) {
+					localStorage.setItem('todos',JSON.stringify(value));
+				}
+			}
+		}
 	}
 </script>
 
