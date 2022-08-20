@@ -15,8 +15,11 @@
 
 		<!-- 这样写了之后，就代表在APP组件里可以通过this.$refs.student就可以获取到Student组件的实例对象 
 		第二种写法：ref
+
+		@click.native才是Student整个的原生点击事件
+		@click='show'这样写vue会当成自定义事件
 		-->
-		<Student ref = 'student'/>
+		<Student ref = 'student' @click.native= 'show'/>
 	</div>
 </template>
 
@@ -39,16 +42,28 @@
 			},
 			getStudentName(name,...params) {
 				console.log('App收到了学生名',name,params);
+				this.studentName = name
 			},
 			m1 (){
 				console.log('m1事件促发了')
+			},
+			show() {
+				console.log('show事件促发了')
 			}
 			
 		},
 		mounted () {
-			this.$refs.student.$on('atguigu',this.getStudentName)
+			// this.$refs.student.$on('atguigu',this.getStudentName)
 			// 只用一次 用once
 			// this.$refs.student.$once('atguigu',this.getStudentName)
+
+			this.$refs.student.$on('atguigu',function(name,...params) {
+				console.log('App收到了学生名',name,params);
+				this.studentName = name;
+				//TODO this很重要，vue的承诺
+				console.log(this);//直接写函数这里的this是促发这个自定义事件的组件实例，如果改成箭头函数这里this又是vm了
+
+			})
 		}
 		
 	}

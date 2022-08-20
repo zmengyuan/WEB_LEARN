@@ -26,12 +26,12 @@
 			sendStudentlName() {
 				// 促发atguigu事件
 				this.$emit('atguigu',this.name,1,2);
-				this.$emit('demo')
+				// this.$emit('demo')
 			},
 			unbind() {
 				// 解绑单个和多个
-				// this.$off('atguigu')
-				this.$off(['atguigu','demo']);
+				this.$off('atguigu')
+				// this.$off(['atguigu','demo']);
 				//解绑所有自定义事件
 				// this.$off();
 			},
