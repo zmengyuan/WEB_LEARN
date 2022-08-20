@@ -11,7 +11,7 @@
 
 		方式一：使用@或者v-on添加自定义事件
 		 -->
-		<!-- <Student v-on:atguigu="getStudentName"/> -->
+		<Student v-on:atguigu="getStudentName" @demo = 'm1'/>
 
 		<!-- 这样写了之后，就代表在APP组件里可以通过this.$refs.student就可以获取到Student组件的实例对象 
 		第二种写法：ref
@@ -39,6 +39,9 @@
 			},
 			getStudentName(name,...params) {
 				console.log('App收到了学生名',name,params);
+			},
+			m1 (){
+				console.log('m1事件促发了')
 			}
 			
 		},
