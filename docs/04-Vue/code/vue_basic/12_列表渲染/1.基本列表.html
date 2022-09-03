@@ -19,12 +19,12 @@
 			<ul>
 
 				<!-- 也可以这样写 <li v-for="p in persons" :key="p.id"> -->
-				<li v-for="(p,index) of persons" :key="index">
+				<li v-for="(p,index) in persons" :key="index">
 					{{p.name}}-{{p.age}}
 				</li>
 			</ul>
 
-			<!-- 遍历对象 -->
+			<!-- 遍历对象 -->	
 			<h2>汽车信息（遍历对象）</h2>
 			<ul>
 				<li v-for="(value,k) of car" :key="k">

@@ -41,7 +41,7 @@
 			<ul>
 				<!-- key属性在页面中被vue使用了，在浏览器看html代码是看不到key属性的 -->
 				<!-- 用key出现的问题，视频30 有讲 -->
-				<li v-for="(p,index) of persons" :key="index">
+				<li v-for="(p,index) of persons" :key="p.id">
 					{{p.name}}-{{p.age}}
 					<input type="text">
 				</li>

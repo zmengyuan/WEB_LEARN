@@ -11,7 +11,7 @@
 		<!-- 准备好一个容器-->
 		<div id="root">
 			<h2>今天天气很{{info}}</h2>
-			<!-- 绑定事件的时候：@xxx="yyy" yyy可以写一些简单的语句 -->
+			<!-- 绑定事件的时候：@xxx="yyy" yyy可以写一些简单的语句,但是yyy涉及的属性或者方法必须是vm上有的 -->
 			<!-- <button @click="isHot = !isHot">切换天气</button> -->
 			<button @click="changeWeather">切换天气</button>
 		</div>
