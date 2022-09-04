@@ -62,9 +62,13 @@
 			},
 			//局部过滤器  (组件就是一个微型的vm,虽然一般工程只有一个vm，但是有多个组件，过滤器这种是局部的！！)
 			filters:{
+				// ES6 新语法 直接在定义参数这里写默认传参
 				timeFormater(value,str='YYYY年MM月DD日 HH:mm:ss'){
 					// console.log('@',value)
 					return dayjs(value).format(str)
+				},
+				mySlice(value) {
+					return value.slice(0,4)
 				}
 			}
 		})
