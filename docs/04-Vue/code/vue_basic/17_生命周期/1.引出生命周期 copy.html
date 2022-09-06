@@ -19,6 +19,8 @@
 			<h2 v-if="a">你好啊</h2>
 			<!-- <h2 :style="{opacity:opacity}">欢迎学习Vue</h2> -->
 			<h2 :style="{opacity}">欢迎学习Vue</h2>
+			<!-- 这种写法是不可以的！！！页面一刷新就解析模板，调用change，change开启定时器，修改了opacity，data里面的数据被修改，
+				模板重新解析，无限循环了 -->
 			<h2 v-once>{{change()}}</h2>
 		</div>
 	</body>

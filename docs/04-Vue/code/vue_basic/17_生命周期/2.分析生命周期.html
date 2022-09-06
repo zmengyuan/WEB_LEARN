@@ -21,6 +21,7 @@
 
 		new Vue({
 			el:'#root',
+			// 相当于root里面可以什么都不写，他把这个当作模板
 			// template:`
 			// 	<div>
 			// 		<h2>当前的n值是：{{n}}</h2>
@@ -47,6 +48,9 @@
 			},
 			beforeCreate() {
 				console.log('beforeCreate')
+				//在这里看到vm上很多属性都还没有赋值
+				console.log(this);
+				debugger;
 			},
 			created() {
 				console.log('created')
