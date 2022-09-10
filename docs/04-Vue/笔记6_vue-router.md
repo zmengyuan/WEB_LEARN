@@ -113,3 +113,45 @@ $route 是每个组件自己拥有自己的
 
 $router整个vue项目都是同一个
 
+P120-嵌套路由
+
+## 嵌套（多级）路由
+
+找到route_page2写好的页面，把组件页面写好
+
+1. 配置路由规则，使用children
+
+   ```js
+   routes:[
+       {
+           path:'/about',
+           component:About
+   
+       },
+       {
+           path:'/home',
+           component:Home,
+           children:[
+               {
+                   path:'news',//不要加/
+                   component:News
+               },
+               {
+                   path:'message',//不要加/
+                   component:Message
+               }
+           ]
+   
+       },
+   ]
+   ```
+
+   
+
+2. 跳转（要写完成路径）
+
+   ```html
+   <router-link class="list-group-item" active-class='active' to="/home/news">News</router-link> 
+   ```
+
+   
