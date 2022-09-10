@@ -154,4 +154,36 @@ P120-嵌套路由
    <router-link class="list-group-item" active-class='active' to="/home/news">News</router-link> 
    ```
 
-   
+## 路由的query参数
+
+接收使用
+
+```html
+<template>
+  <ul>
+      <li>消息编号:{{$route.query.id}}</li>
+      <li>消息标题L:{{$route.query.title}}</li>
+  </ul>
+</template>
+```
+
+传递
+
+```html
+ <li v-for= "m in messageList" :key="m.id">
+                        <!-- 跳转路由携带query参数，to的字符写法 -->
+     <router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp;
+
+                      <!-- 跳转路由携带query参数，to的对象 -->
+     <router-link :to="{
+                       path: '/home/message/detail',
+                       query: {
+                       id:m.id,
+                       title:m.title
+                       }
+                       }">
+         {{m.title}}
+     </router-link>
+                    </li>
+```
+
