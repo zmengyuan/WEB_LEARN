@@ -2,7 +2,7 @@
 
 P117-路由的简介
 
-## 相关理解
+## 1 相关理解
 
 ### **何为路由**
 
@@ -36,7 +36,7 @@ vue-router是一个插件库；
 
 P118-路由的基本使用
 
-## 实现一个小功能——基本路由
+## 2 实现一个小功能——基本路由
 
 ### 基本操作
 
@@ -115,7 +115,7 @@ $router整个vue项目都是同一个
 
 P120-嵌套路由
 
-## 嵌套（多级）路由
+## 3 嵌套（多级）路由
 
 找到route_page2写好的页面，把组件页面写好
 
@@ -154,7 +154,7 @@ P120-嵌套路由
    <router-link class="list-group-item" active-class='active' to="/home/news">News</router-link> 
    ```
 
-## 路由的query参数
+## 4 路由的query参数
 
 接收使用
 
@@ -187,3 +187,63 @@ P120-嵌套路由
                     </li>
 ```
 
+## 5 命名路由
+
+1. 作用：可以简化路由的跳转
+
+2. 如何使用
+
+   1. 给路由命名
+
+      ```js
+      routes:[
+              {
+                  name:'aboutname',
+                  path:'/about',
+                  component:About
+      
+              },
+              {
+                  path:'/home',
+                  component:Home,
+                  children:[
+                      {
+                          path:'news',//不要加/
+                          component:News
+                      },
+                      {
+                          path:'message',//不要加/
+                          component:Message,
+                          children:[
+                              {
+                                  name:'detailname',
+                                  path:'detail',
+                                  component:Detail
+                              }
+                          ]
+                      }
+                  ]
+      
+              },
+          ]
+      ```
+
+      
+
+   2. 简化跳转
+
+      ```html
+      <!-- 跳转路由携带query参数，to的对象 使用name代替path参数，就可以不用写那么长的路径了-->
+                            <router-link :to="{
+                              
+                                name:'detailname',
+                                query: {
+                                    id:m.id,
+                                    title:m.title
+                                }
+                            }">
+                                {{m.title}}
+                            </router-link>
+      ```
+
+      
