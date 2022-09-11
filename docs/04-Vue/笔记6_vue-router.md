@@ -248,79 +248,80 @@ P120-嵌套路由
 
    
    
+
+## 6 路由的params参数
+
+1. 声明接收params参数
+
+   ```js
+   export default new VueRouter({
+       routes:[
+           {
+               name:'aboutname',
+               path:'/about',
+               component:About
    
-   ## 6 路由的param参数
+           },
+           {
+               path:'/home',
+               component:Home,
+               children:[
+                   {
+                       path:'news',//不要加/
+                       component:News
+                   },
+                   {
+                       path:'message',//不要加/
+                       component:Message,
+                       children:[
+                           {
+                               name:'detailname',
+                               path:'detail/:id/:title',//这样写
+                               component:Detail
+                           }
+                       ]
+                   }
+               ]
    
-   1. 声明接收params参数
+           },
+       ]
+   })
+   ```
+
    
-      ```js
-      export default new VueRouter({
-          routes:[
-              {
-                  name:'aboutname',
-                  path:'/about',
-                  component:About
-      
-              },
-              {
-                  path:'/home',
-                  component:Home,
-                  children:[
-                      {
-                          path:'news',//不要加/
-                          component:News
-                      },
-                      {
-                          path:'message',//不要加/
-                          component:Message,
-                          children:[
-                              {
-                                  name:'detailname',
-                                  path:'detail/:id/:title',//这样写
-                                  component:Detail
-                              }
-                          ]
-                      }
-                  ]
-      
-              },
-          ]
-      })
-      ```
+
+2. 传参
+
+   ```html
+   <router-link :to="`/home/message/detail/${m.id}/${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp;
    
-      
+   <!-- param的对象写法，不能写path -->
+                       <!-- <router-link :to="{
+                           
+                             name:'detailname',
+                             param: {
+                                 id:m.id,
+                                 title:m.title
+                             }
+                         }">
+                             {{m.title}}
+                         </router-link> -->
+   ```
+
    
-   2. 传参
+
    
-      ```html
-      <router-link :to="`/home/message/detail/${m.id}/${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp;
-      
-      <!-- param的对象写法，不能写path -->
-                          <!-- <router-link :to="{
-                              
-                                name:'detailname',
-                                param: {
-                                    id:m.id,
-                                    title:m.title
-                                }
-                            }">
-                                {{m.title}}
-                            </router-link> -->
-      ```
+
+3. 使用
+
+   ```html
+   <li>消息编号:{{$route.params.id}}</li>
+         <li>消息标题L:{{$route.params.title}}</li>
+   ```
+
    
-      
-   
-      
-   
-   3. 使用
-   
-      ```html
-      <li>消息编号:{{$route.params.id}}</li>
-            <li>消息标题L:{{$route.params.title}}</li>
-      ```
-   
-      
-   
-      
-   
-   
+
+
+
+
+
