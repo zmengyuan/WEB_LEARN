@@ -321,6 +321,68 @@ P120-嵌套路由
 
    
 
+## 7 路由的props参数
+
+作用：让路由组件更方便接收参数
+
+1. 在index.js中定义
+
+   ```js
+   {
+                               name:'detailname',
+                               path:'detail/:id/:title',
+                               component:Detail,
+   
+                               //props的第一种写法，值为对象，该对象中的所有key-value都会以props的形式传给Detail组件。所以Detail组件要接收。但是这样是死数据
+   							// props:{a:1,b:'hello'}
+   
+   							//props的第二种写法，值为布尔值，若布尔值为真，就会把该路由组件收到的所有params参数，以props的形式传给Detail组件。但是不会传query参数
+   							// props:true
+   
+                               //props的第三种写法，值为函数，该函数返回的所有key-value都会以props的形式传给Detail组件
+                               // 结构赋值（学习！！）
+   							props($route){
+   								return {
+   									id:$route.query.id,
+   									title:$route.query.title,
+   									a:1,
+   									b:'hello'
+   								}
+   							}
+                           }
+   ```
+
+   
+
+2. 使用
+
+   ```html
+   <template>
+     <ul>
+         <!-- <li>消息编号:{{$route.query.id}}</li>
+         <li>消息标题L:{{$route.query.title}}</li> -->
+   
+         <li>消息编号:{{id}}</li>
+         <li>消息标题L:{{title}}</li>
+         
+     </ul>
+   </template>
+   
+   <script>
+       export default {
+           name:'Detail',
+           props:['id','title'],//接收路由组件定义的参数
+           mounted() {
+               
+           },
+       }
+   </script>
+   ```
+
+   
+
+
+
 
 
 
