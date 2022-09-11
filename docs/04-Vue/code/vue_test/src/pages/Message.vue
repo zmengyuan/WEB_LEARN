@@ -6,7 +6,7 @@
                       <!-- <router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp; -->
 
                       <!-- 跳转路由携带query参数，to的对象 使用name代替path参数，就可以不用写那么长的路径了-->
-                      <router-link :to="{
+                      <!-- <router-link :to="{
                         
                           name:'detailname',
                           query: {
@@ -15,7 +15,23 @@
                           }
                       }">
                           {{m.title}}
-                      </router-link>
+                      </router-link> -->
+
+                    <router-link :to="`/home/message/detail/${m.id}/${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp;
+
+<!-- param的对象写法，不能写path -->
+                    <!-- <router-link :to="{
+                        
+                          name:'detailname',
+                          param: {
+                              id:m.id,
+                              title:m.title
+                          }
+                      }">
+                          {{m.title}}
+                      </router-link> -->
+
+
                     </li>
                     
                   </ul>
