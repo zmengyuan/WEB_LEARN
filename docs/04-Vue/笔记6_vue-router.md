@@ -434,6 +434,19 @@ P120-嵌套路由
            }
    ```
 
+## 10 缓存路由组件
+
+1. 作用：让不展示的路由组件保持挂载，不被销毁。
+
+2. 具体编码：
+
+   ```html
+   <!-- 设置缓存，include写的是组件名，是.vue文件里面设置的名字 -->
+   <keep-alive include="News">
+       <router-view></router-view>
+   </keep-alive>
+   ```
+
    
 
 
