@@ -12,7 +12,11 @@
           </li>
         </ul>
         <!-- 设置缓存，include写的是组件名，是.vue文件里面设置的名字 -->
-        <keep-alive include="News">
+        <!-- <keep-alive :include="News">
+          <router-view></router-view>
+        </keep-alive>-->
+        <!-- 缓存多个 -->
+        <keep-alive :include="['News','Message']">
           <router-view></router-view>
         </keep-alive>
       </div>
