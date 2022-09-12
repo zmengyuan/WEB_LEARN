@@ -393,7 +393,52 @@ P120-嵌套路由
    <router-link replace ...>About</router-link>
    ```
 
+
+
+## 9 编程式路由导航
+
+1. 就是不借助`router-link`实现路由跳转，注意query和param接收参数路径不一样【7和8项目有问题，就是query和params没有搞清楚】
+
+2. 具体编码
+
+   ```js
+   pushShow(m) {
+         this.$router.push({
+           name: "detailname",
+           query: {
+             id: m.id,
+             title: m.title
+           }
+         });
+       },
+       replaceShow(m) {
+         this.$router.replace({
+           name: "detailname",
+           query: {
+             id: m.id,
+             title: m.title
+           }
+         });
+       }
+   //后退
+   back(){
+       this.$router.back()
+       // console.log(this.$router)
+   },
+       //前进
+       forward(){
+           this.$router.forward()
+       },
+           test(){
+               this.$router.go(3)
+           }
+   ```
+
    
+
+
+
+
 
 
 
