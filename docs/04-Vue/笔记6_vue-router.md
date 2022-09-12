@@ -488,7 +488,25 @@ P120-嵌套路由
    export default router
    ```
 
+4. 独享守卫
+
+   ```js
+   beforeEnter: (to, from, next) => {
+                           console.log('index.js', to, from);
+                           // if (to.path === '/home/news' || to.path === '/home/message') {
+                           if (to.meta.isAuth) {
+                               if (localStorage.getItem('schooe') === 'atguigu') {
+                                   next();
+                               }
+                           } else {
+                               next();
+                           }
+                       }
+   ```
+
    
+
+5. 
 
 
 
