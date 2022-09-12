@@ -456,9 +456,39 @@ P120-嵌套路由
    1. `activated`路由组件被激活时触发
    2. `deactivated`路由组件失活时触发
 
+## 12 路由守卫
 
+1. 作用：对路由进行权限控制
 
+2. 分类：全局守卫、独享守卫、组件内守卫
 
+3. 全局守卫
+
+   ```js
+   //全局前置路由守卫——初始化的时候被调用，每次路由切换之前被调用
+   router.beforeEach((to,from,next) => {
+       // console.log('index.js',to,from);
+       // if (to.path === '/home/news' || to.path === '/home/message') {
+       if (to.meta.isAuth) {
+           if (localStorage.getItem('schooe') === 'atguigu') {
+               next();
+           }    
+       }else {
+           next();
+       }
+       
+   })
+   
+   //全局后置路由守卫————初始化的时候被调用、每次路由切换之后被调用
+   router.afterEach((to,from)=>{
+   	console.log('后置路由守卫',to,from)
+   	document.title = to.meta.title || '硅谷系统'
+   })
+   
+   export default router
+   ```
+
+   
 
 
 
