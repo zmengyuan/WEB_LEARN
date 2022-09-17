@@ -7,7 +7,8 @@
 
 <script>
 	//引入组件 汇总所有的组件
-	import School from './School.vue'
+	// 脚手架里可以不用写后缀名
+	import School from './School'
 	import Student from './Student.vue'
 
 	export default {
