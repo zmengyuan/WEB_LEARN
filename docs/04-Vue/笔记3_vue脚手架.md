@@ -169,13 +169,33 @@ import Vue from 'vue'
 
 2. 因为vue.runtime.xxx.js没有模板解析器，所以不能使用template这个配置项，需要使用render函数接收到的createElement函数去指定具体内容。
 
+P64 修改默认配置
 
+### 3.1.5 修改默认配置
+
+不能修改的：public文件夹、src文件夹、main.js，如果要修改，到https://cli.vuejs.org/zh/config/查看具体
 
 #### vue.config.js配置文件
 
 1. 使用vue inspect > output.js可以查看到Vue脚手架的默认配置。
 
 2. 使用vue.config.js可以对脚手架进行个性化定制，详情见：https://cli.vuejs.org/zh
+
+   ```vue.config.js
+   //这是commonJS的模块化，不是ES6的模块化
+   module.exports = {
+     pages: {
+       index: {
+         //入口
+         entry: 'src/main.js',
+       },
+     },
+     //关闭语法检查
+     lintOnSave:false
+   }
+   ```
+
+   
 
 ## 3.2 ref 与 props
 
