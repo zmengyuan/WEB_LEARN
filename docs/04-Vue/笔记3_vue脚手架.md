@@ -212,11 +212,13 @@ P65 ref属性
 
      2. 获取：```this.$refs.xxx```
 
+P66 props配置
+
 ###  props配置项
 
 1. 功能：让组件接收外部传过来的数据
 
-2. 传递数据：```<Demo name="xxx"/>```
+2. 传递数据：```<Demo name="xxx" :age="18"/>```，没有`:`传输的就是字符串，有了`:`就是js表达式
 
 3. 接收数据：
 
@@ -236,7 +238,30 @@ P65 ref属性
       }
       ```
 
-  \> 备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
+**备注**：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
+
+程序运行时，props的数据是优先被解析的，所以data中才可以操作复制props
+
+```js
+		data() {
+			console.log(this)
+			return {
+                msg:'我是一个尚硅谷的学生',
+                myAge: this.age//props属性已经将age属性赋值到this上了
+                
+			}
+        },
+        methods: {
+			updateAge(){
+                // this.age++;//这样会报错！！！所以用另外一个属性来处理！
+                this.myAge++;
+			}
+		},
+        //简单声明接收  App使用Student标签的时候直接在标签写了的，使用props接收的值是不能改的
+        props:['name','age','sex']
+```
+
+
 
 
 
