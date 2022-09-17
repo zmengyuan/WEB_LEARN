@@ -1,15 +1,5 @@
 # 第 3 章：使用 Vue 脚手架
 
-## 关于不同版本的Vue
-
-1. vue.js与vue.runtime.xxx.js的区别：
-
-   1. vue.js是完整版的Vue，包含：核心功能 + 模板解析器。
-
-   2. vue.runtime.xxx.js是运行版的Vue，只包含：核心功能；没有模板解析器。
-
-2. 因为vue.runtime.xxx.js没有模板解析器，所以不能使用template这个配置项，需要使用render函数接收到的createElement函数去指定具体内容。
-
 P61 创建Vue脚手架
 
 ## 3.1 初始化脚手架 vuecli (command line interface)
@@ -31,8 +21,6 @@ P61 创建Vue脚手架
 npm install -g @vue/cli 
 ```
 
-
-
 第二步：切换到你要创建项目的目录，然后使用命令创建项目 
 
 ```cmd
@@ -49,7 +37,7 @@ eslint：语法检查的
 npm run serve 
 ```
 
-
+P62 分析脚手架结构
 
 备注：
 
@@ -68,9 +56,6 @@ npm run serve
    ```
 
 
-脚手架引入的Vue实际上对应的是右边的js，这实际上是一个残缺的js，缺乏对模板的解析
-
-![](D:/IdeaWorkspace/00github/WEB_LEARN/docs/04-Vue/img/微信截图_20211122205718.png)
 
 ### 3.1.3 模板项目的结构
 
@@ -106,11 +91,83 @@ npm run serve
 
  ├── babel.config.js: babel的配置文件
 
- ├── package.json: 应用包配置文件 
+ ├── package.json: 应用包配置文件，npm相关就有该文件 
 
  ├── README.md: 应用描述文件
 
  ├── package-lock.json：包版本控制文件
+
+
+
+工具：浏览器可以设置不允许js
+
+P63 render
+
+**使用之前的main.js代码不可以**
+
+```js
+import App from './App.vue'
+
+new Vue({
+	el:'#root',
+	template:`<App></App>`,
+	components:{App},
+})
+```
+
+浏览器会报错：you are using the runtime-only build of vue where the template compiler is not availabel.
+
+```main.js
+import Vue from 'vue'
+//引入Vue,这里这样写，其实只引入到了node_modules里面的vue文件夹
+```
+
+而真正引入的是package.json里面module属性值的js文件，module控制的是ES6模块化引入vue时候的文件，
+
+脚手架引入的Vue实际上对应的是右边的js，这实际上是一个残缺的js，缺乏对模板（new Vue里面的template属性）的解析，所以就无法解析`template`，（.vue文件里面的template标签是用vue-template-compiler解析的。（package.json可以查看））
+
+![](D:/IdeaWorkspace/00github/WEB_LEARN/docs/04-Vue/img/微信截图_20211122205718.png)
+
+**解决方案**
+
+1. 引入完整版vue
+
+   ```js
+   import Vue from 'vue/dist/vue'
+   ```
+
+   
+
+2. 用render解决
+
+   ```js
+   new Vue({
+     el:'#app',
+     //下面这行代码一会解释，完成了这个功能，将App组件放入容器中
+     /*
+     正常原始的写法，createElement是一个函数
+     */
+     // render(createElement){
+     //   console.log('render');
+     //   return createElement('h1','你好呀');
+     // }
+     /*因为没有用到this ，直接用箭头函数了 */
+     render: h => h(App),
+   })
+   
+   ```
+
+### 3.1.4 Vue.js的不同版本
+
+为什么vue官方要提供那么多精简的vue.js呢，主要还是因为webpack打包之后不再需要模板解析相关代码了，所以打包用简洁版就可以了。
+
+1. vue.js与vue.runtime.xxx.js的区别：
+
+   1. vue.js是完整版的Vue，包含：核心功能 + 模板解析器。
+
+   2. vue.runtime.xxx.js是运行版的Vue，只包含：核心功能；没有模板解析器。
+
+2. 因为vue.runtime.xxx.js没有模板解析器，所以不能使用template这个配置项，需要使用render函数接收到的createElement函数去指定具体内容。
 
 
 
