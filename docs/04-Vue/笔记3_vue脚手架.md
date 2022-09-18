@@ -385,13 +385,15 @@ P68-插件
 
 5. 然后就可以使用在插件定义好的功能
 
-### scoped样式
+P69 scoped
+
+## 3.5 scoped样式
 
 1. 作用：让样式在局部生效，防止冲突。
 
 2. 写法：```<style scoped>```
 
-Vue-cli默认使用的webpack4版本，但是less-loader最新版本已经是迎合webpack5了
+工具：Vue-cli默认使用的webpack4版本，但是less-loader最新版本已经是迎合webpack5了,所以安装less需要指定版本
 
 ```vue
 npm view webpack versions
