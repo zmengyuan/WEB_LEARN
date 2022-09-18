@@ -261,9 +261,7 @@ P66 props配置
         props:['name','age','sex']
 ```
 
-
-
-
+P67-mixin混入
 
 ## 3.3、mixin(混入)
 
@@ -273,18 +271,73 @@ P66 props配置
 
   第一步定义混合：
 
-  ```vue
- {
-  data(){....},
-  methods:{....}
+  ```minix.js
+export const hunhe = {
+	methods: {
+		showName(){
+			alert(this.name)
+		}
+	},
+	mounted() {
+		console.log('你好啊！')
+	},
+}
+export const hunhe2 = {
+	data() {
+		return {
+			x:100,
+			y:200
+		}
+	},
 }
   ```
 
-  第二步使用混入：
+  第二步在vue文件中使用混入：
 
-   全局混入：```Vue.mixin(xxx)```
+局部使用：
 
-   局部混入：```mixins:['xxx'] ```
+```vue
+<template>
+	<div>
+		<h2 @click="showName">学生姓名：{{name}}</h2>
+		<h2>学生性别：{{sex}}</h2>
+	</div>
+</template>
+
+<script>
+    //引入混合
+	import {hunhe,hunhe2} from '../mixin'
+	export default {
+		...
+        //引入混合
+		mixins:[hunhe,hunhe2],      
+	}
+</script>
+```
+
+全局引入：（注意：这样每个vc/vm都有了混合的配置）
+
+```main.js
+import Vue from 'vue'
+import App from './App.vue'
+
+import {hunhe,hunhe2} from './mixin'
+
+Vue.config.productionTip = false;
+
+Vue.mixin(hunhe);
+Vue.mixin(hunhe2);
+new Vue({
+    el:'#app',
+    render: h => h(App)
+})
+```
+
+对于混合的配置与自身的配置重复的时候，以自身为主，但是生命周期函数是都要执行。
+
+
+
+  
 
 ## 3.4、插件
 
