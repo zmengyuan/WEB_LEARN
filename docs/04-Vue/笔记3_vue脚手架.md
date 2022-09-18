@@ -335,9 +335,7 @@ new Vue({
 
 对于混合的配置与自身的配置重复的时候，以自身为主，但是生命周期函数是都要执行。
 
-
-
-  
+P68-插件
 
 ## 3.4、插件
 
@@ -347,21 +345,45 @@ new Vue({
 
 3. 定义插件：
 
-```vue
- 对象.install = function (Vue, options) {
-    // 1. 添加全局过滤器
-   Vue.filter(....)
-   // 2. 添加全局指令
-    Vue.directive(....)
-  // 3. 配置全局混入(合)
-    Vue.mixin(....)
- // 4. 添加实例方法
-  Vue.prototype.$myMethod = function () {...}
- Vue.prototype.$myProperty = xxxx
-  }
-```
+   ```plugins.js
+   //其实这样就定义好一个插件了，Vue会调用这个install方法。
+   export default {
+   	install(){
+       	
+   	}
+   }
+   //上面与下面这段代码作用一样
+   const obj = {
+   	install() {
+   	
+   	}
+   }
+   export default obj;
+   /==========================================================
+   对象.install = function (Vue, options) {
+       	// 1. 添加全局过滤器
+           Vue.filter(....)
+          	// 2. 添加全局指令
+           Vue.directive(....)
+        	 // 3. 配置全局混入(合)
+           Vue.mixin(....)
+            // 4. 添加实例方法（vc和vm都可以使用了）
+            Vue.prototype.$myMethod = function () {...}
+            Vue.prototype.$myProperty = xxxx
+   }
+   ```
 
-4. 使用插件：```Vue.use()```
+4. 使用插件
+
+   ```main.js
+   import plugins from './plugins'
+   
+   //在new Vue()之前应用（使用）插件
+   Vue.use(plugins)
+   
+   ```
+
+5. 然后就可以使用在插件定义好的功能
 
 ### scoped样式
 
