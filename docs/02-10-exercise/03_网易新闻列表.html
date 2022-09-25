@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        body{
+            background-color: #bfa;
+        }
+        a{
+            text-decoration: none;
+        }
+        .news-wrapper{
+            background-color: #fff;
+            width: 300px;
+            height: 357px;
+            margin: 25px auto;
+            /* 设置了边框 height要跟着变化 */
+            border-top: 1px solid #ddd;
+
+        }
+        .news-wrapper h2{
+            height: 30px;
+            border-top: 1px red solid;
+            /* 为了边框和文字宽度一致，需要将h2转换为行内块元素 */
+            display: inline-block;
+            /* 上移，使得红色线压住 */
+            margin-top: -1px;
+
+            /* 让超链接体育往下移动，然后height由40变为30 */
+            padding-top: 10px;
+
+        }
+
+        .news-wrapper a{
+            text-decoration: none;
+            color: #404068;
+            font-weight: bold;
+            
+        }
+
+        .news-img .img-title{
+            color: #fff;
+            /* 向上移动文字 */
+            margin-top: -30px;
+            padding-left: 30px;
+        }
+
+        /* 这个设置高度是为了图片中的文字移动之后，下面的列表不要跟着移动 */
+        .news-img{
+            height:150px;
+        }
+
+
+        /* 新闻列表 */
+
+        .news-list{
+            margin-top: 20px;
+            /* padding-left: 14px; */
+
+            /* 设置项目符号 */
+            /* list-style: square; */
+        }
+        .news-list li{
+            margin-bottom: 17px;
+        }
+
+        
+
+        .news-list li a{
+            font-size: 14px;
+            color: #666;
+
+        }
+
+        .news-list li a:hover{
+            color: red;
+        }
+
+        .news-list li::before{
+            content: '-';
+            color: rgb(218, green, blue);
+            font-size: 12px;
+            margin-right: 4px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- 创建新闻列表的外侧的容器 -->
+    <div class="news-wrapper">
+        <!-- 创建一个标题标签 -->
+        <h2 class="news-title">
+            <a href="#">体育</a>
+        </h2>
+
+        <!-- 创建一个图片的容器 -->
+        <div class="news-img">
+            <a href="#">
+                <img src="./img/03/1.jpeg" alt="费德勒">
+                <!-- 创建图片标题 -->
+                <h3 class="img-title">
+                    费德勒首负迪米 扶额头不满发挥
+                </h3>
+            </a>
+        </div>
+
+        <!-- 新闻列表 -->
+        <ul class="news-list">
+            <li>
+                <a href="#">乔治:我爱LA 喜欢和LBJ一起打球</a>
+            </li>
+            <li>
+                <a href="#">格林:3年前降薪就在等KD 特制T恤嘲讽LBJ</a>
+            </li>
+            <li>
+                <a href="#">塔克4000双鞋让保罗羡慕嫉妒 乔丹被震惊</a>
+            </li>
+            <li>
+                <a href="#">CBA下季新赛制:常规赛4组循环 增至46轮</a>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>
