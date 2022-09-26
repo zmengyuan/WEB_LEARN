@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .nav {
+            width: 1210px;
+            height: 48px;
+            /* 设置背景颜色 */
+            background-color: #E8E7E3;
+            margin: 100px auto;
+        }
+        /* 疑问：这里给li或者a设置高度都可以吗？区别？偏好呢 */
+        .nav li {
+            float: left;
+            /* background-color: red; */
+            /* 为了让li和父元素一样高 */
+            height: 48px;
+            line-height: 48px;
+        }
+        .nav li a{
+            /* 疑问:为什么这里没有设置高度也是48px */
+
+            /* 给a设置宽高不生效，因为他是行内元素，所以改变它的display 
+            设置了block之后，行高也不用设置会自己继承父元素的？？？这里不是太理解 
+            */
+            display: block;
+            /* height: 48px;
+            line-height: 48px;  */
+            text-decoration: none;
+            /* 设置字体颜色 */
+            color: #777777;
+            /* 修改字体大小 */
+            font-size: 18px;
+            padding: 0 39px;
+        }
+        .nav li a:hover{
+            background-color: #3F3F3F;
+            color: #E8E7E3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建导航条的结构 -->
+    <ul class="nav">
+        <li>
+            <a href="#">HTML/CSS</a>
+        </li>
+        <li>
+            <a href="#">Browser Side</a>
+        </li>
+        <li>
+            <a href="#">Server Side</a>
+        </li>
+        <li>
+            <a href="#">Programming</a>
+        </li>
+        <li>
+            <a href="#">XML</a>
+        </li>
+        <li>
+            <a href="#">Web Building</a>
+        </li>
+        <li>
+            <a href="#">Reference</a>
+        </li>
+    </ul>
+
+</body>
+
+</html>
