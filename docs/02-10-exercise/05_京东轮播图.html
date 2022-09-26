@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .img-list{
+            width: 590px;
+            height: 470px;
+            margin: 100px auto;
+            background-color: #bfa;
+
+           /* 为了小圆点的定位 */
+           position: relative;
+            
+        }
+        /* 注意这里不要设置到图片级别去了！！ */
+        .img-list li{
+            position: absolute;
+        }
+        /* 控制第几张在最上面 */
+        .img-list li:nth-child(4){
+            z-index: 1;
+        } 
+
+        /* 这里又要注意给谁开定位，不要直接去给a开定位了 */
+        .img-list .pointer {
+            position: absolute;
+            z-index: 9999;
+            bottom: 20px;
+            left: 40px;
+        }
+
+        /* 设置小圆点 */
+        .img-list .pointer a{
+           
+            float: left;
+            /* 因为设置了float 所以display可以不设置了 */
+            /* display: block; */
+            height: 10px;
+            width: 10px;
+            background-color: rgba(255, 255, 255, .6);
+            border-radius: 50%;
+            margin: 0px 2px;
+
+            /* 将北京颜色值设置到内容区，边框和内边距不再有背景颜色 */
+            background-clip: content-box;
+            /* 加边框 主要是为了让它和active的一样大 */
+            border: 2px solid transparent;
+            
+        }
+        .img-list .pointer .active,.img-list .pointer a:hover{
+            background-color: #fff;
+            border: 2px solid rgba(255, 255, 255, .3);
+        }
+        
+    </style>
+</head>
+<body>
+    <ul class="img-list">
+        <li><a href="javascript:;"><img src="./img/05/1.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/2.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/3.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/4.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/5.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/6.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/7.jpg"></a></li>
+        <li><a href="javascript:;"><img src="./img/05/8.jpg"></a></li>
+
+        <div class="pointer">
+            <a class="active" href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </ul>
+</body>
+</html>
