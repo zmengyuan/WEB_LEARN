@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 引入图标样式 -->
+    <link rel="stylesheet" href="./fa/css/all.css">
+    <style>
+        .top-bar-wrapper{
+            background-color: #E3E4E5;
+            height: 30px;
+            border-bottom: 1px #ddd solid;
+        }
+        /* 中间大框 */
+        .top-bar-wrapper .top-bar{
+            /* background-color: bisque; */
+            /* 固定宽度 */
+            width: 1190px;
+            /* 水平居中 */
+            margin: 0 auto;
+        }
+        /* 左侧大框 */
+        .top-bar-wrapper .top-bar .location{
+            float: left;
+            /* border: 1px solid red; */
+        }
+        /* 右侧大框 */
+        .top-bar-wrapper .top-bar .shortcut{
+            float: right;
+        }
+        /* 由于浮动 top-bar高度塌陷 加上属性*/
+        .clearfix::before,
+        .clearfix::after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+        /* 右侧每列 */
+        .top-bar-wrapper .top-bar .shortcut li{
+            float: left;
+            /* border: 1px solid red; */
+        }
+        /* 保持文字居中 */
+        .top-bar-wrapper{
+            line-height: 30px;
+        }
+        /* 设置字体大小颜色 */
+        body{
+            /* 设置字体 网上抄的 */
+            font:12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+        }
+        /* 设置字体样式 */
+        .top-bar a ,
+        .top-bar span,
+        .top-bar i{
+            color: #999;
+            text-decoration: none;
+        }
+        .top-bar a:hover,
+        .top-bar a.highlight{
+            color: #f10215;
+        }
+        /* 设置location下的小图标 */
+        .location .fas{
+            color: #f10215;
+        }
+        /* 设置分割线 */
+        .top-bar-wrapper .top-bar .shortcut .line{
+            width: 1px;
+            height: 10px;
+            background-color: rgb(204, 202, 202);
+            margin: 12px 12px 0;
+        }
+
+        /* 设置下拉框 */
+        .top-bar-wrapper .top-bar .location .city-list{            
+            width: 320px;
+            height: 436px;
+            background-color: white;
+            border: 1px solid rgb(204, 204, 204);
+            /* 阴影 */
+            box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+            /* 加上定位才脱离文档流不撑开父元素 */
+            position: absolute;
+            /* 默认不展示 */
+            display: none;
+        }
+
+        .top-bar-wrapper .top-bar .location:hover .city-list{
+            display: block;
+           
+        }
+
+        /* 左侧菜单本身的样式 */
+        .top-bar-wrapper .top-bar .location .current-city{
+            padding: 0 10px;           
+        }
+
+         /* 移动上去的时候北京也有白色背景 */
+        .top-bar-wrapper .top-bar .location:hover .current-city{
+            background-color: white;
+            border: 1px solid rgb(204, 204, 204);
+            border-bottom: none; 
+            
+            padding-bottom: 1px;   
+        }
+
+
+        /* 当城市列表出现的时候，北京那个框没有下边距 */
+
+        /* 用于测试写好了复制到hover去 */
+        /* .top-bar-wrapper .top-bar .location .current-city{
+            background-color: white;
+            border: 1px solid rgb(204, 204, 204);
+            border-bottom: none; 
+            
+            padding-bottom: 1px;
+        } */
+
+        .top-bar-wrapper{
+            position: relative;
+        }
+
+        .top-bar-wrapper .top-bar .location .city-list{
+            top: 31px;
+        }
+
+        .top-bar-wrapper .top-bar .location .current-city{
+            position: relative;
+            z-index: 9999;
+        }
+
+        .top-bar-wrapper .top-bar .location .city-list{
+            z-index: 999;
+        }
+
+        /* 这个时候基本实现了，但是会发现移动到location的时候，由于添加了padding和border，字体发生变化
+         所以我们先默认就设置上
+        */
+        .top-bar-wrapper .top-bar .location .current-city{
+            /* 但是这样有边框难看，就把边框设置成透明的 */
+            /* border: 1px solid rgb(204, 204, 204); */
+            border-bottom: none; 
+            border: 1px solid transparent;
+            
+        }
+        
+
+    </style>
+</head>
+<body>
+    <!-- 创建外围的容器 -->
+    <div class="top-bar-wrapper">
+        <!-- 创建内部容器 -->
+        <div class="top-bar clearfix">
+            <!-- 左侧的菜单 -->
+            <div class="location">
+                <div class="current-city">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a href="javascript:;">北京</a>
+                </div>
+
+                <!-- 放置城市列表的div -->
+                <div class="city-list">
+
+                </div>
+            </div>
+
+            <!-- 右侧的菜单 -->
+            <ul class="shortcut">
+                <li>
+                    <a href="javascript:;">你好，请登录</a>
+                    <a class="highlight" href="javascript:;">免费注册</a>
+                </li>
+
+                <!-- 分割线 -->
+                <li class="line"></li>
+                <li><a href="javascript:;">我的订单</a></li>
+
+                <li class="line"></li>
+                <li>
+                    <a href="javascript:;">我的京东</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+
+
+                <li class="line"></li>
+                <li><a href="javascript:;">京东会员</a></li>
+
+                <li class="line"></li>
+                <li>
+                    <a class="highlight" href="javascript:;">企业采购</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+
+
+
+                <li class="line"></li>
+                <li>
+                    <span>客户服务</span>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+
+                <li class="line"></li>
+                <li>
+                    <span>网站导航</span>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+
+                <li class="line"></li>
+                <li>
+                    <span>手机京东</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
