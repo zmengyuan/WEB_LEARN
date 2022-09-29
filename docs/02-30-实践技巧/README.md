@@ -31,3 +31,14 @@ margin: 25px auto;
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, minus fugit in perspiciatis reprehenderit consequuntur aspernatur repellat cumque quidem asperiores quaerat placeat, tenetur vel veritatis deserunt numquam. Dolores, cupiditate enim.
 </div>
 ```
+
+5 图片设置为底线对齐
+```
+/* 设置图片 */
+.img-wrapper img{
+    width: 100%;
+
+    /* 图片默认基线对齐，所以需要去掉 */
+    vertical-align: bottom;
+}
+```
