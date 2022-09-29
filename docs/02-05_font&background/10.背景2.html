@@ -57,25 +57,78 @@
 
 
             /* 
-            -===========================================================看完13:51分
+            当再添加box2 设置高度height: 1000px，会溢出，所以设置overflow，这样就有滚动条了
+            但是父元素背景是不会跟着滚动条滚动的
             */
 
+            overflow: auto;
            
-
-
-
-
         }
+        .box2{
+            /* background-color: orange; */
+
+
+            /* 演示新问题
+            box2的背景是会跟着滚动条滚动的
+             */
+             width: 300px;
+             background-image: url(./img/1.png);
+             background-repeat: no-repeat;
+
+
+             /* 
+            background-attachment
+                - 背景图片是否跟随元素移动
+                - 可选值：
+                    scroll 默认值 背景图片会跟随元素移动
+                    fixed 背景会固定在页面中，不会随元素移动
+             */
+             background-attachment: fixed;
+             
+        }
+        /* 
+                background-color
+                background-image
+                background-repeat
+                background-position
+                background-size
+                background-origin
+                background-clip
+                background-attachment
+
+                - backgound 背景相关的简写属性，所有背景相关的样式都可以通过该样式来设置
+                    并且该样式没有顺序要求，也没有哪个属性是必须写的
+
+                    注意：
+                        background-size必须写在background-position的后边，并且使用/隔开
+                            background-position/background-size
+
+                        background-origin background-clip 两个样式 ，orgin要在clip的前边
+                
+
+            
+             */
 
         
+        .box3{
+            border: 10px red double;
+            padding: 50px;
+            width: 500px;
+            height: 500px;
+            background: url('./img/2.jpg') #bfa  center center/contain border-box content-box no-repeat ;
+        }
 
     </style>
 </head>
 <body>
     
-    <hr>
+    
     <div class="box1">
-       
+       <div class="box2" style="height: 1000px"></div>
+    </div>
+    <hr>
+    <div class="box3">
+
     </div>
 </body>
 </html>
