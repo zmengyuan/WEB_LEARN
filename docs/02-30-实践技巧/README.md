@@ -42,3 +42,8 @@ margin: 25px auto;
     vertical-align: bottom;
 }
 ```
+
+6 超链接整块都可以点击
+```
+display: block;
+```
