@@ -10,4 +10,13 @@ body{
     /* 问设计字体是什么 */
     font:14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
     color: #333;
+    /* 新属性，当用户缩小浏览器窗口，
+    body< 1226时 ，能保持最小宽度为1226 */
+    min-width: 1226px;
+}
+
+/* 设置一个类，定好宽度，需要使用的用就是 */
+.w{
+    width: 1226px;
+    margin: 0 auto;
 }

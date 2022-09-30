@@ -1,1 +1,56 @@
 /* 主页的独有的样式 */
+
+/* 顶部导航条外部容器 */
+.topbar-wrapper{
+    /* 设置宽度全屏 */
+    width: 100%;
+    /* 设置高度和行高 */
+    height: 40px;
+    line-height: 40px;
+    /* 设置背景颜色 */
+    background-color: #333;
+}
+
+/* 顶部导航条内部 */
+.topbar{
+    background-color: red;
+    
+}
+/* 左侧导航 */
+.service{
+    float: left;
+    background-color: #bfa;
+}
+.service li {
+    float: left;
+}
+
+.user-info{
+    float: right;
+    background-color: orange;
+}
+.user-info li {
+    float: left;
+}
+
+.shop-cart{
+    float: right;
+    background-color: #bfa;
+}
+
+
+
+/* ===================================================== */
+.header-wrapper{
+    margin-top: 10px;
+    background-color: yellow;
+}
+
+.banner-wrapper{
+    background-color: #bfa;
+}
+
+.ad{
+    background-color: yellow;
+}
+
