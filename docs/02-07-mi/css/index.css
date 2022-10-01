@@ -56,7 +56,25 @@
     float: right;
     background-color: #bfa;
 }
+/* 设置购物车的样式 */
+.shop-cart a{
+    width: 120px;
+    background-color: #424242;
+    /* 居中 */
+    text-align: center;
 
+}
+.shop-cart i{
+    margin-left: 2px;
+}
+.shop-cart:hover a{
+    background-color: #fff;
+    color: #ff6700;
+}
+
+.shop-cart{
+    margin-left: 26px;
+}
 
 
 
