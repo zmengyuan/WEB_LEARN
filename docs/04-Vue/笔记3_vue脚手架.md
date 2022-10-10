@@ -122,7 +122,7 @@ import Vue from 'vue'
 //引入Vue,这里这样写，其实只引入到了node_modules里面的vue文件夹
 ```
 
-而真正引入的是package.json里面module属性值的js文件，module控制的是ES6模块化引入vue时候的文件，
+而真正引入的是node_modules下的vue文件夹下的package.json里面module属性值的js文件，module控制的是ES6模块化引入vue时候的文件，
 
 脚手架引入的Vue实际上对应的是右边的js，这实际上是一个残缺的js，缺乏对模板（new Vue里面的template属性）的解析，所以就无法解析`template`，（.vue文件里面的template标签是用vue-template-compiler解析的。（package.json可以查看））
 
