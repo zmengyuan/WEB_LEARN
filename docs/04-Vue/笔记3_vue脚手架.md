@@ -413,6 +413,46 @@ P70
 P71 初始化列表
 按照自己的想法，把列表数组数据todos放到MyList组件中，同时给MyItem传数据
 
+P72 添加
+在MyHeader组件添加事件
+法一：借助event获取输入的数据
+法二：借助v-model
+将用户的输入包装成为一个todo对象
+```
+npm i nanoid
+```
+然后把这个todo对象添加到todo数组中，但是todo数组在MyList组件中，目前的知识无法实现，MyHeader无法将数据给MyList，它们是兄弟关系。
+
+所以将todo数组放到App组件中去（共同的父亲）
+![](img\微信截图_20221010144051.png)
+
+如何实现儿子向父亲传数据。在父亲这里定义一个函数，传给儿子，然后儿子调用这个函数。
+
+`List.vue`
+```List.vue
+<template>
+	<div id="root">
+		<div class="todo-container">
+			<div class="todo-wrap">
+				<MyHeader :addTodo="addTodo"/>
+			</div>
+		</div>
+	</div>
+</template>
+
+
+methods: {
+   addTodo(todoObj) {}
+}
+```
+`MyHeader.vue`
+
+```MyHeader.vue
+//接收app传递过来的函数
+props:['addTodo'],
+
+```
+
 
 
 ## 组件的自定义事件
