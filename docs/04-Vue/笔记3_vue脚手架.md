@@ -485,6 +485,33 @@ P77 TodoList案例总结
 3 使用v-model要切记：不能是props传过来的值
 4 props传过来的若是对象类型的值，修改对象中的属性时Vue不会报错，但是不推荐这样做。
 
+P78
+## 3.7 浏览器的本地存储
+这不是vue才有的。
+
+window身上有localStorage、sessionStorage，存储内容大小一般支持5MB左右，不同的浏览器可能还不一样。
+
+key和value都得是字符串，浏览器控制台输出的黑色的是字符串，蓝色的才是数字
+`localStorage:`
+- setItem('msg','hello!!!')
+- getItem('msg')
+- removeItem('msg2')
+- clear()
+
+前端的session是指 浏览器一关就没有了。
+`sessionStorage`
+- setItem('msg','hello!!!')
+- getItem('msg')
+- removeItem('msg2')
+- clear()
+
+**备注**
+- SessionStorage存储的内容会随着浏览器窗口关闭而消失；
+- LocalStorage存储的内容，需要手动清除才会消失；
+- xxxStorage.getItem(xxx)如果xxx对应的value获取不到，返回值是null
+- JSON.parse(null)返回null
+
+
 ## 组件的自定义事件
 
 1. 一种组件间的通信方式，适用于：子组件=>父组件
