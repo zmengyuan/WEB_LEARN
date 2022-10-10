@@ -453,6 +453,15 @@ props:['addTodo'],
 
 ```
 
+P73 勾选
+勾选是在MyItem，但是数据在App,所以现在只有逐层传递，MyItem——>MyList——>App
+
+同样的还有更简单的操作,直接使用双向数据绑定，这样就不用一层层传递checkTodo方法了。
+```
+<input type="checkbox" v-model="todo.done"/>
+```
+但是不太推荐，因为有点违反原则，因为修改了props。
+但是vue只能监视浅层次的props,对象的属性值修改它不能监视到，所以这个props的修改是没有被监测到的，所以不会报错。
 
 
 ## 组件的自定义事件
