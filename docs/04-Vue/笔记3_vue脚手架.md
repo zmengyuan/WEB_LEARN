@@ -516,34 +516,66 @@ P79 TodoList_本地存储
 
 存储用watch监视属性，注意是否开启深度监视。
 
-## 组件的自定义事件
+P80
+## 3.8  组件的自定义事件
+区别于JS本身就有的事件，比如click/keyup等，内置事件是给html元素用的，自定义事件是给组件用的。
 
+一个需求：蓝色背景框添加一个按钮，点击之后把学校名字传递给APP
+![](img\微信截图_20221010163501.png)
+
+- 可以通过props方法
+- 自定义事件
+
+**自定义事件**
 1. 一种组件间的通信方式，适用于：子组件=>父组件
-
 2. 使用场景：A是父组件，B是子组件，B想给A传数据，那么就要A中给B绑定自定义事件（事件的回调在A中）
-
 3. 绑定自定义事件
-
-   1. 第一种方式：在父组件中```<Demo @atguigu='test'/>```或者```<Demo v-on:atguigu='test'/>```
-   2. 第二种方式，在父组件中
-
+   1. 第一种方式：在父组件中```<Demo @atguigu='test'/>```或者```<Demo v-on:atguigu='test'/>```； 由于v-on在Demo这个组件标签上，所以是给Demo这个组件的实例对象vc身上绑定了一个事件，事件名字叫atguigu，如果促发了这个事件，test函数就会被调用
+   2. 第二种方式，在父组件中，这种更加灵活，比如说等几秒在给组件添加事件
    ```
-   <Demo ref='demo'/>
-   ······
-   mounted() {
-       this.$refs.xxx.$on('atguigu',this.test)
-   }
+      <Demo ref='demo'/>
+      ······
+      mounted() {
+         this.$refs.xxx.$on('atguigu',this.test)
+      }
    ```
-
-   3. 若想让自定义事件只能触发一次，可以使用```once```修饰符，或者$once方法
-
+   1. 若想让自定义事件只能触发一次，可以使用```once```修饰符，或者$once方法
 4. 触发自定义事件：```this.$emit('atguigu',数据)```
+P81 解绑
+5. 解绑自定义事件：```this.$off('atguigu');this.$off(['atguigu','demo']);this.$off();```
+这里插一句：生命周期，之前讲这里的时候是说拆除掉自定义事件，不是原生事件。destroy之后，所有实例的自定义事件都不奏效了
+![](img\微信截图_20221010165811.png)
 
-5. 解绑自定义事件：```this.$off('atguigu')```
-
-6. 组件上也可以绑定原生DOM事件，需要使用```native```修饰符
-
+P82 自定义事件总结
+6. 组件上也可以绑定原生DOM事件，需要使用`native`修饰符，比如```<Student ref = 'student' @click.native= 'show'/>```,如果不加native，vue会认为click是自定义事件。
 7. 注意：通过```this.$refs.xxx.$on('atguigu',回调)```绑定自定义事件时，回调要么配置在methods中，要么用箭头函数，否则this指向会出问题！
+```
 
+methods: {		
+   getStudentName(name,...params) {
+      console.log('App收到了学生名',name,params);
+      this.studentName = name
+   }, 
+},
+
+mounted () {
+   // this.$refs.student.$on('atguigu',this.getStudentName)
+   // 只用一次 用once
+   // this.$refs.student.$once('atguigu',this.getStudentName)
+
+   this.$refs.student.$on('atguigu',function(name,...params) {
+      console.log('App收到了学生名',name,params);
+      this.studentName = name;
+      //TODO this很重要，vue的承诺，谁触发的this就是谁。所以这里是Student组件触发的，this是Student组件，所以App中的studentName就没有赋值成功。
+
+      // 那为什么this.$refs.student.$on('atguigu',this.getStudentName)就可以修改成功呢。
+      // 因为vue也给过承诺，如果你的方法写在A组件的methods中并且使用的普通函数，那么this一定是该组件A的实例对象
+
+      // 所以这里改成箭头函数就可以成功了，当改成箭头函数的时候，没有this，就往外找，往外就是mounted，mounted的this就是vc了
+      console.log(this);//直接写函数这里的this是促发这个自定义事件的组件实例，如果改成箭头函数这里this又是vm了
+
+   })
+}
+```
 
 ## 全局事件总线：任意组件间通信

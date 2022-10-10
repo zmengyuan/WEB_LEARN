@@ -60,7 +60,12 @@
 			this.$refs.student.$on('atguigu',function(name,...params) {
 				console.log('App收到了学生名',name,params);
 				this.studentName = name;
-				//TODO this很重要，vue的承诺
+				//TODO this很重要，vue的承诺，谁触发的this就是谁。所以这里是Student组件触发的，this是Student组件，所以App中的studentName就没有赋值成功。
+
+				// 那为什么this.$refs.student.$on('atguigu',this.getStudentName)就可以修改成功呢。
+				// 因为vue也给过承诺，如果你的方法写在A组件的methods中并且使用的普通函数，那么this一定是该组件A的实例对象
+
+				// 所以这里改成箭头函数就可以成功了，当改成箭头函数的时候，没有this，就往外找，往外就是mounted，mounted的this就是vc了
 				console.log(this);//直接写函数这里的this是促发这个自定义事件的组件实例，如果改成箭头函数这里this又是vm了
 
 			})
