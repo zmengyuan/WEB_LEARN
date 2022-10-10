@@ -578,4 +578,13 @@ mounted () {
 }
 ```
 
+P83 TodoList 自定义事件
+把TodoList中的子给父传数据改成自定义事件
+
+App中的addTodo改成自定义事件@addTodo,checkAllTodo,clearAllTodo
+
+Vue开发者工具查看事件
+![](img\微信截图_20221010172953.png)
+
+
 ## 全局事件总线：任意组件间通信
