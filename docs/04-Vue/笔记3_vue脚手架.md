@@ -650,3 +650,9 @@ this.$bus.$emit('hello',数据);
 ```
 
 最好在beforeDestroy钩子中，用$off去解绑当前组件所用到的事件。
+
+86 TodoList全局事件总线
+
+修改11_src
+
+所以可以看出全局事件总线也是自定义事件，只是它是定义在vm的
