@@ -587,4 +587,22 @@ Vue开发者工具查看事件
 ![](img\微信截图_20221010172953.png)
 
 
-## 全局事件总线：任意组件间通信
+P84 全局事件总线
+## 3.9 全局事件总线
+
+可以实现任意组件间通信。
+
+在A组件里写代码给x绑定自定义事件demo，回调就发生在A组件里，然后在D组件触发demo事件给A传递数据
+
+![](img\微信截图_20221010174428.png)
+
+事件总线不是新的API，它是程序员的总结。可以看出X很重要
+- X要让所有组件都能看到
+- X能调用$on $off $emit
+
+拷贝10_src_自定义事件
+
+让所有组件都能看到
+- windows可以实现
+- VueComponent原型```VueComponent.prototype.x=1```，但是每次Vue.extend都是新的VueComponent
+- 之前在基础学过```VueComponent.prototype._proto_ === Vue.prototype```，这个内置关系就是为了让组件实例对象vc可以访问到Vue原型上的属性、方法。
