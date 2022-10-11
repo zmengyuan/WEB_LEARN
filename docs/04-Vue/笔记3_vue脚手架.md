@@ -656,3 +656,35 @@ this.$bus.$emit('hello',数据);
 修改11_src
 
 所以可以看出全局事件总线也是自定义事件，只是它是定义在vm的
+
+87
+## 3.10 消息发布与订阅
+
+1 订阅消息：消息名（手机号
+2 发布消息：消息内容
+
+原生JS不好实现，所以用的第三方库pubsub-js
+
+```
+npm i pubsub-js
+```
+
+把12 全局事件总线的代码拷贝
+
+**总结**
+1 一种组件间通信的方式，适用于任意组件间通信。
+2  使用步骤
+   1）安装pubsub 
+   2) 引入
+   3) 接收数据：A组件想接收数据，则在A组件中订阅消息，订阅的回调留在A组件自身上
+      ```
+      methods(){
+         demo(data){}
+      }
+      ...
+      mounted() {
+         this.pid = pubsub.subscribe('xxx',this.demo);//订阅消息
+      }
+      ```
+   4) 提供数据：```pubsub.publish('xxx',data)```
+   5) 最好在beforeDestory钩子中，解除订阅
