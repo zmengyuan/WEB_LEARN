@@ -15,7 +15,13 @@
 			}
 		},
 		mounted() {
-			console.log('School',this.x);
+			console.log('School',this);
+			this.$bus.$on('hello',(data)=>{
+				console.log('我是School组件，收到了数据',data);
+			})
+		},
+		beforeDestroy() {
+			this.$bus.$off('hello')
 		},
 		
 	}

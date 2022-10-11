@@ -606,3 +606,47 @@ P84 全局事件总线
 - windows可以实现
 - VueComponent原型```VueComponent.prototype.x=1```，但是每次Vue.extend都是新的VueComponent
 - 之前在基础学过```VueComponent.prototype._proto_ === Vue.prototype```，这个内置关系就是为了让组件实例对象vc可以访问到Vue原型上的属性、方法。
+
+
+P85 全局事件总线
+
+x不能调用$on,$on $off $emit都在Vue的原型对象上，
+```
+const Demo = Vue.extend({});
+
+const d = new Demo();
+Vue.prototype.x = d;
+```
+这样d就可以调用那几个方法了。
+
+**总结**
+安装全局事件总线
+```
+new Vue({
+	...
+	beforeCreate () {
+		// 安装全局事件总线，约定熟成一般用$bus,不用x
+		Vue.prototype.$bus = this;
+	}
+})
+```
+使用全局事件总线
+
+1) 接受数据，A组件想接收数组，则在A组件中给$bus绑定自定义事件，事件的回调留在A组件自身。
+```
+methods(){
+   demo(data){}
+}
+
+mounted(){
+   this.$bus.$on('xxx',this.demo)
+
+   this.$bus.$on('xxx',如果把函数直接写在这里要写箭头函数？？)
+}
+```
+2）提供数据：
+```
+this.$bus.$emit('hello',数据);
+```
+
+最好在beforeDestroy钩子中，用$off去解绑当前组件所用到的事件。
