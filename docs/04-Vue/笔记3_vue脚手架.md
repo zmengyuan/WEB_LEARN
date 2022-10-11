@@ -688,3 +688,10 @@ npm i pubsub-js
       ```
    4) 提供数据：```pubsub.publish('xxx',data)```
    5) 最好在beforeDestory钩子中，解除订阅
+   
+88 TodoList 消息发布订阅
+拷贝13_src
+
+Item组件的删除
+
+Vue的开发者工具可以看到组件的自定义事件和全局事件总线，看不到消息发布订阅
