@@ -33,6 +33,7 @@
                  */
                 const todoObj = {id:nanoid(),title:this.title,done:false};
                 this.$emit('addTodo',todoObj);
+                this.title = ''
                
             }
         },
