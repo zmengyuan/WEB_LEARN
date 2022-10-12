@@ -714,3 +714,11 @@ Vue的开发者工具可以看到组件的自定义事件和全局事件总线�
 91 动画
 ## 3.12 过渡与动画
 
+动画写一个属性
+.hello-enter-active，然后来和去用动画
+92 过渡
+
+过滤要写三个样式：
+.hello-enter
+hello-enter-active
+.hello-enter-to
