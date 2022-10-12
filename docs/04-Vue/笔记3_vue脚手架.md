@@ -724,3 +724,10 @@ hello-enter-active
 .hello-enter-to
 
 93 多个元素过渡
+
+94 集成第三方动画
+
+animate.css
+```
+npm install animate.css
+```
