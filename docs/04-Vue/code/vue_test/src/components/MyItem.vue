@@ -13,7 +13,9 @@
 				v-show="todo.isEdit" 
 				type="text" 
 				:value="todo.title" 
-				@blur ="handleBlur(todo,$event)">
+				@blur ="handleBlur(todo,$event)"
+				ref="inputTitle"
+			>
         </label>
 		
         <button class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
@@ -57,6 +59,18 @@ import pubsub from 'pubsub-js'
 				}else {
 					this.$set(todo,'isEdit',true);
 				}
+				// 想在这里直接获取input框的焦点是获取不到的
+				// this.$refs.inputTitle,focus();
+				// 因为这句代码执行的时候，input框还处于隐藏状态，vue是要这段代码块里面的代码都执行了，看到isEdit数据变化了才会去解析模板的。
+				/* 
+				所以可以处理的是
+				 	1 定时器，延迟200ms执行 或者不写时间，即使不写时间它也会延迟点点执行
+					2 官方也想到这个了，使用nextTick
+				*/
+				this.$nextTick(function(){
+					this.$refs.inputTitle,focus();
+				})
+				
 			},
 			// 失去焦点回调
 			handleBlur(todo,e) {
