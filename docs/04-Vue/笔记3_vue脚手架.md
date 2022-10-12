@@ -731,3 +731,17 @@ animate.css
 ```
 npm install animate.css
 ```
+
+95 总结过度与动画
+
+Vue封装的过度与动画
+
+1 作用：在插入、更新或者移除DOM元素时，在合适的时候给元素添加样式类名。
+2 图示：
+![](img\微信截图_20221012150205.png)
+3 写法：
+   (1)准备好样式
+      元素进入的样式：v-enter ; v-enter-active ; v-enter-to
+      元素离开的样式：v-leave ; v-leave-active ; v-leave-to
+   (2) 使用`transition`包裹要过度的元素，并配置name属性
+   (3) 备注：若有多个元素需要过度，则需要使用`transition-group`，且每个元素都要指定key值
