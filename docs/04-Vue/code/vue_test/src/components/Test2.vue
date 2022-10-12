@@ -6,6 +6,12 @@
     <transition name="hello" :appear="true">
         <h1 v-show="isShow">你好用vue</h1>
     </transition>
+
+
+    <transition-group name="hello" :appear="true">
+        <h1 v-show="isShow" key="1">你好用vue</h1>
+        <h1 v-show="isShow" key="2">尚硅谷多个元素过渡用transition-group</h1>
+    </transition-group>
   </div>
 </template>
 
