@@ -1,5 +1,6 @@
 # 第 4 章：Vue 中的 ajax
 
+## 4.1 解决开发环境 Ajax 跨域问题
 96
 运行资料-其他-test_proxy_server中的server1和server2
 ```
@@ -103,3 +104,36 @@ P97
     }
   }
 ```
+
+P97
+配置方式二
+```
+//开启代理服务器(方式二)
+  devServer: {
+    proxy: {
+      '/students': {
+        target: 'http://localhost:5000',
+        pathRewrite:{'^/atguigu':''},
+        ws: true,//用于支持websocket
+        // changeOrigin: true
+      },
+      '/demo': {
+        target: 'http://localhost:5001',
+        pathRewrite:{'^/demo':''},
+      }
+    }
+  }
+```
+
+P98
+## 4.2 github 用户搜索案例
+
+因为使用了bootstrap样式库，但是bootstrap中的字体又没有使用到，所以采用index.html引入的方式
+在public文件夹下新建css文件夹放入bootstrap.css文件，然后在index.html中引入
+```
+<!-- 引入第三方样式 -->
+<link rel="stylesheet" href="<%= BASE_URL %>css/bootstrap.css">
+```
+然后把各种静态资源样式复制调整好了
+
+P99-P100 github
