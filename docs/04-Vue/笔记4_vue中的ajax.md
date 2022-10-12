@@ -158,3 +158,30 @@ npm i vue-resource
 比如都使用了相同的组件，但是现在提出需求，不同的组件里面的显示内容不一样，我们现在能想到的就是v-show 来判断展示哪种内容，但是当区别很大的时候，不可能去判断很多个变量，所以使用插槽。
 
 插槽的内容的样式可以写在外面(APP)，也可以写在里面(Category)
+
+P103 具名插槽
+### 4.4.2 具名
+加一个name属性
+`<slot name="center">我是一些默认值，当使用者没有传递具体结构时，我会出现1</slot>`
+
+然后使用的时候指定名字
+```
+<Category title="美食" >
+    <img slot="center" src="https://s3.ax1x.com/2021/01/16/srJlq0.jpg" alt="">
+    <a slot="footer" href="http://www.atguigu.com">更多美食</a>
+</Category>
+```
+
+
+当想把多个标签列为一个插槽，用template包裹,template具名插槽可以使用v-slot:footer方式
+```
+<template v-slot:footer>
+    <div class="foot">
+        <a href="http://www.atguigu.com">经典</a>
+        <a href="http://www.atguigu.com">热门</a>
+        <a href="http://www.atguigu.com">推荐</a>
+    </div>
+    <h4>欢迎前来观影</h4>
+</template>
+```
+当然包div也可以实现，但是这样无缘无故又包了一层div不好，所以使用template,这样就不会在结构中出现了
