@@ -137,3 +137,15 @@ P98
 然后把各种静态资源样式复制调整好了
 
 P99-P100 github
+
+P101 VUE-RESOURCE
+
+## 4.3 vue-resource
+vue-resource vue的插件库，是对xhr的封装
+安装
+```
+npm i vue-resource
+```
+
+使用了该插件之后，vc和vm的属性就多了$http，就可以使用了。
+不过现在都很少使用了。
