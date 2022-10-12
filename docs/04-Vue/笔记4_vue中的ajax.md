@@ -81,3 +81,25 @@ axios.get('http://localhost:8080/students').then()
 但是这种方式有两个缺点：
 1. 只能配置一个代理
 2. vue脚手架默认public为根目录，当访问的url能在public文件夹找到资源时，它就不会走代理去访问后台服务器了。
+
+
+P97
+配置方式二
+```
+//开启代理服务器(方式二)
+  devServer: {
+    proxy: {
+      // 只要请求前缀是students,就给5000
+      '/students': {
+        target: 'http://localhost:5000',
+        pathRewrite:{'^/atguigu':''},
+        ws: true,//用于支持websocket
+        // changeOrigin: true//服务器获取请求头Host值的时候 true:说谎，false：真实，默认是true
+      },
+      '/demo': {
+        target: 'http://localhost:5001',
+        pathRewrite:{'^/demo':''},
+      }
+    }
+  }
+```
