@@ -185,3 +185,83 @@ P103 具名插槽
 </template>
 ```
 当然包div也可以实现，但是这样无缘无故又包了一层div不好，所以使用template,这样就不会在结构中出现了
+
+P104 作用域插槽
+需求：现在使用三个Category都展示电影，里面内容一样，所以把数据直接放Category组件管理了。现在的需求是第一个展示无序列表，第二个展示有序列表，就是说列表的样式是由使用者来定。（同样的，你也可以用判断来展示，但是这样不好）
+所以用作用域插槽，把遍历还是要放到APP里面来，但是数据现在在Category组件里面，所以使用者如何得到数据。
+Category组件
+```
+<!-- 这里:games="games"就是把games传给了插槽的使用者，谁往这个插槽放结构就是把数据传给了谁 -->
+<slot :games="games" msg="hello">我是默认的一些内容</slot>
+```
+
+APP组件使用，必须包裹一层template，使用属性scope来接收
+```
+<Category title="游戏">
+    <!-- 这样写atguigu不一定要=Category定义的game名 -->
+    <template scope="atguigu">
+        <ul>
+            <li v-for="(g,index) in atguigu.games" :key="index">{{g}}</li>
+        </ul>
+    </template>
+</Category>
+
+<Category title="游戏">
+ <!-- 这样写必须和提供者的属性名一样，这是ES6语法，结构赋值 -->
+    <template scope="{games}">
+        <ol>
+            <li style="color:red" v-for="(g,index) in games" :key="index">{{g}}</li>
+        </ol>
+    </template>
+</Category>
+
+<Category title="游戏">
+    <template slot-scope="{games}">
+        <h4 v-for="(g,index) in games" :key="index">{{g}}</h4>
+    </template>
+</Category>
+```
+
+总结：
+插槽就是让父组件向子组件指定位置插入http结构，也是一种组件间通信的方式，适用于父组件===>子组件
+
+使用方式
+1. 默认插槽
+```js
+父组件
+<Category>
+    <div>html结构</div>
+</Category
+子组件
+<template>
+	<div >
+		<!-- 定义一个插槽（挖个坑，等着组件的使用者进行填充） -->
+		<slot>我是一些默认值，当使用者没有传递具体结构时，我会出现</slot>
+	</div>
+</template>
+```
+2. 具名插槽:就是能起名
+```
+父组件
+<Category >
+    <template v-slot:footer>
+        <div>html结构</div>
+    </template>
+
+    <template slot="center">
+        <div>html结构2</div>
+    </template>
+</Category>
+
+
+子组件
+<template>
+	<div >
+		<slot name="center">我是一些默认值，当使用者没有传递具体结构时，我会出现1</slot>
+		<slot name="footer">我是一些默认值，当使用者没有传递具体结构时，我会出现2</slot>
+	</div>
+</template>
+```
+
+3. 作用域插槽
+数据在组件的自身，但是根据数据生成的结构需要使用者来决定
