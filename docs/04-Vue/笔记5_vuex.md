@@ -212,3 +212,36 @@ export default new Vuex.Store({
 })
 ```
 
+112 _mapState与_mapGetters
+### 5.3.6 _mapState与_mapGetters
+
+```
+computed:{
+    // 靠程序员亲自写计算属性
+    // sum(){
+    // 	return this.$store.state.sum;
+    // },
+    // school() {
+    // 	return this.$store.state.school;
+    // },
+    // subject() {
+    // 	return this.$store.state.subject;
+    // },
+
+    // 借助mapState生成计算属性，从state读取数组（对象写法）
+    // ...mapState({
+    // 	// 左边本来就是字符串，只是平时写都简写了
+    // 	'sum':'sum',
+    // 	'school':'school',
+    // 	'subject':'subject',
+    // }),
+    // 数组写法
+    ...mapState(['sum','school','subject']),
+
+    // bigSum() {
+    // 	return this.$store.getters.bigSum;
+    // }
+    // ...mapGetters({'bigSum':'bigSum'}),
+    ...mapGetters(['bigSum']),
+}
+```
