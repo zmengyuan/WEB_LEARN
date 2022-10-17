@@ -178,8 +178,10 @@ export default new Vuex.Store({
 })
 ```
 
+P109 求和案例_vuex案例
+### 5.3.3 vuex实战求和案例
 
-
+小写是actions里的，大写是mutations中的
 
 
 
