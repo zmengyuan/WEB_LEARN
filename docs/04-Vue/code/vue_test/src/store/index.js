@@ -1,7 +1,10 @@
 // 该文件用于创建Vuex中的store
 
-
+//引入Vue
+import Vue from 'vue'
 import Vuex from 'vuex'
+Vue.use(Vuex)
+
 const actions = {}
 
 // 用于操作数据

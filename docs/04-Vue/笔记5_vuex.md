@@ -56,12 +56,16 @@ dispatch\commit都需要store来调用
 P108 搭建Vuex环境
 1. npm i vuex@3(注意：vue2中要使用vuex的3版本，vue3要使用vuex的4版本)
 2. 引入Vuex 并且Vue.use(Vuex) 之后，就可以在创建vue的时候传入store对象了
-```
-new Vue({
-    el:'#app',
-    store:'hello'
-})
-```
+   ```
+    new Vue({
+        el:'#app',
+        store:'hello'
+    })
+    ```
+3. 创建store store/index.js文件
+4. 让所有vc能看到store
+
+
 这样就可以在vm和每个vc实例上看到$store
 
 以上只是说明如何使用的原理，根据官方建议如下使用
@@ -139,5 +143,43 @@ import store from './store'
 
 这是因为在脚手架中，它会汇集所有的import语句按顺序先执行。
 所以按照以下方法引入。
+
+
+
+### 5.3.2 正确写法
+把vuex的引入使用写在store/index.js中
+
+在src文件夹下新建store文件夹，然后在store文件夹下新建index.js文件
+```
+//该文件用于创建Vuex中最为核心的store index.js文件
+import Vue from 'vue'
+//引入Vuex
+import Vuex from 'vuex'
+//应用Vuex插件
+Vue.use(Vuex)
+
+//准备actions——用于响应组件中的动作
+const actions = {}
+
+//准备mutations——用于操作数据（state）
+const mutations = {
+}
+
+//准备state——用于存储数据
+const state = {
+
+}
+
+//创建并暴露store
+export default new Vuex.Store({
+    actions,
+    mutations,
+    state,
+})
+```
+
+
+
+
 
 
