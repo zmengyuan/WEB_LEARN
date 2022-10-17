@@ -195,5 +195,20 @@ P110vuex开发者工具
 ![](img\微信截图_20220902154639.png)
 dispatch可以调多个，以防在某个函数中代码过多
 
+### 5.3.5 getters
+P111 getters配置项
+```js
+//准备getters——用于将state中的数据进行加工
+const getters = {
+	bigSum(state){
+		return state.sum*10
+	}
+}
 
+/创建并暴露store
+export default new Vuex.Store({
+	...
+	getters
+})
+```
 
