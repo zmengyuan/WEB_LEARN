@@ -49,3 +49,95 @@ P107 Vuex工作原理图
 ![](img\微信截图_20221017105133.png)
 
 dispatch\commit都需要store来调用
+
+
+## 5.3 实战
+
+P108 搭建Vuex环境
+1. npm i vuex@3(注意：vue2中要使用vuex的3版本，vue3要使用vuex的4版本)
+2. 引入Vuex 并且Vue.use(Vuex) 之后，就可以在创建vue的时候传入store对象了
+```
+new Vue({
+    el:'#app',
+    store:'hello'
+})
+```
+这样就可以在vm和每个vc实例上看到$store
+
+以上只是说明如何使用的原理，根据官方建议如下使用
+
+### 5.3.1 错误写法 
+1、创建store/index.js
+```
+// 该文件用于创建Vuex中的store
+
+
+import Vuex from 'vuex'
+const actions = {}
+
+// 用于操作数据
+const mutations = {}
+
+// 用于存储数据
+const state = {}
+
+// 创建store
+const store = new Vuex.Store({
+    actions:actions,
+    mutations:mutations,
+    state
+});
+
+// 暴露store
+export default store;
+```
+
+2、引入
+```main.js
+//引入Vue
+import Vue from 'vue'
+//引入App
+import App from './App.vue'
+//引入插件
+import vueResource from 'vue-resource'
+
+// 引入vuex
+import Vuex from 'vuex'
+// 引入store，因为是脚手架，如果没有写具体文件，会默认找index文件
+import store from './store'
+
+//关闭Vue的生产提示
+Vue.config.productionTip = false
+//使用插件
+Vue.use(vueResource)
+Vue.use(Vuex)
+
+//创建vm
+new Vue({
+	el:'#app',
+	render: h => h(App),
+	store,
+	beforeCreate() {
+		Vue.prototype.$bus = this
+	}
+})
+```
+这样写之后，浏览器会报错
+
+![](img\微信截图_20221017110749.png)
+
+然后根据提示，会认为是解析顺序导致的这个错误，于是把`import store from './store'`这句移动到最下面引入，但是还是报错。
+
+```
+...
+//使用插件
+Vue.use(vueResource)
+Vue.use(Vuex)
+
+import store from './store'
+```
+
+这是因为在脚手架中，它会汇集所有的import语句按顺序先执行。
+所以按照以下方法引入。
+
+
