@@ -26,9 +26,13 @@
 			}
 		},
 		computed:{
-			...mapState(['sum','school','subject','personList']),
+			// ...mapState(['sum','school','subject','personList']),
+			
+			// 模块化
+			...mapState('countOptions',['sum','school','subject']),
+			...mapState('personOptions',['personList']),
 
-			...mapGetters(['bigSum']),
+			...mapGetters('countOptions',['bigSum']),
 		},
 		methods: {
 			/*
@@ -39,14 +43,14 @@
 				当调用increment函数没有传参数的时候，会默认传event事件参数
 			*/	
 			// 借助mapMutations生成对应的方法，方法中会调用commit去练习mutations(对象写法)
-			...mapMutations({increment:'JIA',decrement:'JIAN'}),
+			...mapMutations('countOptions',{increment:'JIA',decrement:'JIAN'}),
 
 			// 数组的写法要保证这里和mutations的方法名字一样
 
 
 
 			// 借助mapActions生成对应的方法，方法中会调用dispatch去练习actions
-			...mapActions({incrementOdd:'jiaOdd',incrementWait:'jiaWait'}),
+			...mapActions('countOptions',{incrementOdd:'jiaOdd',incrementWait:'jiaWait'}),
 
 			// 数组形式同理
 		},
