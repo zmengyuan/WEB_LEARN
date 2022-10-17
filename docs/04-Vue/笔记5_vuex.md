@@ -286,5 +286,41 @@ methods: {
 ```
 114 多组件共享数据
 
-115
+115 116
 ### 5.3.8 vuex的模块化编码
+直接查看代码
+Count是简写模式...
+Person是原始写法$store
+
+**读取state**
+```
+//直接读取
+this.$store.state.personOptions.personList;
+//利用mapState
+...mapState('personOptions',['personList']),
+
+```
+
+**读取getters**
+```
+//直接读取
+this.$store.getters['personOptions/firstPersonName'];
+//利用mapState
+...mapGetters('countOptions',['bigSum']),
+
+```
+
+**调用dispatch**
+```
+this.$store.dispatch('personOptions/addPersonServer');
+
+...mapActions('countOptions',{incrementOdd:'jiaOdd',incrementWait:'jiaWait'}),
+
+```
+
+**调用commit**
+```
+ this.$store.commit('personOptions/ADD_PERSON',obj);
+
+ ...mapMutations('countOptions',{increment:'JIA',decrement:'JIAN'}),
+```
