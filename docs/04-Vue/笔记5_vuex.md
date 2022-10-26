@@ -216,6 +216,26 @@ export default new Vuex.Store({
 ### 5.3.6 _mapState与_mapGetters
 
 ```
+/*
+mapState接收参数，左边表示模板使用的变量名，右边表示在state中参数名，因为对象形式的字面量写法，左边默认是字符串，所以可以省略引号，但是右边需要的是变量名，所以也需要引号
+mapState返回的是一个对象，对象里的键分别是接收的变量名，值分别是对应的function函数
+{
+    sum:function(),
+    school:function(),
+    ...
+}
+然后因为要放到computed中，
+所以使用...符号，表示把mapState中的每个键值对遍历拿出来放到computed中
+*/ 
+mounted:{
+    const x = mapState({
+        'sum':'sum',
+        'school':'school',
+        'subject':'subject',
+
+    });
+    console.log(x);
+},
 computed:{
     // 靠程序员亲自写计算属性
     // sum(){
