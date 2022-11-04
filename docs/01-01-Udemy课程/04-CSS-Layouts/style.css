@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  width: 800px;
+  width: 1200px;
   /* margin-left: auto;
   margin-right: auto; */
   margin: 0 auto;
@@ -286,7 +286,7 @@ nav {
   float: right;
 }
 .main-header {
-  background-color: rebeccapurple;
+  /* background-color: rebeccapurple; */
 }
 
 .clear {
@@ -297,4 +297,24 @@ nav {
   clear: both;
   content: "";
   display: block;
+}
+
+/* 在布局的时候先把背景颜色标出，这样能明显看到我们到底在干什么 */
+article {
+  /* background-color: green; */
+  width: 900px;
+  float: left;
+  /* 因为要让与aside保持距离，而浮动的最好不用边框等，所以修改width */
+  width: 825px;
+}
+
+aside {
+  /* background-color: red; */
+  width: 300px;
+  float: right;
+}
+
+footer {
+  /* background-color: yellow; */
+  clear: both;
 }
