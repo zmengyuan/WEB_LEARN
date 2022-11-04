@@ -269,11 +269,32 @@ nav p {
 /* FLOATS */
 .author-img {
   float: left;
+  margin-bottom: 20px;
 }
 
 .author {
-  padding-left: 50px;
+  /* padding-left: 50px; */
   float: left;
-  /* 
-  margin-left: 20px; */
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+h1 {
+  float: left;
+}
+nav {
+  float: right;
+}
+.main-header {
+  background-color: rebeccapurple;
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: block;
 }
