@@ -204,7 +204,7 @@ nav a:link {
   display: block; */
 
   margin-right: 30px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   display: inline-block;
 }
 
@@ -273,55 +273,44 @@ nav p {
   font-size: 18px;
 } */
 
-/* FLOATS */
-.author-img {
-  float: left;
-  margin-bottom: 20px;
+/* FLEX */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .author {
-  /* padding-left: 50px; */
-  float: left;
-  margin-left: 20px;
-  margin-top: 10px;
+  /* 删除之前float时候为了布局设置的一些东西 */
+  margin-bottom: 0px;
+  margin-left: 15px;
 }
 
-h1 {
-  float: left;
-}
-nav {
-  float: right;
-}
-.main-header {
-  /* background-color: rebeccapurple; */
+.related-post {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-.clear {
-  clear: both;
-}
-
-.clearfix::after {
-  clear: both;
-  content: "";
+.related-link :link {
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 5px;
+  /* link是内联，所以要让边框起作用 */
   display: block;
 }
 
-/* 在布局的时候先把背景颜色标出，这样能明显看到我们到底在干什么 */
-article {
-  /* background-color: green; */
-  width: 900px;
-  float: left;
-  /* 因为要让与aside保持距离，而浮动的最好不用边框等，所以修改width */
-  width: 825px;
-}
-
-aside {
-  /* background-color: red; */
-  width: 300px;
-  float: right;
-}
-
-footer {
-  /* background-color: yellow; */
-  clear: both;
+.related-author {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
 }
