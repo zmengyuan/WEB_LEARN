@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox</title>
+    <style>
+      .el--1 {
+        background-color: blueviolet;
+      }
+      .el--2 {
+        background-color: orangered;
+      }
+      .el--3 {
+        background-color: green;
+        height: 150px;
+      }
+      .el--4 {
+        background-color: goldenrod;
+      }
+      .el--5 {
+        background-color: palevioletred;
+      }
+      .el--6 {
+        background-color: steelblue;
+      }
+      .el--7 {
+        background-color: yellow;
+      }
+      .el--8 {
+        background-color: crimson;
+      }
+
+      .container {
+        /* STARTER */
+        font-family: sans-serif;
+        background-color: #bfa;
+        font-size: 34px;
+        margin: 40px;
+
+        /* FLEXBOX */
+        display: flex;
+        /* container是flex element 里面的8个项目是 flex items弹性项目 */
+
+        /* 定义项目在交叉轴上如何对齐
+        center ：垂直居中
+        flex-start flex-end
+        stretch:自动拉伸 和最高的元素一样高，默认的
+        */
+        align-items: center;
+        /*
+        定义了项目在主轴上的对齐方式 左对齐 右对齐 居中 两侧间隔项目
+
+        space-between：两端对齐
+        */
+        justify-content: flex-start;
+        gap: 30px;
+      }
+      .el {
+        /* 以前是用margin来控制元素之间的边距
+        现在flex为我们提供了新的属性gap
+        */
+        /* margin-right: 30px; */
+
+        /*
+        default
+        flex-flow: 0;：增长因素，表示一个占比
+        flex-shrink: 1; 允许在必要时收缩元素
+        flex-basis: auto; */
+
+        /* 子项在容器主轴方向上的初始大小 */
+        flex-basis: 100px;
+      }
+      .el--1 {
+        align-self: flex-start;
+      }
+      .el--4 {
+        align-self: stretch;
+      }
+      .el--6 {
+        order: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="el el--1">HTML</div>
+      <div class="el el--2">and</div>
+      <div class="el el--3">CSS</div>
+      <div class="el el--4">are</div>
+      <div class="el el--5">amazing</div>
+      <div class="el el--6">languages</div>
+      <div class="el el--7">to</div>
+      <div class="el el--8">learn</div>
+    </div>
+  </body>
+</html>
