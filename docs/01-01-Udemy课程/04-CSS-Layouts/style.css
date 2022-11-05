@@ -27,7 +27,7 @@ body {
   padding-left: 40px;
   padding-right: 40px; */
   padding: 20px 40px;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
   /* height: 80px; */
 }
 
@@ -37,7 +37,7 @@ nav {
 }
 
 article {
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
 }
 
 .post-header {
@@ -52,7 +52,7 @@ aside {
   /* padding-top: 50px;
   padding-bottom: 50px; */
   padding: 50px 0;
-  width: 500px;
+  /* width: 500px; */
   /* 这里padding导致盒子总宽 大于父了，所以它会自动下移，一水平面无法放下了 */
   padding: 50px 40px;
   /* 这个经常使用，所以放到通用选择器 */
@@ -189,6 +189,7 @@ a:active {
   background-color: black;
   font-style: italic;
 }
+
 /* LVHA */
 
 .post-img {
@@ -229,7 +230,7 @@ h1::first-letter {
   margin-right: 5px;
 }
 
-h3 + p::first-line {
+h3+p::first-line {
   /* color: red; */
 }
 
@@ -295,6 +296,7 @@ nav p {
 .related-post {
   display: flex;
   align-items: center;
+  /* 这个在现在变成grid后好像不起作用了 */
   gap: 20px;
   margin-bottom: 30px;
 }
@@ -315,17 +317,26 @@ nav p {
   font-style: italic;
 }
 
-.row {
-  display: flex;
-  gap: 75px;
-  align-items: flex-start;
+/* FLEX LAYOUT 复制到flex.css中去了 */
+
+/* CSS GRID LAYOUT */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  column-gap: 75px;
+  row-gap: 60px;
+  align-items: start;
 }
-article {
-  /* 自动 */
-  flex: 1;
-  margin-bottom: 0px;
+
+.main-header {
+  /* grid-column: 1 / span 2; */
+  grid-column: 1 / -1;
 }
-aside {
-  /* 对于弹性盒项目，不要使用width来指定宽度 */
-  flex: 0 0 300px;
+
+article {}
+
+aside {}
+
+footer {
+  grid-column: 1 / -1;
 }

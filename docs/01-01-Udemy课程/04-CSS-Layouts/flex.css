@@ -1,0 +1,17 @@
+/* FLEX LAYOUT */
+.row {
+  display: flex;
+  gap: 75px;
+  align-items: flex-start;
+}
+
+article {
+  /* 自动 */
+  flex: 1;
+  margin-bottom: 0px;
+}
+
+aside {
+  /* 对于弹性盒项目，不要使用width来指定宽度 */
+  flex: 0 0 300px;
+}
