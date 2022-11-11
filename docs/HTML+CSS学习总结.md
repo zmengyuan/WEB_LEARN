@@ -128,6 +128,9 @@ vertical-align: middle;
 - clear 清理浮动影响,（本质是为元素添加一个`margin-top`属性，值由浏览器自动计算）
 - position
 - z-index
+- transform
+  - scale(1.5)：变为原来的1.5倍，并且不改变原来布局
+  - translate(-50%, -50%)：相对于自身移动水平与垂直
 
 **字体**
 
@@ -167,6 +170,11 @@ vertical-align: middle;
 - `background-origin` 背景图片的偏移量计算的原点
 - `background-size` 设置背景图片的大小 
 - `background-attachment` 背景图片是否跟随元素移动 
+
+**定位之后**
+
+- left
+- top
 
 ## 特殊标签属性
 
@@ -464,6 +472,7 @@ BFC（Block Formatting Context）块级格式化环境，
   - inline-grid的直接子元素
 
 - overflow
+  - visible：默认
   - hidden
   - scroll
   - auto
