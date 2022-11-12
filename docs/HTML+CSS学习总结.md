@@ -1,5 +1,12 @@
 # 标签分类
 
+- table
+- thead
+- tbody
+- tr
+- th
+- td
+
 ## 块级元素
 
 - h1~h6
