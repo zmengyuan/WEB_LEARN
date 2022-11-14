@@ -13,10 +13,12 @@ Default : 1
 --- 02 COLORS
 
 - Primary: #e67e22
-- Tints:
+- Tints: #fdf2e9s
 - Shades:
 - Accents:
-- Greys:#555
+- Greys:
+#555
+#333
 
 --- 05 SHADOWS
 
@@ -50,15 +52,92 @@ body {
 
 }
 
-.test {
-  background-color: red;
+.section-hero {
+  background-color: #fdf2e9;
+  padding: 9.6rem 0;
+  ;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 以上设置了之后，我们希望网格平分，
+  但是由于图片太大，造成网格的两部分没有平均分配 
+  所以必须设置图片宽度才可以
+  */
+  max-width: 130rem;
+  /* background-color: royalblue; */
+  margin: 0 auto;
+  align-items: center;
+  gap: 9.6rem;
+}
 
 
-  /* width: 1000px; */
-  /* max-width: 1000px; */
-  /* 默认情况 1em = 16px */
-  max-width: 50rem;
-  padding: 4rem;
-  color: #fff;
+
+.heading-primary {
+  font-size: 5.2rem;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #333;
+  /* 这是一个很小的改变，所以直接用px了 */
+  letter-spacing: -0.5px;
+  margin-bottom: 3.2rem;
+  ;
+}
+
+.hero-description {
   font-size: 2rem;
+  line-height: 1.5;
+  margin-bottom: 4.8rem;
+}
+
+.btn:link,
+.btn:visited {
+
+  font-size: 2rem;
+
+  text-decoration: none;
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+
+  /* Put transition on original "state" */
+  transition: background-color 0.3s;
+
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: #cf711f;
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: #fdf2e9;
+  /* 单纯的添加边框会造成布局的改变，
+  所以要把边框添加到盒子内部 
+  所以不使用border属性，而使用阴影属性
+  */
+  /* border: 3px solid #fff; */
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.margin-right-sm {
+  margin-right: 1.6rem !important;
 }
