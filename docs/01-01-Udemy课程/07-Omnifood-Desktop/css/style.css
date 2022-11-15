@@ -57,9 +57,35 @@ body {
   font-weight: 400;
   color: #555;
 }
+
 /* ******************************************** */
 /* Genral components */
 /* ******************************************* */
+
+.container {
+  /* 1140px */
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 9.6rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .heading-primary {
   font-size: 5.2rem;
   font-weight: 700;
@@ -69,6 +95,7 @@ body {
   letter-spacing: -0.5px;
   margin-bottom: 3.2rem;
 }
+
 .btn:link,
 .btn:visited {
   font-size: 2rem;
@@ -109,6 +136,7 @@ body {
   /* border: 3px solid #fff; */
   box-shadow: inset 0 0 0 3px #fff;
 }
+
 .margin-right-sm {
   margin-right: 1.6rem !important;
 }
@@ -127,6 +155,7 @@ body {
   height: 9.6rem;
   padding: 0 4.8rem;
 }
+
 .logo {
   height: 2.2rem;
 }
@@ -139,7 +168,8 @@ body {
   display: flex;
   align-items: center;
   /* 不懂这个为什么不生效！！所以设置了外边距 */
-  gap: 3.2rem;
+  grid-gap: 3.2rem;
+  /* gap: 3.2rem; */
 }
 
 /* .main-nav-list li {
@@ -176,6 +206,7 @@ body {
 .main-nav-link.nav-cta:active {
   background-color: #cf711f;
 }
+
 /* ****************************************** */
 /* Hero section */
 /* ***************************************** */
@@ -243,4 +274,12 @@ body {
 .delivered-text span {
   color: #cf711f;
   font-weight: 700;
+}
+
+/* ******************************************** */
+/* How it works section */
+/* ******************************************* */
+.section-how {
+  padding: 9.6rem 0;
+  background-color: orange;
 }
