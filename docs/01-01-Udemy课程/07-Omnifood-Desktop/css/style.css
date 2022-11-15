@@ -346,13 +346,26 @@
 /* Testimonials Section */
 /* ******************************************* */
 .section-testimonials {
-  padding: 9.6rem 0;
+
+  background-color: #fdf2e9;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  /* 如果不设置下面的居中，在缩放的时候会有莫名其妙的行距 
+  但同时又造成了上面的空白(之后用媒体查询解决)
+  */
+  align-items: center;
+}
+
+.testimonials-container {
+  padding: 9.6rem;
 }
 
 .testimonials {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4.8rem;
+  row-gap: 4.8rem;
+  column-gap: 8rem;
+
 }
 
 .testimonial-img {
@@ -369,5 +382,28 @@
 
 .testimonial-name {
   font-size: 1.6rem;
-  color: #777;
+  color: #6f6f6f;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  padding: 1.6rem;
+}
+
+/* 防止图片动画溢出！！ */
+.gallery-item {
+  overflow: hidden;
+}
+
+.gallery-item img {
+  /* 去掉图片之间的小空袭，block */
+  display: block;
+  width: 100%;
+  transition: all 0.4s;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
 }
