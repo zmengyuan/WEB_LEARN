@@ -45,35 +45,14 @@ html {
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   line-height: 1;
   font-weight: 400;
   color: #555;
-
 }
-
-.section-hero {
-  background-color: #fdf2e9;
-  padding: 9.6rem 0;
-  ;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* 以上设置了之后，我们希望网格平分，
-  但是由于图片太大，造成网格的两部分没有平均分配 
-  所以必须设置图片宽度才可以
-  */
-  max-width: 130rem;
-  /* background-color: royalblue; */
-  margin: 0 auto;
-  align-items: center;
-  gap: 9.6rem;
-}
-
-
-
+/* ******************************************** */
+/* Genral components */
+/* ******************************************* */
 .heading-primary {
   font-size: 5.2rem;
   font-weight: 700;
@@ -82,18 +61,9 @@ body {
   /* 这是一个很小的改变，所以直接用px了 */
   letter-spacing: -0.5px;
   margin-bottom: 3.2rem;
-  ;
 }
-
-.hero-description {
-  font-size: 2rem;
-  line-height: 1.5;
-  margin-bottom: 4.8rem;
-}
-
 .btn:link,
 .btn:visited {
-
   font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
@@ -103,7 +73,6 @@ body {
 
   /* Put transition on original "state" */
   transition: background-color 0.3s;
-
 }
 
 .btn--full:link,
@@ -133,13 +102,60 @@ body {
   /* border: 3px solid #fff; */
   box-shadow: inset 0 0 0 3px #fff;
 }
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+
+/* ****************************************** */
+/* Header */
+/* ***************************************** */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdf2e9;
+  /* 一般我们是不固定高度，靠内容和padding撑起盒子高度，
+  这里固定高度是因为我们等下要做粘滞，高度固定时，它会比较方便
+  */
+  height: 9.6rem;
+  padding: 0 4.8rem;
+}
+.logo {
+  height: 2.2rem;
+}
+
+/* ****************************************** */
+/* Hero section */
+/* ***************************************** */
+
+.section-hero {
+  background-color: #fdf2e9;
+  padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 以上设置了之后，我们希望网格平分，
+  但是由于图片太大，造成网格的两部分没有平均分配 
+  所以必须设置图片宽度才可以
+  */
+  max-width: 130rem;
+  /* background-color: royalblue; */
+  margin: 0 auto;
+  align-items: center;
+  gap: 9.6rem;
+  padding: 0 3.2rem;
+}
+
+.hero-description {
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-bottom: 4.8rem;
+}
 
 .hero-img {
   width: 100%;
-}
-
-.margin-right-sm {
-  margin-right: 1.6rem !important;
 }
 
 .delivered-meals {
@@ -147,7 +163,6 @@ body {
   align-items: center;
   gap: 1.6rem;
   margin-top: 8rem;
-
 }
 
 .delivered-imgs {
@@ -162,7 +177,6 @@ body {
   /* 让图像重叠，本来以为父元素是弹性直接设置gap负数，但是不起作用，所以才这么设置 */
   margin-right: -1.6rem;
   border: 3px solid #fdf2e9;
-
 }
 
 .delivered-imgs img:last-child {
@@ -172,7 +186,6 @@ body {
 .delivered-text {
   font-size: 1.8rem;
   font-weight: 600;
-
 }
 
 .delivered-text span {
