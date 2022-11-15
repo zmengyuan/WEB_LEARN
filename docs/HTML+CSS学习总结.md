@@ -138,6 +138,8 @@ vertical-align: middle;
 - transform
   - scale(1.5)：变为原来的1.5倍，并且不改变原来布局
   - translate(-50%, -50%)：相对于自身移动水平与垂直
+- filter
+- opacity
 
 **字体**
 
