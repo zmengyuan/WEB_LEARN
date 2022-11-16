@@ -140,6 +140,8 @@ vertical-align: middle;
   - translate(-50%, -50%)：相对于自身移动水平与垂直
 - filter
 - opacity
+- role
+- aria-label
 
 **字体**
 
@@ -163,6 +165,7 @@ vertical-align: middle;
   - linear-gradient
   - repeating-linear-gradient()
   - radial-gradient()
+  - url
 
 - background-repeat
 
