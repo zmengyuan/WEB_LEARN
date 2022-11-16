@@ -149,7 +149,8 @@ vertical-align: middle;
 - font-size
 - font-family
 - @font-face
-- line height（认真看！！）它会把除了字体本身大小以外多余的平均分配
+- line-height（认真看！！）它会把除了字体本身大小以外多余的平均分配
+  - 它的基准是字本身的大小，推荐使用数字设置
 - font-style
 - font-variant
 - font-weight
