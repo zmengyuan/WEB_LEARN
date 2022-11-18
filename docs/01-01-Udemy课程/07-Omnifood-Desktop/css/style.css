@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   /* 不懂这个为什么不生效！！所以设置了外边距 */
-  grid-gap: 3.2rem;
+  grid-gap: 4.8rem;
   /* gap: 3.2rem; */
 }
 
