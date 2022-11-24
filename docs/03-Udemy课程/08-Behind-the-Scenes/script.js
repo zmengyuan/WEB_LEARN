@@ -83,3 +83,39 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+
+///////////////////////////////////////
+// The this Keyword in Practice
+console.log(this); //window对象
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+calcAge(1991); // this为undefined 如果不是严格模式，这里会是window
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+calcAgeArrow(1980); //输出window对象
+
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+jonas.calcAge(); // this为jonas对象
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge(); //this为matilda
+
+const f = jonas.calcAge;
+f(); //this为 undefined
