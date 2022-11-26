@@ -544,7 +544,7 @@ BONUS: Create an object called 'scorers' which contains the names of the players
 
 GOOD LUCK 馃榾
 */
-
+/*
 //1 Goal 1: Lewandowski
 for (const [key, value] of game.scored.entries()) {
   console.log(`Goal ${key+1}: ${value}`);
@@ -565,3 +565,40 @@ for (const [key, value] of Object.entries(game.odds)) {
   const str = game[key] ? `victory ${game[key]}` : 'draw';
   console.log(`Odd of ${str} : ${value}`);
 }
+*/
+
+///////////////////////////////////////
+// 116-Sets
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+
+console.log(new Set('jonasschmedtmann').size);
