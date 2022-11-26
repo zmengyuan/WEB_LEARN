@@ -400,7 +400,7 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 GOOD LUCK 馃榾
 */
 
-
+/*
 // 1.
 const [players1, players2] = game.players;
 console.log(players1, players2);
@@ -439,3 +439,22 @@ printGoals(...game.scored);
 // 7.
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
+*/
+
+
+///////////////////////////////////////
+// The for-of Loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) {
+  console.log(item); //每个item都是一个数组 [0,F] 角标0表示索引，角标1表示数据
+}
+console.log(menu.entries()); //Array Iterator
+console.log([...menu.entries()]); //可以更明细的看数据
+
+//因为是数组，所以可以使用数组解构
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
