@@ -496,7 +496,7 @@ else console.log('user array empty');
 
 ///////////////////////////////////////
 // Looping Objects: Object Keys, Values, and Entries
-
+/*
 // Property NAMES
 const properties = Object.keys(openingHours);
 console.log(properties);
@@ -518,4 +518,50 @@ console.log(entries);
 // [key, value]
 for (const [day, {open,close}] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
+*/
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 馃槈
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 馃榾
+*/
+
+//1 Goal 1: Lewandowski
+for (const [key, value] of game.scored.entries()) {
+  console.log(`Goal ${key+1}: ${value}`);
+}
+//2
+let total = 0;
+const odds = Object.values(game.odds);
+for (const number of odds) {
+  total += number;
+}
+console.log(total);
+const average = total / odds.length;
+console.log(average);
+//3
+console.log(Object.entries(game.odds));
+
+for (const [key, value] of Object.entries(game.odds)) {
+  const str = game[key] ? `victory ${game[key]}` : 'draw';
+  console.log(`Odd of ${str} : ${value}`);
 }
