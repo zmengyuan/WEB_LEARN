@@ -926,7 +926,7 @@ Afterwards, test with your own test data!
 
 GOOD LUCK 
 */
-
+/*
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 
@@ -946,7 +946,18 @@ document.querySelector("button").addEventListener("click", function () {
     const str = start + end[0].toUpperCase() + end.slice(1);
     console.log(`${str.padEnd(20,' ')}${'🎈'.repeat(i+1)}`);
 
-
   }
 
 });
+*/
+
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '馃敶' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} ${getCode(from)} ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36);
+  console.log(output);
+}
