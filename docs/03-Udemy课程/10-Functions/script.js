@@ -261,7 +261,7 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 馃榾
 */
-
+/*
 const poll = {
   question: 'What is your favourite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
@@ -302,3 +302,12 @@ poll.displayResults.call({
 poll.displayResults.call({
   answers: [5, 2, 3]
 }, "string");
+*/
+
+
+///////////////////////////////////////
+// Immediately Invoked Function Expressions (IIFE)
+
+(function () {console.log("This will never run agein");})();
+
+(() => {console.log("This will also never run again");})();
