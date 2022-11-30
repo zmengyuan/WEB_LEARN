@@ -315,7 +315,7 @@ poll.displayResults.call({
 
 */
 
-
+/*
 ///////////////////////////////////////
 // Closures
 
@@ -335,3 +335,48 @@ booker();
 booker();
 
 console.dir(booker);
+*/
+
+///////////////////////////////////////
+// More Closure Examples
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+// Re-assigning f function
+h();
+f();
+console.dir(f);
+
+// Example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  //两个参数 第一个：执行函数，第二个：多少时间之后执行
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000; //这里证明闭包优先于作用连
+boardPassengers(180, 3);
