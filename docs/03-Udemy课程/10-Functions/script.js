@@ -304,6 +304,7 @@ poll.displayResults.call({
 }, "string");
 */
 
+/*
 
 ///////////////////////////////////////
 // Immediately Invoked Function Expressions (IIFE)
@@ -311,3 +312,26 @@ poll.displayResults.call({
 (function () {console.log("This will never run agein");})();
 
 (() => {console.log("This will also never run again");})();
+
+*/
+
+
+///////////////////////////////////////
+// Closures
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
