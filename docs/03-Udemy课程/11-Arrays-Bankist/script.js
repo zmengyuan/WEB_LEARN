@@ -73,4 +73,37 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+
 /////////////////////////////////////////////////
+// 142 Simple Array Methods
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(-1));
+console.log(arr.slice(1, -2));
+console.log(arr.slice());
+console.log([...arr]);
+
+// SPLICE ，改变了原数组，去除了提取的元素 第一个参数是索引，第二个参数提取几个
+// console.log(arr.splice(2));
+arr.splice(-1);
+console.log(arr);
+arr.splice(1, 2);
+console.log(arr);
+
+// REVERSE 原来数组也变化了
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2);
+
+// CONCAT
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]);
+
+// JOIN 数组变字符串
+console.log(letters.join(' - '));
