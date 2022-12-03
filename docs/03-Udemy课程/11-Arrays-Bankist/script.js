@@ -421,7 +421,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
-
+/*
 const calcAverageHumanAge = function (ages) {
   return ages.map((age) => {
     return age <= 2 ? 2 * age : 16 + age * 4;
@@ -433,3 +433,16 @@ const calcAverageHumanAge = function (ages) {
   );
 
 }
+*/
+
+
+///////////////////////////////////////
+// The find Method
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
