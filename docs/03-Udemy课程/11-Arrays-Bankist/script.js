@@ -640,7 +640,7 @@ console.log(movements);
 */
 
 
-
+/*
 ///////////////////////////////////////
 // More Ways of Creating and Filling Arrays
 const arr = [1, 2, 3, 4, 5, 6, 7];
@@ -678,3 +678,61 @@ labelBalance.addEventListener('click', function () {
 
   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
 });
+*/
+
+
+///////////////////////////////////////
+// Array Methods Practice
+// 计算所有账户的存入
+const bankDepositSum = accounts.map(acc => {
+    return acc.movements;
+  }).flat()
+  .filter(cur => {
+    return cur > 0;
+  })
+  .reduce((cal, cur) => {
+    return cal + cur
+  }, 0);
+console.log(bankDepositSum);
+
+// 2 计算多少存款 在银行至少有1000美元
+// const numDeposits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+console.log(numDeposits1000);
+
+// 3 一次性算出所有的存款  和 取款
+
+const {
+  deposits,
+  withdrawals
+} = accounts.flatMap((acc) => {
+    return acc.movements
+  })
+  .reduce((sum, cur) => {
+    cur > 0 ? sum.deposits += cur : sum.withdrawals += cur;
+    return sum;
+  }, {
+    deposits: 0,
+    withdrawals: 0
+  });
+console.log(deposits, withdrawals);
+
+// 4.
+// this is a nice title -> This Is a Nice Title
+
+
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+  return title.split(" ").map((word) => {
+    return exceptions.includes(word) ? word : word.at(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(" ");
+
+
+};
+console.log(convertTitleCase("this is a nice title"));;
