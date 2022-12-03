@@ -91,6 +91,30 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 // console.log(accounts);
 
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = acc.movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = acc.movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter((int, i, arr) => {
+      // console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+calcDisplaySummary(account1);
+
 const calPrintBalance = function (movements) {
   const balance = movements.reduce((acc, mov, i) => {
     return acc + mov;
@@ -349,7 +373,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
+/*
 const calcAverageHumanAge = function (ages) {
   const humanAgeArr = ages.map((age) => {
     return age <= 2 ? 2 * age : 16 + age * 4;
@@ -363,3 +387,23 @@ const calcAverageHumanAge = function (ages) {
   );
 }
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));;
+*/
+
+
+/*
+///////////////////////////////////////
+// The Magic of Chaining Methods
+const eurToUsd = 1.1;
+console.log(movements);
+
+// PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * eurToUsd;
+  })
+  // .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
+*/
