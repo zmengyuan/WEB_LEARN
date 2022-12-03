@@ -75,7 +75,7 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   })
 }
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 
 const createUsernames = function (accs) {
@@ -89,7 +89,6 @@ const createUsernames = function (accs) {
   })
 };
 createUsernames(accounts);
-// console.log(accounts);
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
@@ -112,16 +111,54 @@ const calcDisplaySummary = function (acc) {
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
+// calcDisplaySummary(account1);
 
-calcDisplaySummary(account1);
-
-const calPrintBalance = function (movements) {
+const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov, i) => {
     return acc + mov;
   }, 0);
   labelBalance.textContent = `${balance} EUR`;
 };
-calPrintBalance(account1.movements);
+// calPrintBalance(account1.movements);
+const updateUI = function (acc) {
+  // Display movements
+  displayMovements(acc.movements);
+
+  // Display balance
+  calcDisplayBalance(acc.movements);
+
+  // Display summary
+  calcDisplaySummary(acc);
+};
+
+///////////////////////////////////////
+// Event handlers
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  // Prevent form from submitting  在html中，当我们单击提交按钮，是为了重新加载页面。在输入框中按回车键也会触发点击提交键事件
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -435,7 +472,7 @@ const calcAverageHumanAge = function (ages) {
 }
 */
 
-
+/*
 ///////////////////////////////////////
 // The find Method
 const firstWithdrawal = movements.find(mov => mov < 0);
@@ -446,3 +483,4 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+*/
