@@ -164,7 +164,7 @@ btnLogin.addEventListener('click', function (e) {
   );
   console.log(currentAccount);
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+  if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
     // Display UI and message
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -192,7 +192,7 @@ btnTransfer.addEventListener('click', function (e) {
     amount > 0 &&
     receiverAcc &&
     currentAccount.balance >= amount &&
-    receiverAcc?.username !== currentAccount.username
+    receiverAcc.username !== currentAccount.username
   ) {
     // Doing the transfer
     currentAccount.movements.push(-amount);
@@ -251,3 +251,44 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+
+///////////////////////////////////////
+// Converting and Checking Numbers
+console.log(23 === 23.0); //trud
+
+// Base 10 - 0 to 9. 1/10 = 0.1. 3/10 = 3.3333333
+// Binary base 2 - 0 1
+console.log(0.1 + 0.2);
+console.log(0.1 + 0.2 === 0.3); //false
+
+// Conversion
+console.log(Number('23'));
+console.log(+'23'); //这样也可以转换成数字
+
+// Parsing parseInt第二个参数是进制
+console.log(Number.parseInt('30px', 10));
+console.log(Number.parseInt('e23', 10));
+
+console.log(Number.parseInt('  2.5rem  '));
+// 首选
+console.log(Number.parseFloat('  2.5rem  '));
+
+// parseFloat也是全局函数，但是现代JS更推荐在Number对象上调用
+// console.log(parseFloat('  2.5rem  '));
+
+// Check if value is NaN
+console.log(Number.isNaN(20)); //false
+console.log(Number.isNaN('20')); //false
+console.log(Number.isNaN(+'20X')); //true
+console.log(Number.isNaN(23 / 0)); //false 实际是infinite
+
+// Checking if value is number 用这个方法监测是否是数字
+console.log(Number.isFinite(20)); //true
+console.log(Number.isFinite('20')); //false
+console.log(Number.isFinite(+'20X')); //false
+console.log(Number.isFinite(23 / 0)); //false
+
+console.log(Number.isInteger(23)); //true
+console.log(Number.isInteger(23.0)); //true
+console.log(Number.isInteger(23 / 0)); //false
