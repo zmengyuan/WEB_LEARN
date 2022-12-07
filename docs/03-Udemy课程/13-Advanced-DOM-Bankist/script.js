@@ -35,7 +35,7 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-
+/*
 //186
 
 // Selecting elements
@@ -123,3 +123,32 @@ logo.classList.remove("c");
 
 // Do not use 
 // logo.className = "jos";
+*/
+
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+  console.log(e.target.getBoundingClientRect());
+
+  console.log(`Current scroll (x/y) ${window.pageXOffset},${window.pageYOffset}`);
+
+  console.log(`height/width viewport ${document.documentElement.clientHeight},${document.documentElement.clientWidth}`);
+
+  // 点击一次之后就不生效了，这是因为这里指定的top总是相对于view port，而不是document
+  // window.scrollTo(s1coords.left, s1coords.top);
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset); //window本身已经移动的+还剩下多少需要移动的。（档期那位置+当前滚动）
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: "smooth",
+  // });
+
+  // 更现代的方法,现代浏览器
+  section1.scrollIntoView({
+    behavior: "smooth"
+  });
+});
