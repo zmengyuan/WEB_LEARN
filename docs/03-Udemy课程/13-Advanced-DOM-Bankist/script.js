@@ -23,9 +23,9 @@ const closeModal = function () {
 // for (let i = 0; i < btnsOpenModal.length; i++)
 //   btnsOpenModal[i].addEventListener('click', openModal);
 
-btnsOpenModal.forEach((btn) => {
+btnsOpenModal.forEach(btn => {
   btn.addEventListener('click', openModal);
-})
+});
 
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
@@ -125,17 +125,21 @@ logo.classList.remove("c");
 // logo.className = "jos";
 */
 
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
-btnScrollTo.addEventListener("click", function (e) {
+btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
   console.log(s1coords);
   console.log(e.target.getBoundingClientRect());
 
-  console.log(`Current scroll (x/y) ${window.pageXOffset},${window.pageYOffset}`);
+  console.log(
+    `Current scroll (x/y) ${window.pageXOffset},${window.pageYOffset}`
+  );
 
-  console.log(`height/width viewport ${document.documentElement.clientHeight},${document.documentElement.clientWidth}`);
+  console.log(
+    `height/width viewport ${document.documentElement.clientHeight},${document.documentElement.clientWidth}`
+  );
 
   // 点击一次之后就不生效了，这是因为这里指定的top总是相对于view port，而不是document
   // window.scrollTo(s1coords.left, s1coords.top);
@@ -149,6 +153,20 @@ btnScrollTo.addEventListener("click", function (e) {
 
   // 更现代的方法,现代浏览器
   section1.scrollIntoView({
-    behavior: "smooth"
+    behavior: 'smooth',
   });
 });
+
+// 189
+const h1 = document.querySelector('h1');
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading : D');
+};
+h1.addEventListener('mouseenter', alertH1);
+//删除事件
+h1.removeEventListener('mouseenter', alertH1);
+
+// 事实上，对于每个事件（比如鼠标点击等等），都有一个像下面这样的on-event 属性。这是过去老派的做法，现在一般还是使用addEventListener
+// h1.onmouseenter = function (e) {
+//   alert('onmonseenter: Great! You are reading the heading : D');
+// };
