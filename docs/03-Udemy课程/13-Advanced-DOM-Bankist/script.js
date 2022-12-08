@@ -157,6 +157,7 @@ btnScrollTo.addEventListener('click', function (e) {
   });
 });
 
+/*
 // 189
 const h1 = document.querySelector('h1');
 const alertH1 = function (e) {
@@ -196,4 +197,39 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
+});
+
+*/
+
+
+// 192
+// Page navigation
+
+// 这样写可以完成功能，但是性能太差，想一想，如果有成百上千个nav__link，那就对应有成百上千个函数。所以需要变成事件委派
+// document.querySelectorAll(".nav__link").forEach(function (el) {
+//   el.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute("href");
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({
+//       behavior: "smooth"
+//     });
+//   })
+// });
+
+// 1、add eventListener to common parent element 
+// 2、Determine what element originated the event
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // Matching strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
 });
