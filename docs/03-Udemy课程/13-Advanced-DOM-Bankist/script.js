@@ -170,3 +170,30 @@ h1.removeEventListener('mouseenter', alertH1);
 // h1.onmouseenter = function (e) {
 //   alert('onmonseenter: Great! You are reading the heading : D');
 // };
+
+// 191
+const randomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+const randomColor = () => {
+  return `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+};
+console.log(randomColor());
+// 点击nav__link 因为有冒泡，所以默认它的父元素的点击事件都会执行
+// 注意函数中的e.target 不是指的外面的元素，而是指该事件首先发生的地方！！！e.currentTarget才是当前元素,e.currentTarget is that where the event happeded and it is also where the handler is attached to.
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(this === e.currentTarget); //true
+
+  //Stop propagation 一般还是没有停止传播
+  // e.stopPropagation();
+});
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+});
