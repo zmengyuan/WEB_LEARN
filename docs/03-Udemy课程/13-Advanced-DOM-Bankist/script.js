@@ -318,3 +318,19 @@ const handleHover = function (e, opacity) {
 // Passing Arguments To Event Handlers
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
+
+// 196 Sticky Navigation
+const initialCoords = section1.getBoundingClientRect();
+console.log(`initial: ${initialCoords.top}`);
+
+window.addEventListener("scroll", function (e) {
+  console.log(window.scrollY); //滚动条距离最上面的距离 ？
+
+  if (window.scrollY > initialCoords.top) {
+    nav.classList.add("sticky");
+  } else {
+    nav.classList.remove("sticky");
+  }
+
+
+})
