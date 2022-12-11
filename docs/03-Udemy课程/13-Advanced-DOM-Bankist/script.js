@@ -293,6 +293,7 @@ tabsContainer.addEventListener("click", function (e) {
 });
 
 // 195 Menu fade animation
+
 const handleHover = function (e, opacity) {
   if (e.target.classList.contains("nav__link")) {
     const link = e.target;
@@ -320,11 +321,12 @@ nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
 // 196 Sticky Navigation
+/*
 const initialCoords = section1.getBoundingClientRect();
-console.log(`initial: ${initialCoords.top}`);
+// console.log(`initial: ${initialCoords.top}`);
 
 window.addEventListener("scroll", function (e) {
-  console.log(window.scrollY); //滚动条距离最上面的距离 ？
+  // console.log(window.scrollY); //滚动条距离最上面的距离 ？
 
   if (window.scrollY > initialCoords.top) {
     nav.classList.add("sticky");
@@ -333,4 +335,43 @@ window.addEventListener("scroll", function (e) {
   }
 
 
-})
+});
+*/
+
+// 197 
+// entries实际是threshold的条目对应
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   })
+// };
+// const obsOptions = {
+//   root: null, //observer.observe观察的对象与此对象相交,null就是视口
+//   threshold: [0, 0.2], //相交多少 这个阈值进入和出都会触发回调函数
+// };
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector(".header");
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) {
+    console.log('放入');
+
+    nav.classList.add("sticky");
+  } else {
+    console.log('移除');
+
+    nav.classList.remove("sticky");
+  }
+
+};
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
