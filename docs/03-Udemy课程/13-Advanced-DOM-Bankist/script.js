@@ -20,6 +20,12 @@ const closeModal = function () {
   overlay.classList.add('hidden');
 };
 
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+const nav = document.querySelector("nav");
+
 // for (let i = 0; i < btnsOpenModal.length; i++)
 //   btnsOpenModal[i].addEventListener('click', openModal);
 
@@ -264,9 +270,7 @@ console.log(h1.parentElement.children);
 */
 
 // 194 Tabbed Component
-const tabs = document.querySelectorAll(".operations__tab");
-const tabsContainer = document.querySelector(".operations__tab-container");
-const tabsContent = document.querySelectorAll(".operations__content");
+
 
 tabsContainer.addEventListener("click", function (e) {
   // 因为我们想得到的是那个button按钮，而点击01 02 03 时候，会得到span，所以可以用close方法
@@ -287,3 +291,30 @@ tabsContainer.addEventListener("click", function (e) {
   document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add("operations__content--active");
 
 });
+
+// 195 Menu fade animation
+const handleHover = function (e, opacity) {
+  if (e.target.classList.contains("nav__link")) {
+    const link = e.target;
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+    const logo = link.closest(".nav").querySelector("img");
+
+    siblings.forEach(el => {
+      if (el != link) {
+        el.style.opacity = this;
+      }
+      logo.style.opacity = this;
+    });
+  }
+};
+
+// 注意这里因为要传参数，所以不能简单的写handleHover了
+// nav.addEventListener("mouseover", function (e) {
+//   handleHover(e, 0.5);
+// });
+// nav.addEventListener("mouseout", function (e) {
+//   handleHover(e, 1);
+// });
+// Passing Arguments To Event Handlers
+nav.addEventListener("mouseover", handleHover.bind(0.5));
+nav.addEventListener("mouseout", handleHover.bind(1));
