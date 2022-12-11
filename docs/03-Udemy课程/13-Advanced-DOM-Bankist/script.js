@@ -357,13 +357,13 @@ const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
   if (!entry.isIntersecting) {
-    console.log('放入');
+    // console.log('放入');
 
     nav.classList.add("sticky");
   } else {
-    console.log('移除');
+    // console.log('移除');
 
     nav.classList.remove("sticky");
   }
@@ -375,3 +375,25 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
+
+// 198
+const allSections = document.querySelectorAll(".section");
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  console.log('entry');
+
+  if (!entry.isIntersecting) {
+    return;
+  }
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+
+}
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+})
