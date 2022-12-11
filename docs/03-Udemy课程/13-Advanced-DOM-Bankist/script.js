@@ -234,6 +234,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 
 });
 
+/*
 // 193 DOM Traversing
 const h1 = document.querySelector("h1");
 // Going downwards : child
@@ -260,3 +261,29 @@ console.log(h1.parentElement.children);
     el.style.transform = "scale(0.5)";
   }
 })
+*/
+
+// 194 Tabbed Component
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+tabsContainer.addEventListener("click", function (e) {
+  // 因为我们想得到的是那个button按钮，而点击01 02 03 时候，会得到span，所以可以用close方法
+  const clicked = e.target.closest(".operations__tab");
+  // console.log(clicked);
+
+  // Guard clause  可能点击到空白处
+  if (!clicked) {
+    return;
+  }
+
+  tabs.forEach(t => t.classList.remove("operations__tab--active"));
+  clicked.classList.add("operations__tab--active");
+
+  // Activate content area
+
+  tabsContent.forEach(t => t.classList.remove("operations__content--active"));
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add("operations__content--active");
+
+});
