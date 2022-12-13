@@ -90,3 +90,23 @@ const h1 = document.querySelector('h1');
 console.dir(h1);
 
 console.dir(x => x + 1);
+
+// 212 Challenge
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+Car.prototype.accelerate = function () {
+  this.speed = this.speed + 10;
+  console.log(`acc ${this.speed}`);
+};
+Car.prototype.break = function () {
+  this.speed = this.speed - 5;
+  console.log(this.speed);
+};
+
+const bmw = new Car('BMW', 120);
+bmw.accelerate();
+bmw.break();
+const mercedes = new Car('MERCEDES', 95);
