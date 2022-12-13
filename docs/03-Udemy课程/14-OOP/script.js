@@ -7,9 +7,9 @@ const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
   //Never do this，多少对象就会创建多少这个方法的副本，为了解决这个问题，我们使用原型和原型继承
-  this.calcAge = function () {
-    console.log(2017);
-  };
+  // this.calcAge = function () {
+  //   console.log(2017);
+  // };
 };
 
 const jonas = new Person('Jonas', 1991);
@@ -20,3 +20,31 @@ console.log(jonas);
 // 4 function automatically returns that empty object from the beginning .但是实际上此时对象不再为空，返回的都是this指向的对象
 
 console.log(jonas instanceof Person);
+
+const jack = new Person('Jack', 1975);
+
+//Prototypes
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2017 - this.birthYear);
+};
+
+// 为什么有效？因为对象总是可以访问 methods and properties from its prototype,And the prototype of Jonas and Jack is person dot prototype
+// each object has a special property called a underscore underscore proto
+jonas.calcAge();
+// jonas.__proto__  this is the prototype of Jonas.It is not the prototype property,but it is simply the prototype.
+// so to prototype of the Jonas object is essentially the prototype property of the constructor function
+console.log(jonas.__proto__); //在new 的第三步创建了__proto__这个原型属性
+
+console.log(jonas.__proto__ === Person.prototype); //true,Person.prototype不是Person的原型，而是对象的原型
+
+console.log(Person.prototype.isPrototypeOf(jonas)); //true
+console.log(Person.prototype.isPrototypeOf(Person)); //false
+//.prototypeLinkedObject
+
+Person.prototype.species = 'Homo';
+console.log(jonas, jack.species);
+
+console.log(jonas.hasOwnProperty('firstName'));
+console.log(jonas.hasOwnProperty('species'));
