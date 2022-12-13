@@ -65,3 +65,28 @@ console.log(`Object的原型是空的`);
 console.log(Object.prototype.__proto__); //null
 
 // 对象（有原型_proto__） => 构造函数的prototype (有原型__proto__) => Object的prototype (没有原型了) => null
+
+//================================================
+// 211-Prototypal Inheritance On Built-In Objects
+
+// Object.prototype (top of prototype chain)
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor); //函数本身
+
+const arr = [3, 6, 4, 5, 9, 9]; //new Array === []
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.dir(h1);
+
+console.dir(x => x + 1);
