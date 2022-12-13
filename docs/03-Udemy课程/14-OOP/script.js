@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 // 只有函数声明和函数表达式可以build构造函数
 const Person = function (firstName, birthYear) {
   console.log(this);
@@ -110,3 +110,31 @@ const bmw = new Car('BMW', 120);
 bmw.accelerate();
 bmw.break();
 const mercedes = new Car('MERCEDES', 95);
+*/
+
+// class expression class仍然是一个函数
+// const PersonCl = class {};
+
+// class declaration
+// 在类上添加方法相当于在原型上添加方法，不会在对象上添加
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+  great() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype);
+// PersonCl.prototype.great = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+jessica.great();
