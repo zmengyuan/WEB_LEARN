@@ -48,3 +48,20 @@ console.log(jonas, jack.species);
 
 console.log(jonas.hasOwnProperty('firstName'));
 console.log(jonas.hasOwnProperty('species'));
+
+console.log(`jonas的原型:${jonas.__proto__}`);
+console.log(jonas.__proto__);
+console.log(`Person的prototype:${Person.prototype}`);
+console.log(Person.prototype);
+console.log(jonas.__proto__ === Person.prototype); //true
+
+console.log(`Person的原型`);
+console.log(Person.prototype.__proto__);
+console.log(`Object的prototype`);
+console.log(Object.prototype);
+console.log(Person.prototype.__proto__ === Object.prototype); //true
+
+console.log(`Object的原型是空的`);
+console.log(Object.prototype.__proto__); //null
+
+// 对象（有原型_proto__） => 构造函数的prototype (有原型__proto__) => Object的prototype (没有原型了) => null
