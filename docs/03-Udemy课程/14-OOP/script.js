@@ -118,8 +118,8 @@ const mercedes = new Car('MERCEDES', 95);
 // class declaration
 // 在类上添加方法相当于在原型上添加方法，不会在对象上添加
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName; //set fullName会执行
     this.birthYear = birthYear;
   }
   calcAge() {
@@ -128,13 +128,47 @@ class PersonCl {
   great() {
     console.log(`Hey ${this.firstName}`);
   }
+  get age() {
+    return 2037 - this.birthYear;
+  }
+  // 当我们设置一个已经存在的属性的时候，要加下划线
+  set fullName(name) {
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      alert('wrong');
+    }
+  }
+  // 有了这个getter方法，才能访问对象.fullName
+  get fullName() {
+    return this._fullName;
+  }
 }
-const jessica = new PersonCl('Jessica', 1996);
+const jessica = new PersonCl('Jessica Davis', 1996);
 console.log(jessica);
 jessica.calcAge();
+console.log(`jessica.age:${jessica.age}`);
 
 console.log(jessica.__proto__ === PersonCl.prototype);
 // PersonCl.prototype.great = function () {
 //   console.log(`Hey ${this.firstName}`);
 // };
 jessica.great();
+
+// =================================
+// 214 getter and setter
+const account = {
+  owner: 'Jonas',
+  movements: [200, 530, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+console.log(account.latest);
+account.latest = 50;
+console.log(account.movements);
