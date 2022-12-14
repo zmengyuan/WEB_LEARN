@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 // 只有函数声明和函数表达式可以build构造函数
 const Person = function (firstName, birthYear) {
   console.log(this);
@@ -29,7 +29,7 @@ Person.hey = function () {
 };
 
 Person.hey();
-
+*/
 /*
 //Prototypes
 console.log(Person.prototype);
@@ -240,3 +240,37 @@ const ford = new CarCl('ford', 120);
 ford.accelerate();
 ford.break();
 console.log(ford.speedUS);
+
+// 218
+console.log(`================218`);
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+Person.prototype.calcAge = function () {
+  console.log(2017 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  // Person(firstName, birthYear);//常规函数调用，this未定义
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+//必须在前面 链接原型
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+const mike = new Student('Mike', 2020, 'Computer');
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
