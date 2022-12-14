@@ -224,7 +224,7 @@ class CarCl {
     this.speed = this.speed + 10;
     console.log(`${this.make} is going at ${this.speed} km/h`);
   }
-  break() {
+  break () {
     this.speed = this.speed - 5;
     console.log(`${this.make} is going at ${this.speed} km/h`);
   }
@@ -256,7 +256,9 @@ const Student = function (firstName, birthYear, course) {
   Person.call(this, firstName, birthYear);
   this.course = course;
 };
-//必须在前面 链接原型
+
+
+//必须在前面 链接原型,这里右边返回的是空对象，所以要先执行，不然放到最后就会覆盖之前的
 Student.prototype = Object.create(Person.prototype);
 
 Student.prototype.introduce = function () {
@@ -266,11 +268,13 @@ const mike = new Student('Mike', 2020, 'Computer');
 mike.introduce();
 mike.calcAge();
 
-console.log(mike.__proto__);
+console.log(mike.__proto__); //Person 为什么？？？错了，需要解决Student.prototype.constructor = Student;
+console.log(mike.__proto__ === Student.prototype);
 console.log(mike.__proto__.__proto__);
 
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
+
+console.log(mike instanceof Student); //true
+console.log(mike instanceof Person); //true
+console.log(mike instanceof Object); //true
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);
