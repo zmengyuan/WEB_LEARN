@@ -1,5 +1,5 @@
 'use strict';
-/*
+
 // 只有函数声明和函数表达式可以build构造函数
 const Person = function (firstName, birthYear) {
   console.log(this);
@@ -23,6 +23,14 @@ console.log(jonas instanceof Person);
 
 const jack = new Person('Jack', 1975);
 
+Person.hey = function () {
+  console.log(`Hey there`);
+  console.log(this); //指向的是Person构造函数
+};
+
+Person.hey();
+
+/*
 //Prototypes
 console.log(Person.prototype);
 
@@ -143,6 +151,11 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  static hey() {
+    console.log(`Hey there`);
+    console.log(this);
+  }
 }
 const jessica = new PersonCl('Jessica Davis', 1996);
 console.log(jessica);
@@ -154,6 +167,8 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 //   console.log(`Hey ${this.firstName}`);
 // };
 jessica.great();
+
+PersonCl.hey();
 
 // =================================
 // 214 getter and setter
