@@ -291,7 +291,7 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 
 */
 
-
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -332,7 +332,8 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
-
+*/
+/*
 // 220
 class PersonCl {
   constructor(fullName, birthYear) {
@@ -409,3 +410,42 @@ StudentProto.introduce = function () {
 const jay = Object.create(StudentProto);
 jay.init("Jay", 2010, "Computer");
 console.log(jay);
+*/
+
+// 222
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+  }
+  deposit(val) {
+    this.movements.push(val);
+  }
+  withdraw(val) {
+    this.deposit(-val);
+  }
+  approveLoan(val) {
+    return true;
+  }
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+    }
+  }
+
+}
+const acc1 = new Account("Jonas", "Eur", 1111);
+
+
+// 这样不好，应该创建方法
+// acc1.movements.push(250);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+console.log(acc1);
