@@ -332,3 +332,52 @@ tesla.chargeBattery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
+
+// 220
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName; //set fullName会执行
+    this.birthYear = birthYear;
+  }
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+  great() {
+    console.log(`Hey ${this.firstName}`);
+  }
+  get age() {
+    return 2037 - this.birthYear;
+  }
+  // 当我们设置一个已经存在的属性的时候，要加下划线
+  set fullName(name) {
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      alert('wrong');
+    }
+  }
+  // 有了这个getter方法，才能访问对象.fullName
+  get fullName() {
+    return this._fullName;
+  }
+
+  static hey() {
+    console.log(`Hey there`);
+    console.log(this);
+  }
+}
+
+class Student extends PersonCl {
+  // 如果子类没有新的属性，则可以省略写构造函数，当new的时候会自动执行super(fullName,birthYear);
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+
+  }
+}
+const martha = new Student("Martha Jones", 2012, "Computer");
+martha.introduce();
