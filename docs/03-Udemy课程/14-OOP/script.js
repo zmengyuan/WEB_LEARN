@@ -381,3 +381,31 @@ class Student extends PersonCl {
 }
 const martha = new Student("Martha Jones", 2012, "Computer");
 martha.introduce();
+
+// 221 Object.create
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+  // 只是一个普通函数
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+// 手动设置对象的原型
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+}
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.fullName} and I study ${this.course}`);
+}
+
+const jay = Object.create(StudentProto);
+jay.init("Jay", 2010, "Computer");
+console.log(jay);
