@@ -11,95 +11,83 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-let map, mapEvent;
+class App {
+  #map;
+  #mapEvent;
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function (position) {
-    console.log(position);
-    const {
-      latitude,
-      longitude
-    } = position.coords;
-    console.log(`latitude:${latitude},longitude:${longitude}`);
+  constructor() {
+    this._getPosition();
+    // 如果这里不bind this,那_newWorkout的this就是form元素了
+    form.addEventListener('submit', this._newWorkout.bind(this));
+    inputType.addEventListener('change', this._toggleElevationField);
+  }
+  _getPosition() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          alert('Could not get your position');
+        }
+      );
+    }
+  }
 
+  _loadMap(position) {
+    const { latitude, longitude } = position.coords;
     const coords = [latitude, longitude];
-    map = L.map('map').setView(coords, 13);
-    // console.log(map);
 
-    // 瓦片 开放街道地图，这里的url可以改变地图外观
-    // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
+    console.log(this); //因为这里其实是在回调函数中的，就相当于普通函数，this是undefined，所以需要在外面绑定
 
+    this.#map = L.map('map').setView(coords, 13);
     L.tileLayer(
-      'https://api.mapbox.com/styles/v1/kengqiangxia/cj5jbah540hlj2rpgh3xptiek/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2VuZ3FpYW5neGlhIiwiYSI6ImNqNWpiMWZ5ZTIxYzgyd3BrYTN2NDN5aXEifQ.bqY03lR_2LZ0fttPOJ4jyw', {
-        attribution: '铿锵侠leaflet教程, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
-      }).addTo(map);
+      'https://api.mapbox.com/styles/v1/kengqiangxia/cj5jbah540hlj2rpgh3xptiek/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2VuZ3FpYW5neGlhIiwiYSI6ImNqNWpiMWZ5ZTIxYzgyd3BrYTN2NDN5aXEifQ.bqY03lR_2LZ0fttPOJ4jyw',
+      {
+        attribution:
+          '铿锵侠leaflet教程, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
+      }
+    ).addTo(this.#map);
 
     // Handling clicks on map
-    map.on("click", function (mapE) {
-      mapEvent = mapE;
-      console.log(mapEvent);
-      form.classList.remove("hidden");
-      inputDistance.focus();
+    this.#map.on('click', this._showForm.bind(this));
+  }
 
-      // const {
-      //   lat,
-      //   lng
-      // } = mapEvent.latlng;
+  _showForm(mapE) {
+    this.#mapEvent = mapE;
 
-      // L.marker([lat, lng]).addTo(map)
-      //   .bindPopup(L.popup({
-      //     maxWidth: 250,
-      //     minWidth: 250,
-      //     autoClose: false,
-      //     closeOnClick: false,
-      //     className: "running-popup",
-      //   })) //弹出窗口绑定标记
-      //   .setPopupContent("Workout")
-      //   .openPopup();
-    })
+    form.classList.remove('hidden');
+    inputDistance.focus();
+  }
 
+  _toggleElevationField() {
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+  }
 
-  }, function () {
-    alert("Could not get your position")
-  });
-
-
-  form.addEventListener("submit", function (e) {
+  _newWorkout(e) {
     //表单提交了会刷新页面
     e.preventDefault();
 
     //Clear input fields
-    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = "";
-
+    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value =
+      '';
 
     //Display marker
-    const {
-      lat,
-      lng
-    } = mapEvent.latlng;
+    const { lat, lng } = this.#mapEvent.latlng;
 
-    L.marker([lat, lng]).addTo(map)
-      .bindPopup(L.popup({
-        maxWidth: 250,
-        minWidth: 250,
-        autoClose: false,
-        closeOnClick: false,
-        className: "running-popup",
-      })) //弹出窗口绑定标记
-      .setPopupContent("Workout")
+    L.marker([lat, lng])
+      .addTo(this.#map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 250,
+          minWidth: 250,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+      ) //弹出窗口绑定标记
+      .setPopupContent('Workout')
       .openPopup();
-  });
-
-  inputType.addEventListener("change", function () {
-    inputElevation.closest(".form__row").classList.toggle("form__row--hidden");
-    inputCadence.closest(".form__row").classList.toggle("form__row--hidden");
-  })
-
-
-
-
-
-
+  }
 }
+
+const app = new App();
