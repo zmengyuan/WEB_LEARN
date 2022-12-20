@@ -70,7 +70,7 @@ class Cycling extends Workout {
 }
 const run1 = new Running([39, -12], 5.2, 24, 178);
 const cycling1 = new Cycling([39, -12], 27, 95, 523);
-console.log(run1, cycling1);
+
 ///////////////////////////////////////
 // APPLICATION ARCHITECTURE
 class App {
@@ -80,7 +80,13 @@ class App {
   #workouts = [];
 
   constructor() {
+    // Get user's position
     this._getPosition();
+
+    // Get data from local storage
+    this._getLocalStorage();
+
+    // Attach event handlers
     // 如果这里不bind this,那_newWorkout的this就是form元素了
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
@@ -101,7 +107,7 @@ class App {
     const { latitude, longitude } = position.coords;
     const coords = [latitude, longitude];
 
-    console.log(this); //因为这里其实是在回调函数中的，就相当于普通函数，this是undefined，所以需要在外面绑定
+    // console.log(this); //因为这里其实是在回调函数中的，就相当于普通函数，this是undefined，所以需要在外面绑定
 
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
     L.tileLayer(
@@ -114,6 +120,10 @@ class App {
 
     // Handling clicks on map
     this.#map.on('click', this._showForm.bind(this));
+
+    this.#workouts.forEach(work => {
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
@@ -192,6 +202,9 @@ class App {
 
     // Hide form + clear input fields
     this._hideForm();
+
+    // Set local storage to all workouts
+    this._setLocalStorage();
   }
 
   _renderWorkoutMarker(workout) {
@@ -283,8 +296,31 @@ class App {
       },
     });
 
-    // using the public interface
-    workout.click();
+    // using the public interface 禁用此方法，因为从local获取的会丢失原型链，
+    // workout.click();
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+
+    if (!data) return;
+
+    this.#workouts = data;
+
+    this.#workouts.forEach(work => {
+      this._renderWorkout(work);
+
+      // 错误，因为此时地图还没有加载，所以报错了
+      // this._renderWorkoutMarker(work);
+    });
+  }
+
+  reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 
