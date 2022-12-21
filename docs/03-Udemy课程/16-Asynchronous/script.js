@@ -126,21 +126,54 @@ const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
   countriesContainer.style.opacity = 1;
 };
+
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  });
+};
+// const getCountryData = function (country) {
+//   fetch('https://api.country.is')
+//     .then(
+//       response => {
+//         console.log(response);
+//         // 404的时候，Promise还是会正常执行，只是返回404，所以需要手动处理
+//         if (!response.ok)
+//           throw new Error(`Country not found (${response.status})`);
+
+//         return response.json();
+//       }
+//       // ,err => alert(err)
+//     )
+//     .then(data => {
+//       console.log(data);
+//       const neighbour = true;
+//       if (!neighbour) {
+//         return;
+//       }
+//       return fetch('https://api.country.is');
+//     })
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(err => {
+//       console.error(`${err} `);
+//       renderError(`Something went wrong  ${err.message}. Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
+
 const getCountryData = function (country) {
-  fetch('https://api.country.is')
-    .then(
-      response => response.json()
-      // ,err => alert(err)
-    )
+  getJSON('https://api.country.is')
     .then(data => {
       console.log(data);
       const neighbour = true;
-      if (!neighbour) {
-        return;
-      }
-      return fetch('https://api.country.is');
+      if (!neighbour) throw new Error('No neighbour found!');
+      return getJSON('https://api.country.is');
     })
-    .then(response => response.json())
     .then(data => console.log(data))
     .catch(err => {
       console.error(`${err} `);
