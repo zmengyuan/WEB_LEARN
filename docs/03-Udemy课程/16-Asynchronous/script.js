@@ -122,9 +122,16 @@ getCountryAndNeighbour('usa');
 //     });
 // };
 
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+};
 const getCountryData = function (country) {
   fetch('https://api.country.is')
-    .then(response => response.json())
+    .then(
+      response => response.json()
+      // ,err => alert(err)
+    )
     .then(data => {
       console.log(data);
       const neighbour = true;
@@ -134,6 +141,15 @@ const getCountryData = function (country) {
       return fetch('https://api.country.is');
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => console.log(data))
+    .catch(err => {
+      console.error(`${err} `);
+      renderError(`Something went wrong  ${err.message}. Try again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
 };
-getCountryData('australia');
+btn.addEventListener('click', function () {
+  getCountryData('australia');
+});
