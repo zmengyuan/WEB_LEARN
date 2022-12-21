@@ -43,7 +43,7 @@ getCountryData('portugal');
 getCountryData('usa');
 getCountryData('germany');
 */
-
+/*
 ///////////////////////////////////////
 // Welcome to Callback Hell
 const renderCountry = function (data, className = '') {
@@ -98,3 +98,25 @@ const getCountryAndNeighbour = function (country) {
 
 // getCountryAndNeighbour('portugal');
 getCountryAndNeighbour('usa');
+*/
+
+///////////////////////////////////////
+// Consuming Promises
+// Chaining Promises
+// Handling Rejected Promises
+// Throwing Errors Manually
+
+const request = fetch('https://restcountries.eu/rest/v2/name/');
+console.log(request); //Promise
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
