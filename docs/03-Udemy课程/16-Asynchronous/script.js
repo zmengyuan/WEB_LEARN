@@ -106,17 +106,25 @@ getCountryAndNeighbour('usa');
 // Handling Rejected Promises
 // Throwing Errors Manually
 
-const request = fetch('https://restcountries.eu/rest/v2/name/');
-console.log(request); //Promise
+// const request = fetch('https://restcountries.eu/rest/v2/name/');
+// console.log(request); //Promise
 
 // const getCountryData = function (country) {
-//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//   // fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//   fetch('https://api.country.is')
 //     .then(function (response) {
 //       console.log(response);
+//       // response.json()也是一个异步，返回一个Promise
 //       return response.json();
 //     })
 //     .then(function (data) {
 //       console.log(data);
-//       renderCountry(data[0]);
 //     });
 // };
+
+const getCountryData = function (country) {
+  fetch('https://api.country.is')
+    .then(response => response.json())
+    .then(data => console.log(data));
+};
+getCountryData('australia');
