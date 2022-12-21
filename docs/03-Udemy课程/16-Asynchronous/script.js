@@ -125,6 +125,15 @@ getCountryAndNeighbour('usa');
 const getCountryData = function (country) {
   fetch('https://api.country.is')
     .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const neighbour = true;
+      if (!neighbour) {
+        return;
+      }
+      return fetch('https://api.country.is');
+    })
+    .then(response => response.json())
     .then(data => console.log(data));
 };
 getCountryData('australia');
