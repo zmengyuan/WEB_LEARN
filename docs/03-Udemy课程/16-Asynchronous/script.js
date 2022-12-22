@@ -406,6 +406,7 @@ createImage('img/img-1.jpg')
   */
 
 //  262
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -472,3 +473,24 @@ console.log('1 Will get location');
 // } catch (err) {
 //   alert(err.message);
 // }
+*/
+
+// 265
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    const data1 = await getJSON('https://api.country.is');
+    const data2 = await getJSON('https://api.country.is');
+    const data3 = await getJSON('https://api.country.is');
+    console.log([data1.ip, data2.ip, data3.ip]);
+
+    const data = Promise.all([
+      getJSON('https://api.country.is'),
+      getJSON('https://api.country.is'),
+      getJSON('https://api.country.is'),
+    ]);
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
+get3Countries();
