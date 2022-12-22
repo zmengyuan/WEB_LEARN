@@ -360,6 +360,7 @@ btn.addEventListener('click', whereAmI);
 */
 
 // 261 challenge 2
+/*
 const imgContainer = document.querySelector('.images');
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -402,3 +403,29 @@ createImage('img/img-1.jpg')
   .catch(err => {
     console.error(err);
   });
+  */
+
+//  262
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+const whereAmI = async function (country) {
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+  console.log(resGeo);
+  const dataGeo = resGeo.json();
+  console.log(dataGeo);
+
+  // fetch('').then(res => console.log(res));
+
+  const res = await fetch(`https://api.country.is`);
+  console.log(res);
+  const data = await res.json();
+  console.log(data);
+};
+whereAmI('');
+console.log('First');
