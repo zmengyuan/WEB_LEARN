@@ -412,20 +412,39 @@ const getPosition = function () {
   });
 };
 const whereAmI = async function (country) {
-  const pos = await getPosition();
-  const { latitude: lat, longitude: lng } = pos.coords;
+  try {
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
 
-  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
-  console.log(resGeo);
-  const dataGeo = resGeo.json();
-  console.log(dataGeo);
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    console.log(resGeo);
+    // 因为出现403 404等错误的时候，promise不会拒绝，所以要手动处理
+    if (!resGeo.ok) {
+      throw new Error('Problem getting location data');
+    }
+    const dataGeo = resGeo.json();
+    console.log(dataGeo);
 
-  // fetch('').then(res => console.log(res));
+    // fetch('').then(res => console.log(res));
 
-  const res = await fetch(`https://api.country.is`);
-  console.log(res);
-  const data = await res.json();
-  console.log(data);
+    const res = await fetch(`https://api.country.is`);
+    console.log(res);
+    if (!res.ok) {
+      throw new Error('Problem getting country');
+    }
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
 };
 whereAmI('');
 console.log('First');
+
+// try {
+//   let y = 1;
+//   const x = 2;
+//   x = 3;
+// } catch (err) {
+//   alert(err.message);
+// }
