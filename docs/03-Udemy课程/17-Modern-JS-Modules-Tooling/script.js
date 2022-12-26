@@ -51,7 +51,7 @@ lastPost.then(last => console.log(last));
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
 */
-
+/*
 ///////////////////////////////////////
 // The Module Pattern
 
@@ -88,3 +88,18 @@ ShoppingCart2.addToCart('pizza', 2);
 console.log(ShoppingCart2);
 // 不能访问 undefined
 console.log(ShoppingCart2.shippingCost);
+*/
+/*
+///////////////////////////////////////
+// CommonJS Modules
+// nodeJS Export 无法在浏览器中运行
+export.addTocart = function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(
+    `${quantity} ${product} added to cart (sipping cost is ${shippingCost})`
+  );
+};
+
+// Import
+const { addTocart } = require('./shoppingCart.js');
+*/
