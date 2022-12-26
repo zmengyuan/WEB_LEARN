@@ -1,3 +1,4 @@
+/*
 // import {
 //   addToCart,
 //   totalPrice as price,
@@ -49,3 +50,41 @@ lastPost.then(last => console.log(last));
 // 如果有await，就更简单的获取了
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
+*/
+
+///////////////////////////////////////
+// The Module Pattern
+
+// 设置有的变量可返回，有的不可返回
+const ShoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 10;
+  const totalPrice = 237;
+  const totalQuantity = 23;
+
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(
+      `${quantity} ${product} added to cart (sipping cost is ${shippingCost})`
+    );
+  };
+
+  const orderStock = function (product, quantity) {
+    console.log(`${quantity} ${product} ordered from supplier`);
+  };
+
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})();
+
+// 因为是module范围，所以在控制台不能访问ShoppingCart2
+// 为什么在这里还可以操控ShoppingCart2，即使这个函数已经在之前运行完毕并返回了。因为闭包！闭包允许函数访问对所有存在的变量基本上它的出生地
+ShoppingCart2.addToCart('apple', 4);
+ShoppingCart2.addToCart('pizza', 2);
+console.log(ShoppingCart2);
+// 不能访问 undefined
+console.log(ShoppingCart2.shippingCost);
