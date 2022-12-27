@@ -125,3 +125,25 @@ console.log(stateDeepClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+class Person {
+  greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}`);
+  }
+}
+const jonas = new Person('Jonas');
+
+console.log('Jons' ?? null);
+
+// 这个编译之后ES6的find()方法还在，没有被编译成ES5,同样的Promise也不会被转，
+console.log(cart.find(el => el.quantity >= 2));
+Promise.resolve('Test').then(x => console.log(x));
+
+// 这些新特性根本不会转换，所以对于这些新功能，我们必须进行polyfill
+//npm i core-js
+import 'core-js/stable';
+
+// polifilling async functions
+import 'regenerator-runtime/runtime';
