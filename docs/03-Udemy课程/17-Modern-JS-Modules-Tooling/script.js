@@ -1,4 +1,3 @@
-/*
 // import {
 //   addToCart,
 //   totalPrice as price,
@@ -23,7 +22,7 @@ console.log(totalPrice);
 import { cart } from './shoppingCart.js';
 
 console.log(cart);
-
+/*
 ///////////////////////////////////////
 // Top-Level Await (ES2022)
 
@@ -106,8 +105,9 @@ const { addTocart } = require('./shoppingCart.js');
 
 ///////////////////////////////////////
 // Introduction to NPM
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
-// import cloneDeep from 'lodash-es';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// 使用了构建工具后，就会自动在node文件中找到，不需要完整的路径了。这适用于html\css\js模块|CommonJS模块\img等
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -121,3 +121,7 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 console.log(stateClone); //stateClone的也跟着变了
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
