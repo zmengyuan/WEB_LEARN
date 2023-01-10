@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box1 {
+        width: 800px;
+        height: 800px;
+        background-color: silver;
+      }
+      .box1 div {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 100px;
+      }
+      .box2 {
+        background-color: #bfa;
+        /*
+        过渡效果一定是发生了某种动作，造成了属性的变化才执行，我们希望一上来就执行，这时候就动画。
+        */
+        /* transition: all 2s; */
+
+        /* 设置动画 */
+        animation-name: test;
+        animation-duration: 2s;
+        animation-delay: 2s;
+        animation-timing-function: linear;
+        /* 动画执行的次数 infinite 无限执行 */
+        animation-iteration-count: infinite;
+        /*
+        animation-direction 指定动画运行的方向
+          ● normal 从from向to运行，每次都是这样，默认值
+          ● reverse 从to向from运行，每次都是这样
+          ● alternate 从from向to运行，重复执行动画时反向执行
+          ● alternate-reverse 从to向from运行，重复执行动画时反向执行
+        */
+        animation-direction: alternate;
+        /* animation-play-state 设置动画的执行状态 running 动画执行，默认值 */
+
+        /* animation-fill-mode 动画的填充模式
+          ● none 动画执行完毕，元素回到原来位置，默认值
+          ● forwards 动画执行完毕，元素会停止在动画结束的位置
+          ● backwards 动画延时等待时，元素就会直接处于开始位置from了
+          ● both 结合了forwards和backwards
+        */
+        animation-fill-mode: both;
+      }
+      .box3 {
+        background-color: orange;
+        transition: all 2s;
+      }
+      /* .box1:hover div {
+        margin-left: 700px;
+      } */
+      /*
+      动画和过渡类似，都是可以实现一些动态的效果，不同的是
+        - 过渡需要在某个属性发生变化时才会触发
+        - 动画可以自动触发动态效果
+      设置动画效果，必须先要设置一个关键帧，关键帧设置了动画执行每一个步骤 （比如一个电影切换了10张图，就是10帧）
+
+      */
+      @keyframes test {
+        /* 可以写绝对值，也可以写百分比 */
+        from {
+          margin-left: 0;
+        }
+
+        to {
+          margin-left: 700px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <div class="box2"></div>
+      <!-- <div class="box3"></div> -->
+    </div>
+  </body>
+</html>
