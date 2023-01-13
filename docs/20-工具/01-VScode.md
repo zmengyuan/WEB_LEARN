@@ -1,16 +1,26 @@
-# 设置
+# Manage
 
-## 设置美观
+## Color Theme
+- Monokai Pro
 
-- settings-defult formatter 选择 prettier
-- tab size:2
-- auto closing tags
+## File Icon Theme
+- Seti
 
-## 设置保存相关
+## Settings
 
-- settings-format on save 勾选复选框
-- settings-auto save:onFocusChange
+### 美观类
+- `defult formatter` 选择 prettier
+- `tab size`:2
+- `auto closing tags`
 
+
+### 保存相关
+
+- `Format on save` 勾选复选框
+- `Auto Save` onFocusChange
+
+### 编辑
+- `Multi Cursor Modifier`：设置多光标编辑的按键
 # 快捷键
 
 - 光标移动到下一行 ctrl+enter
@@ -25,16 +35,19 @@
 - vue 结构： <v
 - 宽度样式 w120
 
-## 插件
+# 插件
 
-### 美观类
+## 美观类
 
-- prettier
-- one monokai
+- Prettier：Code formatter
 - image preview
 - color highlight
 
-### 便捷类
+### 主题
+- one monokai
+- Monokai Pro
+
+## 便捷类
 
 - live server
 - auto rename tag
