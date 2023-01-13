@@ -9,7 +9,7 @@
 ## Settings
 
 ### 美观类
-- `defult formatter` 选择 prettier
+- `defult formatter` 选择 prettier,还可以对该插件进行设置，在根目录下创建文件.prettierrc
 - `tab size`:2
 - `auto closing tags`
 
@@ -49,5 +49,6 @@
 
 ## 便捷类
 
-- live server
-- auto rename tag
+- `live server` :如果用Node.js-npm install live-server，然后使用命令行`live-server`
+- `auto rename tag`
+- `TODO Highlight`
