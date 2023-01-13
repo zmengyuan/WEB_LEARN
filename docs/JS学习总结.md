@@ -131,6 +131,13 @@ console.log(jonas['lastName']);
 console.log(jonas.calcAge());
 ```
 
+## Math
+
+### 类操作
+- `Math.random()` 返回一个浮点数，伪随机数在范围从0 到小于1，也就是说，从 0（包括 0）往上，但是不包括 1（排除 1）
+- `Math.trunc()` 将数字的小数部分去掉，只保留整数部分
+
+
 # 循环
 ## fori循环
 ```js
@@ -154,3 +161,41 @@ for (let i = 0; i < jonas.length; i++) {
 ```
 
 ## while循环
+
+# DOM
+**Document——Element——Text**
+DOM操作其实是WEB API，它是用JS编写的库。（有浏览器实现的官方的DOM规范）除了DOM操作，WEB API还包含其他很多，例如计时器、获取API等等
+
+## Document
+### 实例操作
+- element = document.querySelector(selectors) ：当通过此方法获取element后，该元素就可以看作html中的一个元素，所以对html该元素的操作都可以获取和赋值了
+
+## Element
+### 实例操作
+- `element.style.元素属性`
+- element.addEventListener("事件名称",function(){})
+
+## Node
+### 实例操作
+- `textContent` 属性表示一个节点及其后代的文本内容
+> textContent、innerText、innerHTML的区别和差异
+> 
+> 1 、textContent属性可以获取指定节点的文本及其后代节点中文本内容，也包括`<script>`和`<style>`元素中的内容；
+> innerText也是获取指定节点的文本及其后代节点中文本内容，但不能获取`<script>`和`<style>`元素中的内容。
+> innerHTML是获取HTML文本结构内容。
+> 
+> 2、textContent会获取display:none的节点的文本；而innerText好像会感知到节点是否呈现一样，不作返回。
+> 也就是说，textContent能够获取元素的所有子节点上的文本，不管这个节点是否呈现；而innerText只返回呈现到页面上的文本。
+> 
+> 3、要注意设置文本时被替换的可不只是文本了；这时textContent 、innerText属性相当于innerHTML属性，会把指定节点下的所有子节点也一并替换掉。
+> 
+> 4、由于 innerText 受 CSS 样式的影响，它会触发重排（reflow），但 textContent 不会。
+
+
+
+
+
+
+
+
+
