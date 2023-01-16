@@ -169,10 +169,15 @@ DOM操作其实是WEB API，它是用JS编写的库。（有浏览器实现的�
 ## Document
 ### 实例操作
 - element = document.querySelector(selectors) ：当通过此方法获取element后，该元素就可以看作html中的一个元素，所以对html该元素的操作都可以获取和赋值了
+- Keyboard events are called global events, bacause they do not happen on one specific element.所以我们都在document上添加键盘事件。有三种键盘事件：keydown(只要按) keypress(要是能产生字符的键) keyup
 
 ## Element
 ### 实例操作
 - `element.style.元素属性`
+- `element.classList` 
+  - remove("属性名")
+  - add("属性名")
+  - contains("属性名")
 - element.addEventListener("事件名称",function(){})
 
 ## Node
