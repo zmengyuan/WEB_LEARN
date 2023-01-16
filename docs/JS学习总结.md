@@ -175,9 +175,10 @@ DOM操作其实是WEB API，它是用JS编写的库。（有浏览器实现的�
 ### 实例操作
 - `element.style.元素属性`
 - `element.classList` 
-  - remove("属性名")
-  - add("属性名")
-  - contains("属性名")
+  - remove("className")
+  - add("className")
+  - contains("className")
+  - toggle("className")：如果这个属性有，就remove,没有就add
 - element.addEventListener("事件名称",function(){})
 
 ## Node
