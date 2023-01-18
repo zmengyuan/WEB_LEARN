@@ -32,3 +32,45 @@ Facebook
 - 原型、原型链
 - 数组常用方法
 - 模块化
+
+## React的基本使用
+旧版本：16.8
+我们写react不是写原生js，是写的jsx(读：JS叉)
+相关js库：
+- react.js：React核心库。
+- react-dom.js：提供操作DOM的react扩展库。
+- babel.min.js：解析JSX语法代码转为JS代码的库。
+
+```html
+<html>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库,引入了全局就多了一个React变量 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM 全局多了ReactDOM-->
+    <script
+      type="text/javascript"
+      src="../js/react-dom.development.js"
+    ></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 此处一定要写babel -->
+    <script type="text/babel">
+      //1.创建虚拟DOM
+      const VDOM = (<h1>Hello,React</h1>); /* 此处一定不要写引号，因为不是字符串 */
+      //2.渲染虚拟DOM到页面，你把哪个虚拟DOM渲染到哪个容器
+      ReactDOM.render(VDOM, document.getElementById("test"));
+
+      // 下面两行会替换原来的，而不是追加
+      // const VDOM2 = <h1>Hello,React</h1>;
+      // ReactDOM.render(VDOM2, document.getElementById("test"));
+    </script>
+  </body>
+</html>
+
+```
+
+打开会发现提醒：`babel.min.js:24 You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/` 这是因为浏览器打开的时候才发现它是babel,如果是真实环境就不能用，太多一起编译可能会白屏。
