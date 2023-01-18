@@ -74,3 +74,22 @@ Facebook
 ```
 
 打开会发现提醒：`babel.min.js:24 You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/` 这是因为浏览器打开的时候才发现它是babel,如果是真实环境就不能用，太多一起编译可能会白屏。
+
+## JSX
+为什么React要用JSX，不用原生的JS。因为原生JS创建虚拟DOM太繁琐了
+
+```js
+//jsx
+const VDOM = (
+  <h1 id="title">
+    <span>Hello,React</span>
+  </h1>
+);
+//对比原生js
+const VDOM = React.createElement(
+  "h1",
+  { id: "title" },
+  React.createElement("span", {}, "Hello,React")
+);
+```
+其实JSX被babel翻译之后就是原生JS，JSX就像一种语法糖
