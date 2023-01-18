@@ -93,3 +93,8 @@ const VDOM = React.createElement(
 );
 ```
 其实JSX被babel翻译之后就是原生JS，JSX就像一种语法糖
+
+**虚拟DOM和真实DOM**
+- 本质是Object类型的对象（一般对象）
+- 虚拟DOM比较“轻”，真实DOM比较“重”，因为虚拟DOM是React内部在用，无需真实DOM上那么多的属性。
+- 虚拟DOM最终会被React转化为真实DOM，呈现在页面上。
