@@ -1,10 +1,10 @@
 # Manage
 
 ## Color Theme
-- Monokai Pro
+- `Monokai Pro`
 
 ## File Icon Theme
-- Seti
+- `Seti`
 
 ## Settings
 
@@ -39,13 +39,13 @@
 
 ## 美观类
 
-- Prettier：Code formatter
-- image preview
-- color highlight
+- `Prettier`：Code formatter
+- `image preview`
+- `color highlight`
 
 ### 主题
-- one monokai
-- Monokai Pro
+- `one monokai`
+- `Monokai Pro`
 
 ## 便捷类
 

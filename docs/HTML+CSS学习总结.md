@@ -1,3 +1,5 @@
+
+
 # 标签分类
 
 - table
@@ -9,13 +11,8 @@
 
 ## 块级元素
 
-- h1~h6
 - hgroup
-- p
 - blockquote
-- ol
-- ul
-- li
 - embed：IE8不能使用audio
 - dl
 - dt
@@ -23,13 +20,8 @@
 
 **h5提供**
 
-- header
-- footer
-- nav
 - main
-- article
 - section
-- aside：和主体相关的其他内容（侧边栏）
 - summary
 - figure
 - figcaption
@@ -48,9 +40,6 @@
 
 - q
 - br
-- em
-- strong
-- a
 
 **h5提供**
 
@@ -71,39 +60,6 @@
 - 行内元素可以设置`border`，垂直方向的`border`不会影响页面的布局
 - 行内元素可以设置`margin`，垂直方向的`margin`不会影响页面的布局
 
-## 替换元素
-
-兼具行内和块状元素的特点
-
-**img**
-
-不独占一行
-
-对齐问题
-
-```css
-<style>
-    .imgDiv {
-        border: 5px seagreen solid;
-    }
-
-    .imgDiv img {
-        width: 400px;
-        height: 300px;
-        /* 只要不是基线对齐，就能消除底部缝隙 */
-vertical-align: top;
-vertical-align: bottom;
-vertical-align: middle;
-    }
-</style>
-
-<div class="imgDiv">
-    <img src="/assets/news.png" alt="">
-</div>
-```
-
-
-
 ## iframe
 
 ## 行内块元素
@@ -116,24 +72,15 @@ vertical-align: middle;
 
 ## 基本通用属性
 
-- width
-- height
 - border（border-四方向）：其顺序是按顺时针方向设置的，剩下的可以由矩形的对称性推导出来
   - border-width
   - border-color：默认使用color的颜色值
   - border-style
-- padding（padding-四方向）
-- margin（margin-四方向）：如果我们设置的左和上外边距会移动元素自身，设置下和右外边距会移动其他元素
 - overflow（overflow-两坐标）：设置父元素如何处理溢出的子元素
-- display：`inline`,`block`,`inline-block`,`table`,`none`
 - visibility:`visible`,`hidden`
-- box-sizing：`content-box`，`border-box`
 - outline：不会改变布局
 - box-shadow：水平偏移量，垂直偏移量，阴影的模糊半径，阴影的颜色
 - border-radius：可以分别指定四个角的圆角，只要记住遵循顺时针方向和矩形中心点对称原则，与`border`不同的是，`border`是从`上`开始顺时针设置，而圆角是从`左上`开始
-- float
-- clear 清理浮动影响,（本质是为元素添加一个`margin-top`属性，值由浏览器自动计算）
-- position
 - z-index
 - transform
   - scale(1.5)：变为原来的1.5倍，并且不改变原来布局
@@ -148,21 +95,11 @@ vertical-align: middle;
 
 **字体**
 
-- color
-- font-size
-- font-family
 - @font-face
-- line-height（认真看！！）它会把除了字体本身大小以外多余的平均分配
-  - 它的基准是字本身的大小，推荐使用数字设置
-- font-style
 - font-variant
-- font-weight
-- text-align：文本的水平对齐
 - vertical-align：元素的垂直对齐
 
 **背景**
-
-- background-color
 
 - background-image
 
@@ -187,46 +124,11 @@ vertical-align: middle;
 - `background-size` 设置背景图片的大小 
 - `background-attachment` 背景图片是否跟随元素移动 
 
-**定位之后**
-
-- left
-- top
-
 ## 特殊标签属性
 
 # 选择器
 
 ## 单个选择器
-
-**通用选择器**
-
-```css
-*{}
-```
-
-**元素选择器**
-
-elementname{}
-
-```css
-p{}
-```
-
-**类选择器**
-
-.classname{}
-
-```css
-.bule{}
-```
-
-**ID选择器**
-
-#idname{}
-
-```css
-#red{}
-```
 
 **属性选择器**
 
@@ -276,29 +178,9 @@ div.red{
 }
 ```
 
-**并集选择器**
 
-同时选择多个选择器对应的元素
-
-选择器1,选择器2,选择器3,选择器n{}
-
-```css
-h1,span{
-    color: green;
-}
-```
 
 ## 关系选择器
-
-- 父元素：直接包含子元素的元素叫做父元素
-
-- 子元素：直接被父元素包含的元素是子元素
-
-- 祖先元素：直接或间接包含后代元素的元素叫做祖先元素；一个元素的父元素也是它的祖先元素
-
-- 后代元素：直接或间接被祖先元素包含的元素叫做后代元素；子元素也是后代元素
-
-- 兄弟元素：拥有相同父元素的元素是兄弟元素
 
 **子元素选择器**
 
@@ -307,14 +189,6 @@ h1,span{
 ```css
 div.box > p > span{
 }
-```
-
-**后代元素选择器**
-
-祖先 后代
-
-```css
-div span{}
 ```
 
 **兄弟元素选择器**
@@ -332,7 +206,7 @@ p ~ span{
 
 ## 伪类选择器
 
-- `:first-child` 第一个子元素
+
 - `:last-child` 最后一个子元素
 - `:nth-child()` 选中第n个子元素 
 - `:first-of-type` 同类型中的第一个子元素
@@ -341,19 +215,9 @@ p ~ span{
 
 - `:nth-of-type()` 选中同类型中的第n个子元素
 - `:not()`否定伪类，将符合条件的元素从选择器中去除
-- `:link` 未访问的链接
 
-- `:visited` 已访问的链接 
-
-- - 由于隐私的原因，所以`visited`这个伪类只能修改链接的颜色
-
-- `:hover` 鼠标悬停的链接
-
-- `:active` 鼠标点击的链接
 
 ## 伪元素选择器
-
-伪元素，表示页面中一些特殊的并不真实的存在的元素（特殊的位置）
 
 - `::first-letter` 表示第一个字母
 
@@ -361,31 +225,6 @@ p ~ span{
 
 - `::selection` 表示选中的内容
 
-- `::before` 元素的开始
-
-- `::after` 元素的最后
-
-- `::before`和`::after` 必须结合`content`属性来使用
-
-
-
-# 样式的继承
-
-字体类属性一般会继承
-
-# 选择器的权重
-
-内联样式  1,0,0,0
-
-id选择器  0,1,0,0
-
-类和伪类选择器 0,0,1,0
-
-元素选择器 0,0,0,1
-
-通配选择器 0,0,0,0
-
-继承选择器 没有优先级
 
 # 水平方向布局
 
