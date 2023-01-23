@@ -18,6 +18,21 @@
       border:4px solid black;
       width:825px;
       margin: 50px auto;
+      position: relative;
+    }
+    .sale{
+      color: #fff;
+      background-color: #ec2f2f;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 7px 15px;
+      /* 这里可以用这种，或者不用这个，然后设置宽度和居中 */
+      display: inline-block;
+      
+      position: absolute;
+      left: -34px;
+      top: -17px;
+      letter-spacing: 2px;
     }
     .product-title{
       text-transform:uppercase;
@@ -40,10 +55,36 @@
 
     .more-info:link,.more-info:visited{
       color:black;
+      margin-bottom: 30px;
+      display: inline-block;
     }
     .more-info:hover,.more-info:active{
       text-decoration:none;
     }
+    
+    .color{
+      width: 22px;
+      height: 22px;
+      background-color: #000;
+      display: inline-block;
+      /* margin-right: 10px; */
+    }
+    .color-blue{
+      background-color: #2f6ee2;
+    }
+    .color-red{
+      background-color: #ec2f2f;
+    }
+    .color-yellow{
+      background-color: #f0bf1e;
+    }
+    .color-green{
+      background-color: #90cc20;
+    }
+    .color-brown{
+      background-color: #885214;
+    }
+
     .details-title{
       text-transform:upperCase;
       font-size:16px;
@@ -80,6 +121,7 @@
 </head>
 <body>
   <article class="product">
+    <p class="sale">SALE</p>
     <h2 class="product-title">Converse Chuck Taylor All Star Low Top
     </h2>
     <img src="https://i.ibb.co/Jr7Wh1d/challenges.jpg" width="250" height="250"/>
@@ -87,6 +129,14 @@
     <p class="shipping">Free shipping</p>
     <p>Ready to dress up or down,these classic canvas Chucks are an everyday wardobe stop.</p>
     <a class="more-info" href="#">More information &rarr; </a>
+    <div class="colors">
+      <div class="color"></div>
+      <div class="color color-blue"></div>
+      <div class="color color-red"></div>
+      <div class="color color-yellow"></div>
+      <div class="color color-green"></div>
+      <div class="color color-brown"></div>
+    </div>
     <h3 class="details-title">Product details </h3>
     <ul class="details-list">
       <li>Lightweight,durable canvas sneaker</li>
