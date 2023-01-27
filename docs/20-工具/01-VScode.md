@@ -1,18 +1,20 @@
 # Manage
 
 ## Color Theme
+
 - `Monokai Pro`
 
 ## File Icon Theme
+
 - `Seti`
 
 ## Settings
 
 ### 美观类
-- `defult formatter` 选择 prettier,还可以对该插件进行设置，在根目录下创建文件.prettierrc
+
+- `default formatter` 选择 prettier,还可以对该插件进行设置，在根目录下创建文件.prettierrc
 - `tab size`:2
 - `auto closing tags`
-
 
 ### 保存相关
 
@@ -20,7 +22,9 @@
 - `Auto Save` onFocusChange
 
 ### 编辑
+
 - `Multi Cursor Modifier`：设置多光标编辑的按键
+
 # 快捷键
 
 - 光标移动到下一行 ctrl+enter
@@ -44,11 +48,14 @@
 - `color highlight`
 
 ### 主题
+
 - `one monokai`
 - `Monokai Pro`
 
 ## 便捷类
 
-- `live server` :如果用Node.js-npm install live-server，然后使用命令行`live-server`
+- `live server` :如果用 Node.js-npm install live-server，然后使用命令行`live-server`
 - `auto rename tag`
 - `TODO Highlight`
+- `vue3-snippets`
+- `vetur`
