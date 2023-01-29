@@ -112,6 +112,9 @@ CSS讲解：介绍CSS，Styling Text，Selectors，Color，Pseudo-Classes，Styl
 - `height`
 - `border` 其顺序是按顺时针方向设置的，剩下的可以由矩形的对称性推导出来
 - `box-sizing` ：`content-box`，`border-box`就是width = width + padding+ border = element width
+- `box-shadow` 水平 垂直 阴影的模糊度 放大阴影（可选）阴影颜色 `box-shadow: 0px 20px 30px 0px rgb(0, 0, 0, 0.07);`
+- `border-radius`
+  - `border-bottom-left-radius`
 
 **定位**
 
@@ -125,6 +128,11 @@ CSS讲解：介绍CSS，Styling Text，Selectors，Color，Pseudo-Classes，Styl
 
 - `float`
 - `clear` 清除浮动影响，(本质是为元素添加一个`margin-top`属性，值由浏览器自动计算）
+
+**SVG**
+- `stroke` means color
+- `width`
+- `height`
 
 ### 继承
 
