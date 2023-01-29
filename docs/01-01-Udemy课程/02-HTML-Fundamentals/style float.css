@@ -14,8 +14,6 @@ body {
 }
 .container {
   /* background-color: rebeccapurple; */
-  display: flex;
-  gap: 40px;
 }
 .product {
   border: 4px solid black;
@@ -45,30 +43,32 @@ body {
   padding: 15px;
 }
 .product-img {
+  float: left;
+  margin-right: 40px;
 }
 .product-info {
   /* 825-8-250-80 */
-  flex: 1;
-
+  width: 243px;
+  float: left;
+  margin-right: 40px;
   margin-top: 20px;
 }
-.product-price {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
+
 .price {
   font-size: 24px;
+  float: left;
 }
 .shipping {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: bold;
   color: #777;
-
+  margin-bottom: 20px;
+  float: right;
   margin-top: 8px;
 }
 .product-description {
+  clear: both;
   margin-bottom: 10px;
 }
 
@@ -82,15 +82,12 @@ body {
 .more-info:active {
   text-decoration: none;
 }
-.product-colors {
-  display: flex;
-  gap: 10px;
-}
+
 .color {
   width: 22px;
   height: 22px;
   background-color: #000;
-
+  display: inline-block;
   /* margin-right: 10px; */
 }
 .color-blue {
@@ -109,7 +106,8 @@ body {
   background-color: #885214;
 }
 .product-details {
-  flex: 1;
+  width: 243px;
+  float: left;
   margin-top: 20px;
 }
 .details-title {
