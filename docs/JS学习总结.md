@@ -1,60 +1,8 @@
-- Linking a JavaScript File
-- Values and Variables
-- Data Types
-- let, const and var
-- Basic Operators
-- Operator Precedence
-- Strings and Template Literals
-- Taking Decisions: if / else Statements
-- Type Conversion and Coercion
-- Truthy and Falsy Values
-- Equality Operators: == vs. ===
-- Logical Operators
-- The switch Statement
-- Statements and Expressions
-- The Conditional (Ternary) Operator
-- Activating Strict Mode
-- Functions
-- Function Declarations vs. Expressions
-- Arrow functions
-- Functions Calling Other Functions
-- Reviewing Functions
-- Coding Challenge #1
-- Introduction to Arrays
-- Basic Array Operations (Methods)
-- Coding Challenge #2
-- Introduction to Objects
-- Dot vs. Bracket Notation
-- Object Methods
-- Coding Challenge #3
-- Iteration: The for Loop
-- Looping Arrays, Breaking and Continuing
-- Looping Backwards and Loops in Loops
-- The while Loop
-- Coding Challenge #4
-- Using Google, StackOverflow and MDN
-- Debugging with the Console and Breakpoints
-- Coding Challenge #1
-- Part 5
-- What's the DOM and DOM Manipulation
-- Selecting and Manipulating Elemetns
-- Handling Click Events
-- Manipulating CSS Styles
-- Destructuring Arrays
-- Destructuring Objects
-- The Spread Operator (...)
-- Rest Pattern and Parameters
-- Short Circuiting (&& and ||)
-- The Nullish Coalescing Operator
-- Logical Assignment Operators
-- Coding Challenge #1
-- The for-of Loop
-- Enhanced Object Literals
-- Optional Chaining (?.)
-- Looping Objects: Object Keys, Values, and Entries
-- Set
-- Map
-- String
+- Linking a JavaScript File；Values and Variables；Data Types；let, const and var；Basic Operators；Operator Precedence；Strings and Template Literals；Taking Decisions: if / else Statements；Type Conversion and Coercion；Truthy and Falsy Values；Equality Operators: == vs. ===；Logical Operators；The switch Statement；Statements and Expressions；The Conditional (Ternary) Operator；Activating Strict Mode；Functions；Function Declarations vs. Expressions；Arrow functions；Functions Calling Other Functions；Reviewing Functions；Coding Challenge #1；Introduction to Arrays；Basic Array Operations (Methods)；Coding Challenge #2；Introduction to Objects；Dot vs. Bracket Notation；Object Methods；Coding Challenge #3；Iteration: The for Loop；Looping Arrays, Breaking and Continuing；Looping Backwards and Loops in Loops；The while Loop；Coding Challenge #4
+- Using Google, StackOverflow and MDN；Debugging with the Console and Breakpoints；Coding Challenge #1
+- Part 5 What's the DOM and DOM Manipulation；Selecting and Manipulating Elemetns；Handling Click Events；Manipulating CSS Styles
+- Part 9 Destructuring Arrays；Destructuring Objects；The Spread Operator (...)；Rest Pattern and Parameters；Short Circuiting (&& and ||)；The Nullish Coalescing Operator；Logical Assignment Operators；Coding Challenge #1；The for-of Loop；Enhanced Object Literals；Optional Chaining (?.)；Looping Objects: Object Keys, Values, and Entries；Set；Map；String
+- Part 10 Function.
 
 
 # 变量
@@ -216,6 +164,10 @@ restaurant.orderDelivery({
 
 
 # 函数
+JavaScript does not hava passing by reference ,only passing by value. (对象也实际传的是地址的值，是值)
+First-Class Functions 表示该函数享有与变量同等的待遇
+
+
 ## 函数声明与表达式
 ```js
 // Function declaration
@@ -228,6 +180,76 @@ const calcAge2 = function (birthYeah) {
   return 2037 - birthYeah;
 }
 const age2 = calcAge2(1991);
+
+//默认值 不传参数和传递undefined是同样的效果
+const createBooking = function (flightNum, numPassengers = 1, price = 199) {
+
+};
+createBooking("LH123", undefined, 1000);
+```
+## Higher-Order Function   
+接受函数作为参数或者返回函数的函数。
+回调函数其实表现了抽象，比如transformer这个函数，我们不知道具体执行的细节，我们只是定义了抽象，这个函数对字符串要做一些处理，具体什么处理是由传入的函数值决定的
+```js
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+//接收函数
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+  console.log(`Transformed by: ${fn.name}`);
+};
+transformer('JavaScript is the best!', oneWord);
+
+//返回函数 这里已经涉及闭包了
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+greet('Hello')('Jonas');
+```
+## Immediately Invoked Function Expressions (IIFE)
+最开始是用来设置变量范围，不让外部访问。但是现代JS后，可以直接快作用域了，这个功能也一般不使用了。一般仅用于直接调用一次函数即可。
+```js
+(function () {console.log("This will never run agein");})();
+
+(() => {console.log("This will also never run again");})();
+```
+## Closures
+A closure is not a feature that we explicitly use, so we do not create closures manually(手动). A closure simply happens automatically .
+
+闭包不是我们手动创建的，它只是在一些情形下创造，我们需要记住这些情形。
+
+> Any function always has access to the variable environment of the execution context in which the function was created. 任何函数都可以访问该函数被创建时候的执行上下文的变量(即使这个创建时候的执行上下文已经消失)
+
+JS如果在当前作用域没有查询到变量，会查询闭包，然后再是作用链。
+我们不能直接访问闭包变量，只是说有这个机制使得我们在操作函数的时候仍然能访问到那个变量。
+
+
+
+
+# This关键字
+- 对象.method() :method中的this指调用对象
+- 简单调用函数: 函数中的this是undefined
+- 箭头函数: 箭头函数中没有this，但是因为scope chain的关系，它会往外找
+- 函数名.call(obj,...arr) this指向obj
+- 函数名.apply(obj,arr) this指向obj,参数以数组传递
+- 函数名.bind() 方法创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用
+```
+// 如果这样，this就会指向buy那个元素！！！所以需要bind修改
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane);
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
 ```
 
 # JS原始类
