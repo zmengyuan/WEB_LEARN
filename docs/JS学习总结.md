@@ -263,15 +263,25 @@ const array = new Array(1991, 1984, 2008, 2020);
 
 ### 实例操作
 - obj = arr[index]
+- obj = arr.at(index) index可以为负数 （ES2022）
 - const length = arr.length()
+- const index = arr.indexOf(obj) 
+- const boolean = arr.includes(obj)
+- const str = arr.join(str) 以str连接为字符串
+- const Array Iterator = arr.entries()
+
+操作数组、改变数组
 - const newLength = arr.push(obj) 添加到末尾
 - const newLentgh = arr.unshift(obj) 添加到开头
 - const obj = arr.pop() 删除最后一个元素，返回该元素
 - const obj = arr.shift() 删除第一个元素，返回该元素
-- const index = arr.indexOf(obj) 
-- const boolean = arr.includes(obj)
-- const str = arr.join(' ')
-- const Array Iterator = arr.entries()
+- const nousearr = arr.splice(start, deleteCount, item1, item2, itemN) 删除或替换现有元素或者原地添加新的元素来修改数组，并以数组形式返回被修改的内容，改变原数组
+- const arr = arr.reverse() :改变原数组
+
+操作数组、不改变数组
+- const newarr = arr.slice(startIndex,endIndex) :包含start，不包含end提取，不改变原数组
+- const newarr = arr.concat(arr2);
+
 
 ## Object
 ### 实例化
@@ -393,6 +403,14 @@ console.log(staffUnique);
 - `set.delete(obj)`
 - `set.clear()`
 
+### 循环
+```js
+set.forEach(function (value, _, map) {
+  console.log(`${value}: ${value}`);
+});
+```
+
+
 ## Map
 Object的键只能是字符串，Map的键可以是任何类型。
 ### 实例化
@@ -442,6 +460,11 @@ console.log([...question]);
 // console.log(question.entries());
 console.log([...question.keys()]);
 console.log([...question.values()]);
+
+
+question.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
 ```
 #### Convert object to map
 #### Convert map to array
@@ -498,7 +521,10 @@ for (let i = 0; i < jonas.length; i++) {
 ```
 
 ## while循环
-## for of 循环
+## for of 循环 可迭代对象
+ES6提出
+- for (const obj of arr) 
+- for (const [i, obj] of arr.entries())
 ```js
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 for (const item of menu) console.log(item);//打印每一项
@@ -514,6 +540,15 @@ for (const [i, el] of menu.entries()) {
   console.log(`${i + 1}: ${el}`);
 }
 ```
+## forEach 
+ES5提出，break和continues不在forEach中起作用，可迭代对象原型上的方法
+```js
+arr.forEach(function (obj, i, arr) {
+  
+},json);
+//json表示回调函数中的this指向，obj是必选
+```
+
 # DOM
 **Document——Element——Text**
 DOM操作其实是WEB API，它是用JS编写的库。（有浏览器实现的官方的DOM规范）除了DOM操作，WEB API还包含其他很多，例如计时器、获取API等等
@@ -524,14 +559,27 @@ DOM操作其实是WEB API，它是用JS编写的库。（有浏览器实现的�
 - Keyboard events are called global events, bacause they do not happen on one specific element.所以我们都在document上添加键盘事件。有三种键盘事件：keydown(只要按) keypress(要是能产生字符的键) keyup
 
 ## Element
+`Element` 是一个通用性非常强的基类，所有 `Document` 对象下的对象都继承自它。
+所有属性继承自它的祖先接口 `Node`，并且扩展了 `Node` 的父接口 `EventTarget`，
 ### 实例操作
 - `element.style.元素属性`
+- `element.innerHTML`
 - `element.classList` 
-  - remove("className")
-  - add("className")
-  - contains("className")
-  - toggle("className")：如果这个属性有，就remove,没有就add
-- element.addEventListener("事件名称",function(){})
+  - `remove("className")`
+  - `add("className")`
+  - `contains("className")`
+  - `toggle("className")`：如果这个属性有，就remove,没有就add
+- `element.addEventListener("事件名称",function(){})`
+- `element.insertAdjacentHTML(position, text)`,使用 insertAdjacentHTML 插入用户输入的 HTML 内容的时候，需要转义之后才能使用
+  ```js
+  <!-- beforebegin -->
+  <p>
+    <!-- afterbegin -->
+    foo
+    <!-- beforeend -->
+  </p>
+  <!-- afterend -->
+  ```
 
 ## Node
 ### 实例操作
