@@ -112,6 +112,9 @@ CSS讲解：介绍CSS，Styling Text，Selectors，Color，Pseudo-Classes，Styl
 - `height`
 - `border` 其顺序是按顺时针方向设置的，剩下的可以由矩形的对称性推导出来
 - `box-sizing` ：`content-box`，`border-box`就是width = width + padding+ border = element width
+- `box-shadow` 水平 垂直 阴影的模糊度 放大阴影（可选）阴影颜色 `box-shadow: 0px 20px 30px 0px rgb(0, 0, 0, 0.07);`
+- `border-radius`
+  - `border-bottom-left-radius`
 
 **定位**
 
@@ -125,6 +128,11 @@ CSS讲解：介绍CSS，Styling Text，Selectors，Color，Pseudo-Classes，Styl
 
 - `float`
 - `clear` 清除浮动影响，(本质是为元素添加一个`margin-top`属性，值由浏览器自动计算）
+
+**SVG**
+- `stroke` means color
+- `width`
+- `height`
 
 ### 继承
 
@@ -292,6 +300,51 @@ div span{}
 
 ![浮动](img\浮动.png)
 
+### Flex
+https://juejin.cn/post/7019075844664459278 很好
+![flexbox术语](img/flexbox术语.png)
+
+![flex布局属性](img\flex布局属性.png)
+
+对于弹性盒模型，不使用width来定义宽度，而使用`flex: 1; //自动 flex: 0 0 300px;`这个属性在container和item中都可以使用
+
+**术语**
+- `flex container`
+- `flex item`
+- `main axis ;main start; main end`
+- `cross axis;cross start; cross end`
+
+**FLEX CONTAINER 属性**
+- `flex-direction`：主轴的方向 `row | row-reverse | column | column-reverse`
+- `justify-content`：项目针对容器在主轴上的对齐方式 
+  - flex-start | 
+  - flex-end | 
+  - center | 
+  - space-around（每个项目两侧的间隔相等） | 
+  - space-between（两端对齐，项目之间的间隔都相等） | 
+  - space-between（每个项目的间隔与项目和容器之间的间隔是相等的）;
+- `align-items`：属性定义项目在交叉轴上如何对齐 `stretch | flex-start | flex-end | center | baseline  `
+- `align-content`：定义了多根轴线的对齐方式，前提是需要设置flex-wrap: wrap，否则不会有效 `stretch | flex-start | flex-end | center | space-between | space-around  `
+- `gap` row表示margin-right，column表示margin-bottom
+- `flex-wrap`：是否换行,`nowrap（不换行，即使设置了单项宽度也放） | wrap (第一行在上方) | wrap-reverse（第一行在下方）`
+- `flex-flow`：`<flex-direction>|| <flex-wrap>`
+
+**FLEX ITEM 属性**
+- `order` 定义项目的排列顺序。数值越小，排列越靠前，默认为0，可以是负数
+- `flex-grow`
+- `flex-shrink`
+- `flex-basis`
+- `flex`
+- `align-self`
+
+### Grid
+https://juejin.cn/post/7019077784400035847
+![Grid术语](img\Grid术语.png)
+Grid 的轴的方向是不能被改变的
+
+![Grid属性](img\Grid属性.png)
+
+![Grid初步属性](img\Grid初步属性.png)
 
 
 # 技巧
