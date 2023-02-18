@@ -1,3 +1,5 @@
+国外地址下载太慢，下载链接出来后把stable之前的替换成vscode.cdn.azure.cn
+
 # Manage
 
 ## Color Theme
@@ -55,7 +57,17 @@
 ## 便捷类
 
 - `live server` :如果用 Node.js-npm install live-server，然后使用命令行`live-server`
-- `auto rename tag`
+- `auto rename tag` 当你修改标签的时候，自动完成另一侧标签的同步修改
+- `Auto Import` 根据你引入的组件，自动导入提示
+- `Auto Close Tag ` 自动闭合HTML/XML标签
 - `TODO Highlight`
 - `vue3-snippets`
 - `vetur`
+
+## Git
+
+- `git graph`
+
+## Markdown
+
+- `Markdown Preview Enhanced`
